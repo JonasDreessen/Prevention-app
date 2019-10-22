@@ -33,7 +33,7 @@ class Addhazard extends Component {
                             <View style={styles.newIncidentContainer}>
                                 <Text style={styles.newIncidentText}>Hazard</Text>
                             </View>
-                            <View style={styles.newIncidentContainer}>
+                            <View style={styles.newIncidentContainer} >
                                 <Text style={styles.newIncidentText}>Near Miss</Text>
                             </View>
                             <View style={styles.newIncidentContainer}>

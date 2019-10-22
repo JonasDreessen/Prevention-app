@@ -6,19 +6,38 @@ import TopNavbar from './TopNavbar';
 class googleMapsImages extends Component {
     render(){
         return(
+
 <View style={styles.container}>
+  
     <Text style={styles.title}>Hazard at Antwerpen</Text>
     <Text style={styles.subTitle}>15 Oct 9:32 am</Text>
     <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} />  
+
+    <Text style={styles.title}>Incident</Text>
+    <Text style={styles.subTitle}>19 Oct 19:17 am</Text>
+    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} /> 
+
+    <Text style={styles.title}>Incident</Text>
+    <Text style={styles.subTitle}>19 Oct 19:17 am</Text>
+    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} /> 
+
+    <Text style={styles.title}>Incident</Text>
+    <Text style={styles.subTitle}>19 Oct 19:17 am</Text>
+    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} /> 
+
+    <Text style={styles.title}>Incident</Text>
+    <Text style={styles.subTitle}>19 Oct 19:17 am</Text>
+    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} /> 
     {/* <MapView
     initialRegion={{
-      latitude: 37.78825,
+      latitude: 50.78825,
       longitude: -122.4324,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     }}
   /> */}
 </View>
+
 )
     }
 }

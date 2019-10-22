@@ -11,6 +11,7 @@ import {
   StyleSheet,
   View,
 } from "react-native";
+
 import {createAppContainer, StackRouter } from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -21,10 +22,11 @@ import TeamAlerts from "./components/TeamAlerts";
 import Addhazard from "./components/AddHazard";
 import YourTeam from './components/YourTeam'
 import More from './components/More'
+import { createStore } from 'redux'
+import counter from './redux/reducer/counter'
+import { Provider } from 'react-redux';
 
-
-
-
+const store = createStore(counter)
 
 const AppNavigator = createBottomTabNavigator(
     {
@@ -33,6 +35,7 @@ const AppNavigator = createBottomTabNavigator(
         tabBarLabel: 'Insights'}},
       Incidents: {screen: googleMapsImages},
       Plus: {screen: Addhazard},
+
       'Team alerts': {screen: TeamAlerts},
       More: {screen: More,},
     },{
@@ -42,6 +45,7 @@ const AppNavigator = createBottomTabNavigator(
     },
   }
 );
+
 const Drawernavigator = createDrawerNavigator(
   {
     BottomNavigator: {screen: AppNavigator},
@@ -54,9 +58,11 @@ const AppContainer = createAppContainer(Drawernavigator);
 class App extends Component {
   render(){
     return (
-      <View style={styles.container}>
-        <AppContainer counterState={this.state}/>
-      </View>
+    <Provider store={store}>
+        <View style={styles.container}>
+          <AppContainer counterState={this.state}/> 
+        </View>
+      </Provider>
     );
   }
 }

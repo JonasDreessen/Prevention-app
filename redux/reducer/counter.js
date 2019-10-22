@@ -1,18 +1,18 @@
-import {INCREMENT, DECREMENT} from '../actions/AddTodo';
+import {INCREMENT, DECREMENT} from '../actions';
 
 const initialState = {
     counter: 0
 }
 
 function counter(state = initialState, action){
+    console.log("FIRING UP THE REDUCER")
     switch(action.type) {
         case INCREMENT: 
-            return state + 1
+            return {counter: state.counter + 1}
         case DECREMENT:
-            return state -1
+            return {counter: state.counter -1}
         default:
             return state
     }
 }
-
 export default counter
