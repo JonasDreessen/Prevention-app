@@ -20,37 +20,41 @@ import googleMapsImages from "./components/GoogleMapsImage";
 import Insights from "./components/Insights";
 import TeamAlerts from "./components/TeamAlerts";
 import Addhazard from "./components/AddHazard";
-import YourTeam from './components/YourTeam'
+import CreateNewTeam from './components/CreateNewTeam'
 import More from './components/More'
 import { createStore } from 'redux'
 import counter from './redux/reducer/counter'
 import { Provider } from 'react-redux';
 import Newhazardscreen from './components/AddHazardComponents/NewHazardScreen'
+import AddHazard from "./components/AddHazard";
 
 
 const store = createStore(counter)
+
 
 const AppNavigator = createBottomTabNavigator(
     {
       Insights: {screen: Insights},
       Incidents: {screen: googleMapsImages},
-    Plus: {screen: Addhazard},
+      Plus: {screen: Addhazard},
       'Team alerts': {screen: TeamAlerts},
-      More: {screen: More,},
+      More: {screen: More}
     },
-
     {
     tabBarOptions: {
       activeTintColor: 'green',
       inactiveTintColor: 'gray',
     },
   }
+  
 );
-
+const createNewTeamStack = createStackNavigator({
+  createTeam: CreateNewTeam
+})
 const Drawernavigator = createDrawerNavigator(
   {
-    BottomNavigator: {screen: AppNavigator},
-    Team: {screen: YourTeam},
+    Pointbreak: {screen: AppNavigator},
+    '+ Create new team': createNewTeamStack
   }
 );
 const AppContainer = createAppContainer(Drawernavigator);

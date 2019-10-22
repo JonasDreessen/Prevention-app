@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 
 
 class TopNavbar extends Component {
   render() {
+    console.log(this.props, 'testtest')
     return (
 <View style={styles.container}>
     <View style={styles.leftItems}>
-        <Image source={require('../img/menu.png')} style={styles.topbarLeftImage}/>
-        <Text style={styles.topbarLeftText}>Pointbreak</Text>
+        <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.navigate('Insights')}>
+            <Image source={require('../img/menu.png')} style={styles.topbarLeftImage} />
+            <Text style={styles.topbarLeftText}>Pointbreak</Text>
+        </TouchableOpacity>
     </View>
     
     <View style={styles.rightItems}>
