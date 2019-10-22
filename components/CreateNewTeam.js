@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image,KeyboardAvoidingView, TextInput} from 'react-native';
+import { Button } from 'react-native-elements';
 
 class CreateNewTeam extends Component{
+    
     render(){
+        
     return(
         <View style={styles.container}>
             <KeyboardAvoidingView>
@@ -12,6 +15,10 @@ class CreateNewTeam extends Component{
                 <Image source={require('../img/group.png')}></Image>
                 <TextInput placeholder='Team Name' style={styles.textInput}/>
             </View>
+
+            <Button title='Create new team' type='solid' style={{marginTop: 10}} onPress={() => this.props.navigation.goBack()}></Button>
+            
+
             </KeyboardAvoidingView>
         </View>
     

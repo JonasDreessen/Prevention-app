@@ -4,8 +4,7 @@ const initialState = {
     counter: 0
 }
 
-function counter(state = initialState, action){
-    console.log("FIRING UP THE REDUCER")
+function counter(state = initialState, action, payload){
     switch(action.type) {
         case INCREMENT: 
             return {counter: state.counter + 1}

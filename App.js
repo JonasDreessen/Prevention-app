@@ -25,8 +25,7 @@ import More from './components/More'
 import { createStore } from 'redux'
 import counter from './redux/reducer/counter'
 import { Provider } from 'react-redux';
-import Newhazardscreen from './components/AddHazardComponents/NewHazardScreen'
-import AddHazard from "./components/AddHazard";
+
 
 
 const store = createStore(counter)
