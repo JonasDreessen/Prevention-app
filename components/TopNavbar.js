@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'absolute',
         top: 0,
-        marginBottom: 100,
+        // marginBottom: 100,
         borderBottomWidth: 0.5,
+        
     }, 
     leftItems: {
         flexDirection: 'row',

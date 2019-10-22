@@ -25,20 +25,21 @@ import More from './components/More'
 import { createStore } from 'redux'
 import counter from './redux/reducer/counter'
 import { Provider } from 'react-redux';
+import Newhazardscreen from './components/AddHazardComponents/NewHazardScreen'
+
 
 const store = createStore(counter)
 
 const AppNavigator = createBottomTabNavigator(
     {
-      Insights: {screen: Insights,
-      navigationOptions:{
-        tabBarLabel: 'Insights'}},
+      Insights: {screen: Insights},
       Incidents: {screen: googleMapsImages},
-      Plus: {screen: Addhazard},
-
+    Plus: {screen: Addhazard},
       'Team alerts': {screen: TeamAlerts},
       More: {screen: More,},
-    },{
+    },
+
+    {
     tabBarOptions: {
       activeTintColor: 'green',
       inactiveTintColor: 'gray',

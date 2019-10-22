@@ -10,22 +10,28 @@ class TeamAlerts extends Component {
                 <TopNavbar />
                 <View style={styles.teamAlertsContainer}>
                     <View style={styles.alertContainer}>
-                        <Text>Property Damage</Text>
+                        <Text style={styles.alertText}>Property Damage</Text>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                     </View>
                     <View style={styles.alertContainer}>
-                        <Text>Theft</Text>
+                        <Text style={styles.alertText}>Theft</Text>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                     </View>
                     <View style={styles.alertContainer}>
-                        <Text>Injury</Text>
+                        <Text style={styles.alertText}>Injury</Text>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                     </View>
                     <View style={styles.alertContainer}>
-                        <Text>Maintenance</Text>
+                        <Text style={styles.alertText}>Maintenance</Text>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                     </View>
                     <View style={styles.alertContainer}>
-                        <Text>Near Miss</Text>
+                        <Text style={styles.alertText}>Near Miss</Text>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                     </View>
                     <View style={styles.alertContainer}>
-                        <Text>Hazard</Text>
+                        <Text style={styles.alertText}>Hazard</Text>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                     </View>
                 </View>
             </View>
@@ -42,12 +48,24 @@ const styles = StyleSheet.create({
         top: 50,
     },
     alertContainer: {
-        height: 50,
-        marginLeft: 20,
-        marginRight: 20,
+        height: 60,
+        marginLeft: 25,
+        marginRight: 25,
         marginTop: 10,
         borderBottomWidth: 0.3,
+        borderColor: 'lightgrey',
         justifyContent: 'center',
+    },
+    alertText: {
+        fontFamily: 'arial',
+        letterSpacing: 0.7,
+        marginBottom: 10,
+    },
+    arrowRight: {
+        width: 16,
+        height: 16,
+        position: 'absolute',
+        right: 0,
     }
 })
 

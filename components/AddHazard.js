@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, Button, TouchableOpacity} from 'react-native';
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import { withNavigation } from 'react-navigation';
-
+import NewHazardScreen from './AddHazardComponents/NewHazardScreen'
 class Addhazard extends Component {
     componentDidMount() {
         const { navigation } = this.props;
@@ -31,7 +31,7 @@ class Addhazard extends Component {
                         </View>
                         <View style={styles.newIncidentHamburger}>
                             <View style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText}>Hazard</Text>
+                                <Text style={styles.newIncidentText} onPress={() => this.props.navigation.navigate('NewHazardScreen')}>Hazard</Text>
                             </View>
                             <View style={styles.newIncidentContainer} >
                                 <Text style={styles.newIncidentText}>Near Miss</Text>

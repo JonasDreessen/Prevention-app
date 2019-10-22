@@ -6,10 +6,10 @@ class More extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <TopNavbar />
+                <TopNavbar/>
                 <View style={styles.moreContainer}>
                     <TouchableOpacity style={styles.accountContainer}>
-                        <Text style={styles.yourName}>JONAS DREESSEN</Text>
+                        <Text style={styles.yourName}>Jonas Dreessen</Text>
                         <Text style={styles.yourTeam}>pointbreak</Text>
                         <Text style={styles.generalInfo}>view and edit account</Text>
                         <View style={styles.yourInitialsContainer}>
@@ -17,23 +17,57 @@ class More extends Component {
                         </View>
                     </TouchableOpacity>
                     <View style={styles.moreOptionsContainer}>
-                        <View style={styles.moreOptions}>
-                            <Text style={styles.moreOptionsText}>Your team</Text>
+                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                            <Image source={require('../img/group.png')} style={styles.moreOptionsLogo}></Image>
+                            <View style={{flexDirection: 'column'}}>
+                                <Text style={styles.moreOptionsText}>Your team</Text>
+                                <Text style={styles.moreOptionsSubText}>Invite your team members</Text>
+                            </View>
+                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
-                        <View style={styles.moreOptions}>
-                            <Text style={styles.moreOptionsText}>Incident settings</Text>
+
+                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                            <Image source={require('../img/marketing.png')} style={styles.moreOptionsLogo}></Image>
+                            <View style={{flexDirection: 'column'}}>
+                                <Text style={styles.moreOptionsText}>Incident settings</Text>
+                                <Text style={styles.moreOptionsSubText}>Customise tags and inputs</Text>
+                            </View>
+                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
-                        <View style={styles.moreOptions}>
-                            <Text style={styles.moreOptionsText}>Switch team</Text>
+
+                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                            <Image source={require('../img/sort.png')} style={styles.moreOptionsLogo}></Image>
+                            <View style={{flexDirection: 'column'}}>
+                                <Text style={styles.moreOptionsText}>Switch Team</Text>                               
+                            </View>
+                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
-                        <View style={styles.moreOptions}>
-                            <Text style={styles.moreOptionsText}>Help & support</Text>
+
+                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                            <Image source={require('../img/lifebuoy.png')} style={styles.moreOptionsLogo}></Image>
+                            <View style={{flexDirection: 'column'}}>
+                                <Text style={styles.moreOptionsText}>Help & support</Text>
+                            </View>
+                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
-                        <View style={styles.moreOptions}>
-                            <Text style={styles.moreOptionsText}>Settings</Text>
+
+                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                            <Image source={require('../img/settings.png')} style={styles.moreOptionsLogo}></Image>
+                            <View style={{flexDirection: 'column'}}>
+                                <Text style={styles.moreOptionsText}>Settings</Text>
+                            </View>
+                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
+                        
+                        
                         <View style={styles.moreOptions, styles.logOut}>
-                            <Text style={styles.moreOptionsText, styles.logOutText}>Sign out</Text>
+                            <View style={{flexDirection: 'row'}}>
+                                <Image source={require('../img/exit-door.png')} style={styles.moreOptionsLogo, {width: 24, height: 24, marginRight: 20}}></Image>
+                                <View style={{flexDirection: 'column'}}>
+                                <Text style={styles.moreOptionsText, styles.logOutText}>Sign out</Text>
+                                </View>
+
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -49,16 +83,17 @@ const styles = StyleSheet.create({
     },
     moreContainer: {
         top: 50,
-        paddingLeft: 10,
-        paddingRight: 10,
+        paddingLeft: 25,
+        paddingRight: 25,
     },
     accountContainer: {
 
     },
     yourName: {
         fontSize: 18,
-        fontWeight: '400',
+        fontWeight: 'bold',
         marginBottom: 3,
+        letterSpacing: 0.5
     },
     yourTeam: {
         fontSize: 16,
@@ -71,7 +106,7 @@ const styles = StyleSheet.create({
     },
     yourInitialsContainer: {
         position: 'absolute',
-        right: 10,
+        right: 0,
         width:50,
         height: 50,
         borderRadius: 50,
@@ -79,11 +114,11 @@ const styles = StyleSheet.create({
     },
     yourInitials: {
         position: 'absolute',
-        right: 12,
-        top: 12,
+        right: 10,
+        top: 10,
         color: 'white',
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: 24,
+        fontWeight: '800',
     },
     moreOptionsContainer: {
         height: '80%',
@@ -92,10 +127,15 @@ const styles = StyleSheet.create({
     },
     moreOptions: {
         height: 40,
-        borderBottomWidth: 0.5,
+        
     },
     moreOptionsText: {
-        fontSize: 18,
+        fontSize: 16,
+        
+    },
+    moreOptionsSubText: {
+        fontSize: 12,
+        color: 'grey'
     },
     logOut: {
         borderBottomWidth: 0
@@ -103,6 +143,15 @@ const styles = StyleSheet.create({
     logOutText: {
         color: 'red', 
         fontSize: 18,
+    },
+    moreOptionsLogo: {
+        marginRight: 20
+    },
+    arrowRight: {
+        width: 16,
+        height: 16,
+        position: 'absolute',
+        right: 0,
     }
 })
 
