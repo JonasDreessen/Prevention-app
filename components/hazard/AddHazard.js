@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, Button, TouchableOpacity} from 'react-native';
 import SlidingUpPanel from 'rn-sliding-up-panel';
-import { withNavigation } from 'react-navigation';
-import NewHazardScreen from './AddHazardComponents/NewHazardScreen'
-import {addHazard, addInjury, addMaintenance, addNearMiss, addPropertyDamage, addTheft} from '../redux/reducer/AddIncidentIncrease'
+import {addHazard, addInjury, addMaintenance, addNearMiss, addPropertyDamage, addTheft} from '../../redux/actions/incidentIncrease'
 import { connect } from 'react-redux'
+import {withNavigation} from 'react-navigation'
 
 
 class Addhazard extends Component {
@@ -13,16 +12,13 @@ class Addhazard extends Component {
         this.focusListener = navigation.addListener('didFocus', () => {
             this._panel.show()
         });
-      }
-    
+        }
         componentWillUnmount() {
             // Remove the event listener
             this.focusListener.remove();
         }
-
-    
     render(){
-        const {amountOfIncidents} = this.props
+        const {whatever} = this.props
         return(
             <View style={styles.container}>
                 <SlidingUpPanel ref={c => this._panel = c} draggableRange={{top: 800, bottom: 0}} allowDragging={false}>
@@ -36,23 +32,23 @@ class Addhazard extends Component {
                             <Text style={styles.descriptionText}>Management</Text>
                         </View>
                         <View style={styles.newIncidentHamburger}>
-                            <View style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => props.addHazard()} >Hazard</Text>
+                            <View style={styles.newIncidentContainer} onPress={() => this.props.addHazard()}>
+                                <Text style={styles.newIncidentText}  onPress={() => this.props.navigation.navigate('More')}>Hazard</Text>
                             </View>
                             <View style={styles.newIncidentContainer} >
-                                <Text style={styles.newIncidentText}>Near Miss {amountOfIncidents}</Text>
+                                <Text style={styles.newIncidentText} onPress={() => this.props.addNearMiss()}>Near Miss</Text>
                             </View>
                             <View style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText}>Maintenance</Text>
+                                <Text style={styles.newIncidentText} onPress={() => this.props.addMaintenance()}>Maintenance</Text>
                             </View>
                             <View style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText}>Injury</Text>
+                                <Text style={styles.newIncidentText} onPress={() => this.props.addInjury()}>Injury</Text>
                             </View>
                             <View style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText}>Property Damage</Text>
+                                <Text style={styles.newIncidentText} onPress={() => this.props.addPropertyDamage()}>Property Damage</Text>
                             </View>
                             <View style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText}>Theft</Text>
+                                <Text style={styles.newIncidentText} onPress={() => this.props.addTheft()}>Theft</Text>
                             </View>
                         </View>
                     </View>
@@ -111,6 +107,7 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingTop: 15,
         paddingBottom: 15,
+        height: 'auto',
     },
     newIncidentText: {
         color: '#46c24e',
@@ -127,6 +124,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+    console.log(dispatch)
     return {
     addHazard: () => dispatch(addHazard()),
     addNearMiss: () => dispatch(addNearMiss()),
@@ -144,4 +142,4 @@ export default connect(
     )(Addhazard)
 
 
-// export default withNavigation(Addhazard);
+

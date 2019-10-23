@@ -5,11 +5,10 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-nativ
 
 class TopNavbar extends Component {
   render() {
-    console.log(this.props, 'testtest')
     return (
 <View style={styles.container}>
     <View style={styles.leftItems}>
-        <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.navigate('Insights')}>
+        <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.toggleDrawer()}>
             <Image source={require('../img/menu.png')} style={styles.topbarLeftImage} />
             <Text style={styles.topbarLeftText}>Pointbreak</Text>
         </TouchableOpacity>

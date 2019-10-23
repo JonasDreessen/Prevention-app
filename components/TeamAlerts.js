@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from 'react-native';
 import TopNavbar from './TopNavbar';
-import MyAppText from './stylingComponets/myAppText'
+
 
 class TeamAlerts extends Component {
     render(){

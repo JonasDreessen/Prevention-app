@@ -1,31 +1,27 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image,TouchableOpacity,Button} from 'react-native';
-import TopNavbar from './TopNavbar';
+import {View, Text, StyleSheet, Image} from 'react-native';
+import TopNavbar from '../TopNavbar';
 import { connect } from 'react-redux';
-import {addIncrement, addDecrement} from '../redux/actions/counterIncrease'
-import AddCounter from '../redux/reducer/AddCounter'
+import {addIncrement, addDecrement} from '../../redux/actions/counterIncrease'
+import Mostusedtags from './Mostusedtags'
+
 class Insigts extends Component {
-
-    // componentDidMount(){
-    //     this.props.addIncrement
-    // }
-
     render(){
-        const { counter, amountOfIncidents } = this.props
+        const { counter, GeneralIncidents } = this.props
         return(
             <View style={styles.container}>
                 <TopNavbar />
                 <View style={styles.InsightsContainer}>
                     <View style={styles.AmountOfIncidents}>
-                        <Text>Incidents ({amountOfIncidents})</Text>
+                        <Text>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
                     </View>
 
                     <View style={styles.IncidentsGeneralContainer}>
                         <View style={styles.OpenIncidents, styles.IncidentsDetailContainer}>
-                            <Text onPress={() => this.props.addIncrement()} style={styles.numberOfIncidents}>
-                            {counter}
+                            <Text style={styles.numberOfIncidents}>
+                                {GeneralIncidents.amountOfIncidents}
                             </Text>
-                            <Text onPress={() => this.props.addDecrement()}>Open{"\n"}Incidents</Text>
+                            <Text>Open{"\n"}Incidents</Text>
                             
                         </View>
 
@@ -39,10 +35,15 @@ class Insigts extends Component {
                         <Text>Most Used Tags</Text>
                     </View>
 
-                    <View style={styles.mostUsedTagsContainer}>
-                        <Text style={styles.mostUsedTagsText}>Hazard</Text>
-                        <Text style={styles.mostUsedTagsText}>Maintenance</Text>
-                    </View>
+                    {/* <View style={styles.mostUsedTagsContainer}>
+                        <Text style={styles.mostUsedTagsText}>Hazard ({GeneralIncidents.HazardIncidents})</Text>
+                        <Text style={styles.mostUsedTagsText}>Near Miss ({GeneralIncidents.NearMissIncidents})</Text>
+                        <Text style={styles.mostUsedTagsText}>Maintenance({GeneralIncidents.MaintenanceIncidents})</Text>
+                        <Text style={styles.mostUsedTagsText}>Injury ({GeneralIncidents.InjuryIncidents})</Text>
+                        <Text style={styles.mostUsedTagsText}>Property Damage ({GeneralIncidents.PropertyDamageIncidents})</Text>
+                        <Text style={styles.mostUsedTagsText}>Theft ({GeneralIncidents.TheftIncidents})</Text>
+                    </View> */}
+                    <Mostusedtags />
 
                     <View style={styles.severety}>
                         <Text>Severety</Text>
@@ -57,7 +58,7 @@ class Insigts extends Component {
                             <Text style={styles.severetyText}>Trivial</Text>
                         </View>
                         <View style={styles.severetyGraphContainer}>
-                            <Image source={require('../img/pie-chart.png')}></Image>
+                            <Image source={require('../../img/pie-chart.png')}></Image>
                         </View>
                     </View>
                     
@@ -95,8 +96,9 @@ const styles = StyleSheet.create({
     },
     mostUsedTagsContainer: {
         backgroundColor: 'white',
-        height: 50,
-        justifyContent: 'center',
+        height: 'auto',
+        paddingTop: 10,
+        paddingBottom: 10,
     },
     mostUsedTags: {
         marginTop: 30,
@@ -105,6 +107,7 @@ const styles = StyleSheet.create({
     mostUsedTagsText: {
         fontSize: 12,
         textAlign: 'center',
+        marginBottom: 5,
     },
     severety: {
         marginTop: 30,
@@ -128,18 +131,16 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         marginRight: 20,
-        paddingLeft: 5,
-        
+        paddingLeft: 5,   
     }
-    
-
 });
 
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
         counter: state.AddCounter.counter,
-        amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents
+        GeneralIncidents: state.AddIncidentIncrease,
     }
 }
 

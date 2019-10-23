@@ -3,11 +3,13 @@ import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import googleMapsImages from "../components/GoogleMapsImage";
-import Insights from "../components/Insights";
+import Insights from "../components/Insights/Insights";
 import TeamAlerts from "../components/TeamAlerts";
-import Addhazard from "../components/AddHazard";
+import Addhazard from "../components/hazard/AddHazard";
 import CreateNewTeam from '../components/CreateNewTeam'
 import More from '../components/More'
+import NewHazardScreen from '../components/NewHazardScreen';
+
 
 const AppNavigator = createBottomTabNavigator(
     {
@@ -25,13 +27,14 @@ const AppNavigator = createBottomTabNavigator(
   }
   
 );
+
 const createNewTeamStack = createStackNavigator({createTeam: CreateNewTeam})
-const Drawernavigator = createDrawerNavigator(
-  {
+const Drawernavigator = createDrawerNavigator({
+
     Pointbreak: {screen: AppNavigator},
    '+ Create new team': createNewTeamStack
-  }
-);
+
+});
 const AppContainer = createAppContainer(Drawernavigator);
 
 
