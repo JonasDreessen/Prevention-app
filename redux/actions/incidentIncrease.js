@@ -1,11 +1,10 @@
-export const INCREMENT = 'INCREMENT'
-export const DECREMENT = 'DECREMENT'
+export const INCREMENT_INCIDENT = 'INCREMENT_INCIDENT'
 
 // action creators
 export function addHazard(){
     console.log("FIRING UP THE hazard")
     return {
-        type: INCREMENT,
+        type: INCREMENT_INCIDENT,
         payload: 'hazard'
     }
 }
@@ -13,7 +12,7 @@ export function addHazard(){
 export function addNearMiss(){
     console.log("FIRING UP THE nearMiss")
     return {
-        type: INCREMENT,
+        type: INCREMENT_INCIDENT,
         payload: 'Near Miss'
     }
 }
@@ -21,7 +20,7 @@ export function addNearMiss(){
 export function addMaintenance(){
     console.log("FIRING UP THE Maintenance")
     return {
-        type: INCREMENT,
+        type: INCREMENT_INCIDENT,
         payload: 'Maintenance'
     }
 }
@@ -29,7 +28,7 @@ export function addMaintenance(){
 export function addInjury(){
     console.log("FIRING UP THE Injury")
     return {
-        type: INCREMENT,
+        type: INCREMENT_INCIDENT,
         payload: 'Injury'
     }
 }
@@ -37,7 +36,7 @@ export function addInjury(){
 export function addPropertyDamage(){
     console.log("FIRING UP THE property damage")
     return {
-        type: INCREMENT,
+        type: INCREMENT_INCIDENT,
         payload: 'Property Damage'
     }
 }
@@ -45,7 +44,7 @@ export function addPropertyDamage(){
 export function addTheft(){
     console.log("FIRING UP THE theft")
     return {
-        type: INCREMENT,
+        type: INCREMENT_INCIDENT,
         payload: 'theft'
     }
 }

@@ -2,21 +2,22 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image,TouchableOpacity,Button} from 'react-native';
 import TopNavbar from './TopNavbar';
 import { connect } from 'react-redux';
-import {addIncrement, addDecrement} from '../redux/actions'
-
+import {addIncrement, addDecrement} from '../redux/actions/counterIncrease'
+import AddCounter from '../redux/reducer/AddCounter'
 class Insigts extends Component {
 
     // componentDidMount(){
     //     this.props.addIncrement
     // }
+
     render(){
-        const { counter } = this.props
+        const { counter, amountOfIncidents } = this.props
         return(
             <View style={styles.container}>
                 <TopNavbar />
                 <View style={styles.InsightsContainer}>
                     <View style={styles.AmountOfIncidents}>
-                        <Text>Incidents ({counter})</Text>
+                        <Text>Incidents ({amountOfIncidents})</Text>
                     </View>
 
                     <View style={styles.IncidentsGeneralContainer}>
@@ -137,7 +138,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     return {
-        counter: state.counter
+        counter: state.AddCounter.counter,
+        amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents
     }
 }
 

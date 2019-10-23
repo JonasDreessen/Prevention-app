@@ -3,6 +3,10 @@ import {View, Text, StyleSheet, Image, Button, TouchableOpacity} from 'rea
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import { withNavigation } from 'react-navigation';
 import NewHazardScreen from './AddHazardComponents/NewHazardScreen'
+import {addHazard, addInjury, addMaintenance, addNearMiss, addPropertyDamage, addTheft} from '../redux/reducer/AddIncidentIncrease'
+import { connect } from 'react-redux'
+
+
 class Addhazard extends Component {
     componentDidMount() {
         const { navigation } = this.props;
@@ -15,8 +19,10 @@ class Addhazard extends Component {
             // Remove the event listener
             this.focusListener.remove();
         }
+
     
     render(){
+        const {amountOfIncidents} = this.props
         return(
             <View style={styles.container}>
                 <SlidingUpPanel ref={c => this._panel = c} draggableRange={{top: 800, bottom: 0}} allowDragging={false}>
@@ -31,10 +37,10 @@ class Addhazard extends Component {
                         </View>
                         <View style={styles.newIncidentHamburger}>
                             <View style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => this.props.navigation.navigate('NewHazardScreen')}>Hazard</Text>
+                                <Text style={styles.newIncidentText} onPress={() => props.addHazard()} >Hazard</Text>
                             </View>
                             <View style={styles.newIncidentContainer} >
-                                <Text style={styles.newIncidentText}>Near Miss</Text>
+                                <Text style={styles.newIncidentText}>Near Miss {amountOfIncidents}</Text>
                             </View>
                             <View style={styles.newIncidentContainer}>
                                 <Text style={styles.newIncidentText}>Maintenance</Text>
@@ -113,4 +119,29 @@ const styles = StyleSheet.create({
     }
 
 })
-export default withNavigation(Addhazard);
+
+const mapStateToProps = (state) => {
+    return {
+        amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+    addHazard: () => dispatch(addHazard()),
+    addNearMiss: () => dispatch(addNearMiss()),
+    addMaintenance: () => dispatch(addMaintenance()),
+    addInjury: () => dispatch(addInjury()),
+    addPropertyDamage: () => dispatch(addPropertyDamage()),
+    addTheft: () => dispatch(addTheft()),
+
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    )(Addhazard)
+
+
+// export default withNavigation(Addhazard);
