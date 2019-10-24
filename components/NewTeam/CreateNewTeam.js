@@ -3,25 +3,22 @@ import {View, Text, StyleSheet, Image,KeyboardAvoidingView, TextInput} from
 import { Button } from 'react-native-elements';
 
 class CreateNewTeam extends Component{
-    
+    constructor(props){
+        super(props)
+    }
     render(){
-        
     return(
         <View style={styles.container}>
             <KeyboardAvoidingView>
             <Text style={styles.createTeamTitle}>Create your team</Text>
             <Text style={styles.createTeamText}>Welcome Jonas Dreessen, what would you like to call your team?</Text>
             <View style={styles.textInputContainer}>
-                <Image source={require('../img/group.png')}></Image>
+                <Image source={require('../../img/group.png')}></Image>
                 <TextInput placeholder='Team Name' style={styles.textInput}/>
             </View>
-
-            <Button title='Create new team' type='solid' style={{marginTop: 10}} onPress={() => this.props.navigation.goBack()}></Button>
-            
-
+            <Button title='Create new team' type='solid' style={{marginTop: 10}} onPress={() => this.props.navigation.navigate('createTeamDetails')}></Button>
             </KeyboardAvoidingView>
         </View>
-    
     )
     }
 }

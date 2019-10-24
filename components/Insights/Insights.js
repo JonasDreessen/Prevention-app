@@ -10,45 +10,28 @@ class Insigts extends Component {
         const { counter, GeneralIncidents } = this.props
         return(
             <View style={styles.container}>
-                <TopNavbar />
+                {/* <TopNavbar /> */}
                 <View style={styles.InsightsContainer}>
                     <View style={styles.AmountOfIncidents}>
                         <Text>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
                     </View>
-
                     <View style={styles.IncidentsGeneralContainer}>
                         <View style={styles.OpenIncidents, styles.IncidentsDetailContainer}>
-                            <Text style={styles.numberOfIncidents}>
-                                {GeneralIncidents.amountOfIncidents}
-                            </Text>
+                            <Text style={styles.numberOfIncidents}>{GeneralIncidents.amountOfIncidents}</Text>
                             <Text>Open{"\n"}Incidents</Text>
-                            
                         </View>
-
                         <View style={styles.resolvedIncidents, styles.IncidentsDetailContainer}>
                             <Text style={styles.numberOfIncidents}>0</Text>
                             <Text>Resolved{"\n"}Incidents</Text>
                         </View>
                     </View>
-
                     <View style={styles.mostUsedTags}>
                         <Text>Most Used Tags</Text>
                     </View>
-
-                    {/* <View style={styles.mostUsedTagsContainer}>
-                        <Text style={styles.mostUsedTagsText}>Hazard ({GeneralIncidents.HazardIncidents})</Text>
-                        <Text style={styles.mostUsedTagsText}>Near Miss ({GeneralIncidents.NearMissIncidents})</Text>
-                        <Text style={styles.mostUsedTagsText}>Maintenance({GeneralIncidents.MaintenanceIncidents})</Text>
-                        <Text style={styles.mostUsedTagsText}>Injury ({GeneralIncidents.InjuryIncidents})</Text>
-                        <Text style={styles.mostUsedTagsText}>Property Damage ({GeneralIncidents.PropertyDamageIncidents})</Text>
-                        <Text style={styles.mostUsedTagsText}>Theft ({GeneralIncidents.TheftIncidents})</Text>
-                    </View> */}
-                    <Mostusedtags />
-
+                        <Mostusedtags />
                     <View style={styles.severety}>
                         <Text>Severety</Text>
                     </View>
-
                     <View style={styles.severetyContainer}>
                         <View style={styles.severetyTextContainer}>
                             <Text style={styles.severetyText}>Extreme</Text>
@@ -61,9 +44,7 @@ class Insigts extends Component {
                             <Image source={require('../../img/pie-chart.png')}></Image>
                         </View>
                     </View>
-                    
                 </View>
-                
             </View>
         )
     }

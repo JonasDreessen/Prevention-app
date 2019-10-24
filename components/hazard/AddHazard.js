@@ -32,24 +32,24 @@ class Addhazard extends Component {
                             <Text style={styles.descriptionText}>Management</Text>
                         </View>
                         <View style={styles.newIncidentHamburger}>
-                            <View style={styles.newIncidentContainer} onPress={() => this.props.addHazard()}>
-                                <Text style={styles.newIncidentText}  onPress={() => this.props.navigation.navigate('More')}>Hazard</Text>
-                            </View>
-                            <View style={styles.newIncidentContainer} >
+                            <TouchableOpacity style={styles.newIncidentContainer}>
+                                <Text style={styles.newIncidentText} onPress={() => this.props.addHazard()}>Hazard</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.newIncidentContainer} >
                                 <Text style={styles.newIncidentText} onPress={() => this.props.addNearMiss()}>Near Miss</Text>
-                            </View>
-                            <View style={styles.newIncidentContainer}>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.newIncidentContainer}>
                                 <Text style={styles.newIncidentText} onPress={() => this.props.addMaintenance()}>Maintenance</Text>
-                            </View>
-                            <View style={styles.newIncidentContainer}>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.newIncidentContainer}>
                                 <Text style={styles.newIncidentText} onPress={() => this.props.addInjury()}>Injury</Text>
-                            </View>
-                            <View style={styles.newIncidentContainer}>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.newIncidentContainer}>
                                 <Text style={styles.newIncidentText} onPress={() => this.props.addPropertyDamage()}>Property Damage</Text>
-                            </View>
-                            <View style={styles.newIncidentContainer}>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.newIncidentContainer}>
                                 <Text style={styles.newIncidentText} onPress={() => this.props.addTheft()}>Theft</Text>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </SlidingUpPanel>

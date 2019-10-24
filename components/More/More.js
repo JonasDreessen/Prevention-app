@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image,TouchableOpacity} from 'react-native';
-import TopNavbar from './TopNavbar';
+import TopNavbar from '../TopNavbar';
 
 class More extends Component {
+    constructor(props){
+        super(props)
+    }
     render(){
         return(
             <View style={styles.container}>
-                <TopNavbar/>
+                {/* <TopNavbar/> */}
                 <View style={styles.moreContainer}>
                     <TouchableOpacity style={styles.accountContainer}>
                         <Text style={styles.yourName}>Jonas Dreessen</Text>
@@ -18,51 +21,51 @@ class More extends Component {
                     </TouchableOpacity>
                     <View style={styles.moreOptionsContainer}>
                         <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
-                            <Image source={require('../img/group.png')} style={styles.moreOptionsLogo}></Image>
+                            <Image source={require('../../img/group.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText}>Your team</Text>
+                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.navigate('YourTeam')}>Your team</Text>
                                 <Text style={styles.moreOptionsSubText}>Invite your team members</Text>
                             </View>
-                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
 
                         <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
-                            <Image source={require('../img/marketing.png')} style={styles.moreOptionsLogo}></Image>
+                            <Image source={require('../../img/marketing.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText}>Incident settings</Text>
+                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.navigate('Incident settings')}>Incident settings</Text>
                                 <Text style={styles.moreOptionsSubText}>Customise tags and inputs</Text>
                             </View>
-                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
 
                         <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
-                            <Image source={require('../img/sort.png')} style={styles.moreOptionsLogo}></Image>
+                            <Image source={require('../../img/sort.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText}>Switch Team</Text>                               
+                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.openDrawer()}>Switch Team</Text>                               
                             </View>
-                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
 
                         <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
-                            <Image source={require('../img/lifebuoy.png')} style={styles.moreOptionsLogo}></Image>
+                            <Image source={require('../../img/lifebuoy.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText}>Help & support</Text>
+                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.navigate('Help & support')}>Help & support</Text>
                             </View>
-                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
 
                         <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
-                            <Image source={require('../img/settings.png')} style={styles.moreOptionsLogo}></Image>
+                            <Image source={require('../../img/settings.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText}>Settings</Text>
+                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.navigate('Settings')}>Settings</Text>
                             </View>
-                            <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
                         </View>
                         
                         
                         <View style={styles.moreOptions, styles.logOut}>
                             <View style={{flexDirection: 'row'}}>
-                                <Image source={require('../img/exit-door.png')} style={styles.moreOptionsLogo, {width: 24, height: 24, marginRight: 20}}></Image>
+                                <Image source={require('../../img/exit-door.png')} style={styles.moreOptionsLogo, {width: 24, height: 24, marginRight: 20}}></Image>
                                 <View style={{flexDirection: 'column'}}>
                                 <Text style={styles.moreOptionsText, styles.logOutText}>Sign out</Text>
                                 </View>
