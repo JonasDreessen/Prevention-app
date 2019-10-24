@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
         height: 'auto',
         paddingTop: 10,
         paddingBottom: 10,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        
     },
     mostUsedTags: {
         marginTop: 30,
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
     },
     mostUsedTagsText: {
         fontSize: 12,
-        textAlign: 'center',
+        textAlign: 'right',
         marginBottom: 5,
     },
 })

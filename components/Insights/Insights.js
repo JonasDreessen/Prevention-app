@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import TopNavbar from '../TopNavbar';
 import { connect } from 'react-redux';
 import {addIncrement, addDecrement} from '../../redux/actions/counterIncrease'
 import Mostusedtags from './Mostusedtags'
 
 class Insigts extends Component {
+    constructor(props){
+        super(props)
+    }
     render(){
         const { counter, GeneralIncidents } = this.props
         return(
@@ -16,19 +19,23 @@ class Insigts extends Component {
                         <Text>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
                     </View>
                     <View style={styles.IncidentsGeneralContainer}>
-                        <View style={styles.OpenIncidents, styles.IncidentsDetailContainer}>
+                        <TouchableOpacity style={styles.OpenIncidents, styles.IncidentsDetailContainer} onPress={() => this.props.navigation.navigate('Incidents')}>
                             <Text style={styles.numberOfIncidents}>{GeneralIncidents.amountOfIncidents}</Text>
                             <Text>Open{"\n"}Incidents</Text>
-                        </View>
-                        <View style={styles.resolvedIncidents, styles.IncidentsDetailContainer}>
+                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.resolvedIncidents, styles.IncidentsDetailContainer} onPress={() => this.props.navigation.navigate('Incidents')}>
                             <Text style={styles.numberOfIncidents}>0</Text>
                             <Text>Resolved{"\n"}Incidents</Text>
-                        </View>
+                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.mostUsedTags}>
-                        <Text>Most Used Tags</Text>
+                            <Text>Most Used Tags</Text>
                     </View>
-                        <Mostusedtags />
+                        <View style={{width: '100%', backgroundColor: 'white'}}>
+                                <Mostusedtags />
+                        </View>
                     <View style={styles.severety}>
                         <Text>Severety</Text>
                     </View>
@@ -56,6 +63,12 @@ const styles = StyleSheet.create({
         marginTop: 40,
         backgroundColor: '#f5f5f5'
     },
+    arrow: {
+        height: 14,
+        width: 14,
+        position: "absolute",
+        right: 10,
+    },
     IncidentsGeneralContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -67,13 +80,15 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     IncidentsDetailContainer: {
+        height: 'auto',
         width: '45%',
         backgroundColor: 'white',
         paddingTop: 10,
         paddingBottom: 10, 
         paddingLeft: 5,
         paddingRight: 5,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     mostUsedTagsContainer: {
         backgroundColor: 'white',
