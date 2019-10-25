@@ -15,6 +15,7 @@ class Settings extends Component{
 }
 
 const styles = StyleSheet.create({
+    
     })
 export default Settings
 

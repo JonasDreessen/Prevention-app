@@ -11,7 +11,7 @@ class TopNavbar extends Component {
     return (
 <View style={styles.container}>
     <View style={styles.leftItems}>
-        <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.goBack()}>
+        <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.openDrawer()}>
             <Image source={require('../img/menu.png')} style={styles.topbarLeftImage} />
             <Text style={styles.topbarLeftText}>Pointbreak</Text>
         </TouchableOpacity>
@@ -34,9 +34,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'absolute',
         top: 0,
-        // marginBottom: 100,
         borderBottomWidth: 0.5,
-        
     }, 
     leftItems: {
         flexDirection: 'row',

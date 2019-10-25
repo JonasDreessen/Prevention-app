@@ -9,7 +9,6 @@ class More extends Component {
     render(){
         return(
             <View style={styles.container}>
-                {/* <TopNavbar/> */}
                 <View style={styles.moreContainer}>
                     <TouchableOpacity style={styles.accountContainer}>
                         <Text style={styles.yourName}>Jonas Dreessen</Text>
@@ -20,50 +19,50 @@ class More extends Component {
                         </View>
                     </TouchableOpacity>
                     <View style={styles.moreOptionsContainer}>
-                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                        <TouchableOpacity style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} onPress={() => this.props.navigation.navigate('YourTeam')} >
                             <Image source={require('../../img/group.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.navigate('YourTeam')}>Your team</Text>
+                                <Text style={styles.moreOptionsText}>Your team</Text>
                                 <Text style={styles.moreOptionsSubText}>Invite your team members</Text>
                             </View>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
-                        </View>
+                        </TouchableOpacity>
 
-                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                        <TouchableOpacity style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}}  onPress={() => this.props.navigation.navigate('Incident settings')}>
                             <Image source={require('../../img/marketing.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.navigate('Incident settings')}>Incident settings</Text>
+                                <Text style={styles.moreOptionsText}>Incident settings</Text>
                                 <Text style={styles.moreOptionsSubText}>Customise tags and inputs</Text>
                             </View>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
-                        </View>
+                        </TouchableOpacity>
 
-                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                        <TouchableOpacity style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}}  onPress={() => this.props.navigation.openDrawer()}>
                             <Image source={require('../../img/sort.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.openDrawer()}>Switch Team</Text>                               
+                                <Text style={styles.moreOptionsText}>Switch Team</Text>                               
                             </View>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
-                        </View>
+                        </TouchableOpacity>
 
-                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                        <TouchableOpacity style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} onPress={() => this.props.navigation.navigate('Help & support')}>
                             <Image source={require('../../img/lifebuoy.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.navigate('Help & support')}>Help & support</Text>
+                                <Text style={styles.moreOptionsText}>Help & support</Text>
                             </View>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
-                        </View>
+                        </TouchableOpacity>
 
-                        <View style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} >
+                        <TouchableOpacity style={styles.moreOptions, {flexDirection: 'row', borderBottomWidth: 0.5, paddingBottom: 10, borderColor: 'grey'}} onPress={() => this.props.navigation.navigate('Settings')}>
                             <Image source={require('../../img/settings.png')} style={styles.moreOptionsLogo}></Image>
                             <View style={{flexDirection: 'column'}}>
-                                <Text style={styles.moreOptionsText} onPress={() => this.props.navigation.navigate('Settings')}>Settings</Text>
+                                <Text style={styles.moreOptionsText}>Settings</Text>
                             </View>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
-                        </View>
+                        </TouchableOpacity>
                         
                         
-                        <View style={styles.moreOptions, styles.logOut}>
+                        <TouchableOpacity style={styles.moreOptions, styles.logOut}>
                             <View style={{flexDirection: 'row'}}>
                                 <Image source={require('../../img/exit-door.png')} style={styles.moreOptionsLogo, {width: 24, height: 24, marginRight: 20}}></Image>
                                 <View style={{flexDirection: 'column'}}>
@@ -71,7 +70,7 @@ class More extends Component {
                                 </View>
 
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -82,15 +81,12 @@ class More extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 40,
+        //marginTop: 40,
     },
     moreContainer: {
         top: 50,
         paddingLeft: 25,
         paddingRight: 25,
-    },
-    accountContainer: {
-
     },
     yourName: {
         fontSize: 18,

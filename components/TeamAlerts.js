@@ -4,10 +4,13 @@ import TopNavbar from './TopNavbar';
 
 
 class TeamAlerts extends Component {
+    constructor(props){
+        super(props)
+    }
     render(){
         return(
             <View style={styles.container}>
-                {/* <TopNavbar /> */}
+                <TopNavbar navigation={this.props.navigation}/>
                 <View style={styles.teamAlertsContainer}>
                     <View style={styles.alertContainer}>
                         <Text style={styles.alertText}>Property Damage</Text>
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
         marginTop: 40,
     }, 
     teamAlertsContainer: {
-        top: 50,
+        top: 40,
     },
     alertContainer: {
         height: 60,

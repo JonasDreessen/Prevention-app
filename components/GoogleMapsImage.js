@@ -1,14 +1,16 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, Image, ScrollView, SafeAreaView} from 'react-native';
-import MapView from 'react-native-maps';
-import TopNavbar from './TopNavbar';
+import Topnavbar from './TopNavbar'
 
 class googleMapsImages extends Component {
+    constructor(props){
+        super(props)
+    }
     render(){
         return(
-<ScrollView>
+<ScrollView style={{marginTop: 40}}>
+<Topnavbar navigation={this.props.navigation}/>
 <View style={styles.container}>
-
     <Text style={styles.title}>Hazard at Antwerpen</Text>
     <Text style={styles.subTitle}>15 Oct 9:32 am</Text>
     <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} />  
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         position: 'absolute',
-        top: 80,
+        top: 50,
         width: '100%',
         marginLeft: 10,
     },

@@ -1,30 +1,48 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, Button, TouchableOpacity} from 'react-native';
-import SlidingUpPanel from 'rn-sliding-up-panel';
+import {Modal,View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { Button } from 'react-native-elements';
 import {addHazard, addInjury, addMaintenance, addNearMiss, addPropertyDamage, addTheft} from '../../redux/actions/incidentIncrease'
+import {changeModalVisibility} from '../../redux/actions/modalVisibleChanger'
 import { connect } from 'react-redux'
-import {withNavigation} from 'react-navigation'
 
 
 class Addhazard extends Component {
-    componentDidMount() {
-        const { navigation } = this.props;
-        this.focusListener = navigation.addListener('didFocus', () => {
-            this._panel.show()
-        });
-        }
-        componentWillUnmount() {
-            // Remove the event listener
-            this.focusListener.remove();
+    dismissFunction(){
+        this.props.navigation.goBack();
+        // this.setState({modalVisible: true})
+    }
+        constructor(props){
+            super(props)
         }
     render(){
-        const {whatever} = this.props
+        console.log(this.props.modalVisible, 'figing out changemodalvisibility')
         return(
             <View style={styles.container}>
-                <SlidingUpPanel ref={c => this._panel = c} draggableRange={{top: 800, bottom: 0}} allowDragging={false}>
+            <Button title='What problem have you encountered?' 
+                    raised={true} 
+                    buttonStyle={{
+                        backgroundColor: 'green',
+                        paddingBottom: 10,
+                        paddingLeft: 30,
+                        paddingRight: 30,
+                        paddingTop: 10,
+                        height: 'auto',
+                        width: 250,
+                        flexWrap: 'wrap',
+                        }} 
+                    onPress={() => this.props.changeModalVisibility()}>
+
+            </Button>
+                <Modal 
+                animationType='slide'
+                transparent={true}
+                visible={this.props.modalVisible}
+                // onDismiss={() => this.dismissFunction()}
+                >
+                
                     <View style={styles.containerPanel}>
                     <TouchableOpacity style={styles.goBackText}>
-                        <Text style={{color: '#46c24e', fontWeight: '300',}} onPress={() => this.props.navigation.navigate('Insights')}>cancel</Text>
+                        <Text style={{color: '#46c24e', fontWeight: '300',}} onPress={() => this.props.changeModalVisibility()}>cancel</Text>
                     </TouchableOpacity>
                         <View style={styles.description}>
                             <Text style={styles.panelTitle}>Open new incident</Text>
@@ -52,7 +70,8 @@ class Addhazard extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                </SlidingUpPanel>
+                </Modal>
+                {/* <Button title='ADD HAZARD' onPress={this.handleModal()}></Button> */}
             </View>
         )
     }
@@ -60,7 +79,7 @@ class Addhazard extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 40,
+        marginTop: 0,
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center'
@@ -113,18 +132,23 @@ const styles = StyleSheet.create({
         color: '#46c24e',
         textAlign: 'center',
         fontSize: 16,
+    },
+    chooseButton: {
+        width: 100,
+        borderWidth: 1,
+        backgroundColor: 'red'
     }
 
 })
 
 const mapStateToProps = (state) => {
     return {
-        amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents
+        amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents,
+        modalVisible: state.changeVisibleState.modalVisible,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    console.log(dispatch)
     return {
     addHazard: () => dispatch(addHazard()),
     addNearMiss: () => dispatch(addNearMiss()),
@@ -132,6 +156,7 @@ const mapDispatchToProps = (dispatch) => {
     addInjury: () => dispatch(addInjury()),
     addPropertyDamage: () => dispatch(addPropertyDamage()),
     addTheft: () => dispatch(addTheft()),
+    changeModalVisibility: () => dispatch(changeModalVisibility())
 
     }
 }

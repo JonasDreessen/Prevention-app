@@ -10,10 +10,10 @@ class Insigts extends Component {
         super(props)
     }
     render(){
-        const { counter, GeneralIncidents } = this.props
+        const { GeneralIncidents } = this.props
         return(
             <View style={styles.container}>
-                {/* <TopNavbar /> */}
+                <TopNavbar navigation={this.props.navigation}/>
                 <View style={styles.InsightsContainer}>
                     <View style={styles.AmountOfIncidents}>
                         <Text>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     IncidentsDetailContainer: {
-        height: 'auto',
+        height: 80,
         width: '45%',
         backgroundColor: 'white',
         paddingTop: 10,

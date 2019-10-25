@@ -1,3 +1,5 @@
+import React from 'react';
+import {View,Image, Text} from 'react-native'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -14,13 +16,15 @@ import IncidentSettings from '../components/More/IncidentSettings'
 import SwitchTeam from '../components/More/SwitchTeam'
 import HelpAndSupport from '../components/More/HelpAndSupport'
 import Settings from '../components/More/Settings'
-
+import Header from './Header'
 
 const createMoreStack = createStackNavigator({
   More: {screen: More},
+  
   YourTeam: {
     screen: YourTeam,
-    navigationOptions: {title: 'Your team'}
+    navigationOptions: {
+      title: 'Your team'}
   },
   'Incident settings': {
     screen: IncidentSettings,
@@ -63,7 +67,14 @@ const Drawernavigator = createDrawerNavigator({
     Pointbreak: {screen: AppNavigator},
    '+ Create new team': {screen: createNewTeamStack}
 });
-const AppContainer = createAppContainer(Drawernavigator);
+const startingNavigation = createStackNavigator({
+  startScreen: {
+    screen: Drawernavigator,
+    navigationOptions:{
+      header: null
+    }}
+})
+const AppContainer = createAppContainer(startingNavigation);
 
 
 export default AppContainer;

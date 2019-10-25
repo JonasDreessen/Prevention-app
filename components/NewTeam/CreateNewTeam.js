@@ -11,7 +11,7 @@ class CreateNewTeam extends Component{
         <View style={styles.container}>
             <KeyboardAvoidingView>
             <Text style={styles.createTeamTitle}>Create your team</Text>
-            <Text style={styles.createTeamText}>Welcome Jonas Dreessen, what would you like to call your team?</Text>
+            <Text style={styles.createTeamText}>Welcome Jonas Dreessen, what would you like to call your new team?</Text>
             <View style={styles.textInputContainer}>
                 <Image source={require('../../img/group.png')}></Image>
                 <TextInput placeholder='Team Name' style={styles.textInput}/>
