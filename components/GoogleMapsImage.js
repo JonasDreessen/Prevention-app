@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import Topnavbar from './TopNavbar'
-import MapView from 'react-native-maps'
+import MapView, {Marker} from 'react-native-maps'
 import { connect } from 'react-redux'
 
 class googleMapsImages extends Component {
@@ -9,6 +9,7 @@ class googleMapsImages extends Component {
         super(props)
     }
     render(){
+    
     const allLocations = this.props.location.userLocation.map(everyLocation => 
         <MapView
             region={{
@@ -19,30 +20,24 @@ class googleMapsImages extends Component {
                 showsUserLocation: true
             }} style={{height: 350, width: '100%', marginBottom: 20}}
             key={everyLocation.key}>
-        {/* <Marker 
-            coordinate={}
-        /> */}
-        </MapView>
+        <MapView.Marker 
+            coordinate={{latitude:everyLocation.latitude, longitude: everyLocation.longitude}}
+        />
+        </MapView> 
         )
         return(
-            <ScrollView style={{marginTop: 40}}>
-                <Topnavbar navigation={this.props.navigation}/>
-                <View style={styles.container}>
-        
-                    {!this.props.location.isLoaded && (
-                        <View>
-                            <Text>getting your location</Text>
-                        </View>
-                    )}
-
-                    {this.props.location.isLoaded && (
-                        <View>
-                            {allLocations}
-                        </View>
-                        )}
-                    
-                </View>
-            </ScrollView>
+            <View style={{flex: 1, marginTop: 40}}>
+                <Topnavbar navigation={this.props.navigation} />
+                <ScrollView>
+                    <View style={styles.container}>
+                        {this.props.location.isLoaded && (
+                            <View>
+                                {allLocations}
+                            </View>
+                            )}
+                    </View>
+                </ScrollView>
+            </View>
         )
     }
 }

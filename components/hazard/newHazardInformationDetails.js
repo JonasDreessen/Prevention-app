@@ -58,7 +58,7 @@ class NewHazardInformationDetails extends Component {
                                 latitudeDelta: 0.015,
                                 longitudeDelta: 0.0121,
                                 showsUserLocation: true
-                            }} style={{height: 100, width: 100}}>
+                            }} style={{height: 100, width: 150}}>
                             </MapView>
                     </View>
                 </View>
@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
         paddingTop: 2,
         paddingBottom: 2,
         paddingRight: 2,
-        paddingLeft: 2
+        paddingLeft: 2,
+        maxWidth: 'auto'
     },
     extraInfoContainer: {
         marginTop: 70,
@@ -94,6 +95,12 @@ const styles = StyleSheet.create({
         width: '100%',
         borderWidth: 0.5,
         height: 100,
+    },
+    locationContainer: {
+        marginTop: 10,
+        borderWidth: 0.5,
+        paddingTop: 10,
+        paddingBottom: 10
     },
 
 })
