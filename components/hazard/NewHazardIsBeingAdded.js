@@ -8,7 +8,11 @@ import {getLocation} from '../../redux/actions/getLocation'
 
 class NewHazardIsBeingAdded extends Component {
     constructor(props){
-        super(props)
+        super(props);
+            this.state = {
+                error: null,
+                loaded: false
+            }
         }
         componentDidMount(){
             let geo_options = {
@@ -20,31 +24,60 @@ class NewHazardIsBeingAdded extends Component {
             Geolocation.getCurrentPosition(
                 (position) => this.geo_succes(position),
                 (error) => this.geo_error(error),
-                    geo_options
+                geo_options,
+                this.setState({loaded:true})
                 );
         };
         geo_succes = (position) => {
-            this.props.getLocation(position)
+            this.props.getLocation(position),
+            this.props.navigation.navigate('newHazardInformationDetails')
+            this.setState({loaded: false})
         }
         geo_error = (err) => {
             this.setState({error: err.message})
         }
         
     render(){
+        console.log(this.props.location)
         return(
-            <View>
-                <Text onPress={() => this.props.navigation.navigate('add a new hazard')}> New hazard is being added in Antwerp</Text>
+            <View style={styles.container}>
+                <Image source={require('../../img/adding-location.gif')} style={styles.loadingGif}></Image>
+                <View style={styles.textContainer}>
+                    <Text style={styles.title}>Opening new incident</Text>
+                    <Text style={styles.subTitle}>No one is being notified for injury</Text>
+                </View>
             </View>
 
         )
     }
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 200,
+    },
+    loadingGif: {
+        alignItems: 'center',
+    }, 
+    textContainer: {
+        marginTop: 200,
+    },
+    title: {
+        fontSize: 26,
+        fontWeight: '500',
+        fontFamily: 'arial',
+    },
+    subTitle: {
+        fontSize: 16,
+        color: 'darkgrey'
+    }
+})
+
 const mapStateToProps = (state) => {
     return {
         location: state.addNewLocation
-        // amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents,
-        // modalVisible: state.changeVisibleState.modalVisible,
     }
 }
 

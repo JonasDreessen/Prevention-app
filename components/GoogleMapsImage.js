@@ -3,7 +3,6 @@ import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import Topnavbar from './TopNavbar'
 import MapView from 'react-native-maps'
 import { connect } from 'react-redux'
-import {getLocation} from '../redux/actions/getLocation'
 
 class googleMapsImages extends Component {
     constructor(props){
@@ -80,13 +79,13 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return { 
-        getLocation: (position) => dispatch(getLocation(position)),
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return { 
+//         getLocation: (position) => dispatch(getLocation(position)),
+//     }
+// }
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps,
+    null,
     )(googleMapsImages)
