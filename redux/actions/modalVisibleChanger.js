@@ -1,4 +1,4 @@
-const MODAL_VISIBILITY = 'MODAL_VISIBILITY'
+export const MODAL_VISIBILITY = 'MODAL_VISIBILITY'
 
 // action creators
 export function changeModalVisibility(){

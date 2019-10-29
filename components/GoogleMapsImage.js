@@ -19,6 +19,9 @@ class googleMapsImages extends Component {
                 showsUserLocation: true
             }} style={{height: 350, width: '100%', marginBottom: 20}}
             key={everyLocation.key}>
+        {/* <Marker 
+            coordinate={}
+        /> */}
         </MapView>
         )
         return(

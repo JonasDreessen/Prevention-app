@@ -49,22 +49,22 @@ class Addhazard extends Component {
                         </View>
                         <View style={styles.newIncidentHamburger}>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addHazard(); this.props.navigation.navigate('addingNewHazard')}}>Hazard</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addHazard(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Hazard</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer} >
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addNearMiss(); this.props.navigation.navigate('addingNewHazard')}}>Near Miss</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addNearMiss(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Near Miss</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addMaintenance(); this.props.navigation.navigate('addingNewHazard')}}>Maintenance</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addMaintenance(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Maintenance</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addInjury(); this.props.navigation.navigate('addingNewHazard')}}>Injury</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addInjury(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Injury</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addPropertyDamage(); this.props.navigation.navigate('addingNewHazard')}}>Property Damage</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addPropertyDamage(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Property Damage</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addTheft(); this.props.navigation.navigate('addingNewHazard')}}>Theft</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addTheft(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Theft</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
