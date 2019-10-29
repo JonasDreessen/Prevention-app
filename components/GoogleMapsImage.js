@@ -26,30 +26,32 @@ class googleMapsImages extends Component {
         </MapView> 
         )
         return(
-            <View style={{flex: 1, marginTop: 40}}>
-                <Topnavbar navigation={this.props.navigation} />
-                <ScrollView>
-                    <View style={styles.container}>
-                        {this.props.location.isLoaded && (
-                            <View>
-                                {allLocations}
-                            </View>
-                            )}
+                <ScrollView style={{flex: 1, marginTop: 40}}>
+                    <View>
+                        <Topnavbar navigation={this.props.navigation} />
+                
+                        <View style={styles.container}>
+                            {this.props.location.isLoaded && (
+                                <View>
+                                    {allLocations}
+                                </View>
+                                )}
+                        </View>
                     </View>
                 </ScrollView>
-            </View>
+            
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        position: 'absolute',
-        top: 50,
-        width: '100%',
-        marginLeft: 10,
-    },
+//     container: {
+//         flex: 1,
+//         position: 'absolute',
+//         top: 50,
+//         width: '100%',
+//         marginLeft: 10,
+//     },
     image: {
         height: '100%',
         width: '100%',

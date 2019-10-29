@@ -50,7 +50,8 @@ class NewHazardInformationDetails extends Component {
                         <Text>weather</Text>
                     </View>
                     <View style={styles.locationContainer}>
-                        <Text>{this.state.city}</Text>
+                        <Text> {this.state.city} </Text>
+                        
                         <MapView
                             region={{
                                 latitude: latitude,
@@ -58,8 +59,9 @@ class NewHazardInformationDetails extends Component {
                                 latitudeDelta: 0.015,
                                 longitudeDelta: 0.0121,
                                 showsUserLocation: true
-                            }} style={{height: 100, width: 150}}>
-                            </MapView>
+                            }} style={{height: 100, width: 150}} />
+                        
+
                     </View>
                 </View>
             </View>
