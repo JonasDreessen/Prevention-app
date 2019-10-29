@@ -16,11 +16,11 @@ import IncidentSettings from '../components/More/IncidentSettings'
 import SwitchTeam from '../components/More/SwitchTeam'
 import HelpAndSupport from '../components/More/HelpAndSupport'
 import Settings from '../components/More/Settings'
-import Header from './Header'
+import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
+import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
 
 const createMoreStack = createStackNavigator({
   More: {screen: More},
-  
   YourTeam: {
     screen: YourTeam,
     navigationOptions: {
@@ -43,11 +43,16 @@ const createMoreStack = createStackNavigator({
     navigationOptions: {title: 'Settings'}
   }
 })
+const addingHazardStack = createStackNavigator({
+  'add a new hazard': {screen: Addhazard},
+  'addingNewHazard': {screen: NewHazardIsBeingAdded},
+  'newHazardInformationDetails': {screen: NewHazardInformationDetails}
+})
 const AppNavigator = createBottomTabNavigator(
     {
       Insights: {screen: Insights},
       Incidents: {screen: googleMapsImages},
-      Plus: {screen: Addhazard},
+      Plus: {screen: addingHazardStack},
       'Team alerts': {screen: TeamAlerts},
       More: {screen: createMoreStack}
     },

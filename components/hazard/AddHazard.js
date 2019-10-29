@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Modal,View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { Button } from 'react-native-elements';
 import {addHazard, addInjury, addMaintenance, addNearMiss, addPropertyDamage, addTheft} from '../../redux/actions/incidentIncrease'
+import Geolocation from '@react-native-community/geolocation'
+import {getLocation} from '../../redux/actions/getLocation'
 import {changeModalVisibility} from '../../redux/actions/modalVisibleChanger'
 import { connect } from 'react-redux'
 
@@ -9,13 +11,33 @@ import { connect } from 'react-redux'
 class Addhazard extends Component {
     dismissFunction(){
         this.props.navigation.goBack();
-        // this.setState({modalVisible: true})
     }
-        constructor(props){
-            super(props)
-        }
+    constructor(props){
+        super(props)
+    }
+
+    // componentDidMount(){
+    //     let geo_options = {
+    //         enableHighAccuracy: true,
+    //         timeOut: 20000,
+    //         maximumAge: 200000,
+    //     }
+
+    //     Geolocation.getCurrentPosition(
+    //         (position) => this.geo_succes(position),
+    //         (error) => this.geo_error(error),
+    //             geo_options
+    //         );
+    // };
+    // geo_succes = (position) => {
+    //     this.props.getLocation(position)
+    // }
+    // geo_error = (err) => {
+    //     this.setState({error: err.message})
+    // }
+        
     render(){
-        console.log(this.props.modalVisible, 'figing out changemodalvisibility')
+        console.log(this.props.navigation.navigate('newHazardInformationDetails'))
         return(
             <View style={styles.container}>
             <Button title='What problem have you encountered?' 
@@ -37,7 +59,6 @@ class Addhazard extends Component {
                 animationType='slide'
                 transparent={true}
                 visible={this.props.modalVisible}
-                // onDismiss={() => this.dismissFunction()}
                 >
                 
                     <View style={styles.containerPanel}>
@@ -51,7 +72,7 @@ class Addhazard extends Component {
                         </View>
                         <View style={styles.newIncidentHamburger}>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => this.props.addHazard()}>Hazard</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addHazard(); this.props.navigation.navigate('addingNewHazard')}}>Hazard</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer} >
                                 <Text style={styles.newIncidentText} onPress={() => this.props.addNearMiss()}>Near Miss</Text>
@@ -156,8 +177,8 @@ const mapDispatchToProps = (dispatch) => {
     addInjury: () => dispatch(addInjury()),
     addPropertyDamage: () => dispatch(addPropertyDamage()),
     addTheft: () => dispatch(addTheft()),
-    changeModalVisibility: () => dispatch(changeModalVisibility())
-
+    changeModalVisibility: () => dispatch(changeModalVisibility()),
+    getLocation: () => dispatch(getLocation())
     }
 }
 

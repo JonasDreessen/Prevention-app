@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         counter: state.AddCounter.counter,
         GeneralIncidents: state.AddIncidentIncrease,

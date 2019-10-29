@@ -1,43 +1,47 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Image, ScrollView, SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import Topnavbar from './TopNavbar'
+import MapView from 'react-native-maps'
+import { connect } from 'react-redux'
+import {getLocation} from '../redux/actions/getLocation'
 
 class googleMapsImages extends Component {
     constructor(props){
         super(props)
     }
     render(){
+    const allLocations = this.props.location.userLocation.map(everyLocation => 
+        <MapView
+            region={{
+                latitude: everyLocation.latitude,
+                longitude: everyLocation.longitude,
+                latitudeDelta: 0.015,
+                longitudeDelta: 0.0121,
+                showsUserLocation: true
+            }} style={{height: 350, width: '100%', marginBottom: 20}}
+            key={everyLocation.key}>
+        </MapView>
+        )
         return(
-<ScrollView style={{marginTop: 40}}>
-<Topnavbar navigation={this.props.navigation}/>
-<View style={styles.container}>
-    <Text style={styles.title}>Hazard at Antwerpen</Text>
-    <Text style={styles.subTitle}>15 Oct 9:32 am</Text>
-    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} />  
+            <ScrollView style={{marginTop: 40}}>
+                <Topnavbar navigation={this.props.navigation}/>
+                <View style={styles.container}>
+        
+                    {!this.props.location.isLoaded && (
+                        <View>
+                            <Text>getting your location</Text>
+                        </View>
+                    )}
 
-    <Text style={styles.title}>Incident</Text>
-    <Text style={styles.subTitle}>19 Oct 19:17 am</Text>
-    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} /> 
-
-    <Text style={styles.title}>Incident</Text>
-    <Text style={styles.subTitle}>19 Oct 19:17 am</Text>
-    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} /> 
-
-    <Text style={styles.title}>Incident</Text>
-    <Text style={styles.subTitle}>19 Oct 19:17 am</Text>
-    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} /> 
-
-    <Text style={styles.title}>Incident</Text>
-    <Text style={styles.subTitle}>19 Oct 19:17 am</Text>
-    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} />
-
-    <Text style={styles.title}>Hazard at Antwerpen</Text>
-    <Text style={styles.subTitle}>15 Oct 9:32 am</Text>
-    <Image source={require('../img/pointbreak-screenshot.png')} style={styles.image} /> 
-
-</View>
-</ScrollView>
-)
+                    {this.props.location.isLoaded && (
+                        <View>
+                            {allLocations}
+                        </View>
+                        )}
+                    
+                </View>
+            </ScrollView>
+        )
     }
 }
 
@@ -65,4 +69,24 @@ const styles = StyleSheet.create({
     }
 })
 
-export default googleMapsImages
+
+
+
+const mapStateToProps = (state) => {
+    return {
+        location: state.addNewLocation
+        // amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents,
+        // modalVisible: state.changeVisibleState.modalVisible,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return { 
+        getLocation: (position) => dispatch(getLocation(position)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    )(googleMapsImages)
