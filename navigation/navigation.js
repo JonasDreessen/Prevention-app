@@ -19,6 +19,12 @@ import Settings from '../components/More/Settings'
 import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
 import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
 
+const addingHazardStack = createStackNavigator({
+  'add a new hazard': {screen: Addhazard},
+  addingNewHazard: {screen: NewHazardIsBeingAdded},
+  newHazardInformationDetails: {screen: NewHazardInformationDetails}
+})
+
 const createMoreStack = createStackNavigator({
   More: {screen: More},
   YourTeam: {
@@ -43,11 +49,7 @@ const createMoreStack = createStackNavigator({
     navigationOptions: {title: 'Settings'}
   }
 })
-const addingHazardStack = createStackNavigator({
-  'add a new hazard': {screen: Addhazard},
-  'addingNewHazard': {screen: NewHazardIsBeingAdded},
-  'newHazardInformationDetails': {screen: NewHazardInformationDetails}
-})
+
 const AppNavigator = createBottomTabNavigator(
     {
       Insights: {screen: Insights},

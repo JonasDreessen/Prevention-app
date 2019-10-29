@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Modal,View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { Button } from 'react-native-elements';
 import {addHazard, addInjury, addMaintenance, addNearMiss, addPropertyDamage, addTheft} from '../../redux/actions/incidentIncrease'
-import Geolocation from '@react-native-community/geolocation'
 import {getLocation} from '../../redux/actions/getLocation'
 import {changeModalVisibility} from '../../redux/actions/modalVisibleChanger'
 import { connect } from 'react-redux'
@@ -14,30 +13,8 @@ class Addhazard extends Component {
     }
     constructor(props){
         super(props)
-    }
-
-    // componentDidMount(){
-    //     let geo_options = {
-    //         enableHighAccuracy: true,
-    //         timeOut: 20000,
-    //         maximumAge: 200000,
-    //     }
-
-    //     Geolocation.getCurrentPosition(
-    //         (position) => this.geo_succes(position),
-    //         (error) => this.geo_error(error),
-    //             geo_options
-    //         );
-    // };
-    // geo_succes = (position) => {
-    //     this.props.getLocation(position)
-    // }
-    // geo_error = (err) => {
-    //     this.setState({error: err.message})
-    // }
-        
+    }    
     render(){
-        console.log(this.props.navigation.navigate('newHazardInformationDetails'))
         return(
             <View style={styles.container}>
             <Button title='What problem have you encountered?' 
@@ -75,19 +52,19 @@ class Addhazard extends Component {
                                 <Text style={styles.newIncidentText} onPress={() => {this.props.addHazard(); this.props.navigation.navigate('addingNewHazard')}}>Hazard</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer} >
-                                <Text style={styles.newIncidentText} onPress={() => this.props.addNearMiss()}>Near Miss</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addNearMiss(); this.props.navigation.navigate('addingNewHazard')}}>Near Miss</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => this.props.addMaintenance()}>Maintenance</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addMaintenance(); this.props.navigation.navigate('addingNewHazard')}}>Maintenance</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => this.props.addInjury()}>Injury</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addInjury(); this.props.navigation.navigate('addingNewHazard')}}>Injury</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => this.props.addPropertyDamage()}>Property Damage</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addPropertyDamage(); this.props.navigation.navigate('addingNewHazard')}}>Property Damage</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => this.props.addTheft()}>Theft</Text>
+                                <Text style={styles.newIncidentText} onPress={() => {this.props.addTheft(); this.props.navigation.navigate('addingNewHazard')}}>Theft</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
