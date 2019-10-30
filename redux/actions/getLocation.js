@@ -1,9 +1,11 @@
 export const GET_LOCATION = 'GET_LOCATION'
+export const SET_LOCATION = 'SET_LOCATION'
 
-export function getLocation(position){
+export function getLocation(payload){    
     return {
         type: GET_LOCATION,
-        payload: {latitude: position.coords.latitude, longitude: position.coords.longitude}
+        payload: payload
     }
 }
+
 

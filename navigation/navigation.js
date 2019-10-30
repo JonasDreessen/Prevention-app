@@ -1,10 +1,8 @@
-import React from 'react';
-import {View,Image, Text} from 'react-native'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import googleMapsImages from "../components/GoogleMapsImage";
+import incidentOverview from "../components/Incidents/incidentOverview";
 import Insights from "../components/Insights/Insights";
 import TeamAlerts from "../components/TeamAlerts";
 import Addhazard from "../components/hazard/AddHazard";
@@ -21,8 +19,14 @@ import NewHazardInformationDetails from '../components/hazard/newHazardInformati
 
 const addingHazardStack = createStackNavigator({
   'add a new hazard': {screen: Addhazard},
-  addingNewHazard: {screen: NewHazardIsBeingAdded},
-  newHazardInformationDetails: {screen: NewHazardInformationDetails}
+  addingNewHazard: {
+    screen: NewHazardIsBeingAdded,
+    navigationOptions: {header: null}
+  },
+  newHazardInformationDetails: {
+    screen: NewHazardInformationDetails,
+    navigationOptions: {header: null}
+  }
 })
 
 const createMoreStack = createStackNavigator({
@@ -52,8 +56,8 @@ const createMoreStack = createStackNavigator({
 
 const AppNavigator = createBottomTabNavigator(
     {
+      Incidents: {screen: incidentOverview},
       Insights: {screen: Insights},
-      Incidents: {screen: googleMapsImages},
       Plus: {screen: addingHazardStack},
       'Team alerts': {screen: TeamAlerts},
       More: {screen: createMoreStack}

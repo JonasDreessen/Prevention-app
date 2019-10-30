@@ -69,7 +69,6 @@ class Addhazard extends Component {
                         </View>
                     </View>
                 </Modal>
-                {/* <Button title='ADD HAZARD' onPress={this.handleModal()}></Button> */}
             </View>
         )
     }

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {Modal,View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux'
-import { withNavigation } from 'react-navigation';
+import Geocoder from 'react-native-geocoding'
 import Geolocation from '@react-native-community/geolocation'
 import {getLocation} from '../../redux/actions/getLocation'
+import moment from 'moment'
 
 
 class NewHazardIsBeingAdded extends Component {
@@ -28,23 +29,57 @@ class NewHazardIsBeingAdded extends Component {
                 this.setState({loaded:true})
                 );
         };
+        
         geo_succes = (position) => {
-            this.props.getLocation(position),
-            this.props.navigation.navigate('newHazardInformationDetails')
-            this.setState({loaded: false})
+            const latitude = position.coords.latitude
+            const longitude = position.coords.longitude
+            let url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric&appid=c710bbe46a2469ae01e656bc9461a268'
+
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                    var area = {
+                        country: data.city.country,
+                        city: data.city.name
+                    }
+                    this.combineData(position,area)
+                })
+
+            // this.props.getLocation(position),
+            // 
+            // this.setState({loaded: false})
+
+            // Geocoder.init("AIzaSyCaGVvhMaBIZ_zeIzKTVonHAspEfLsbRrk");
+            // Geocoder.from(position.coords.latitude, position.coords.longitude)
+            // .then(json => {
+            //     combineData(json, position)
+            //     this.setState({
+            //         city: json.results[0].address_components[4].long_name,
+            //         area: json.results[0].address_components[5].long_name     
+            //     })
+            // })
         }
+        combineData = (position, area) => {
+            var date = moment()
+                .utcOffset('+01:00')
+                .format('DD-MM-YYYY hh:mm:ss a');
+            var payload = {position: position, area: area, time: date}
+            console.log(payload)
+            this.props.getLocation(payload)
+            this.props.navigation.navigate('newHazardInformationDetails')
+        }
+        
         geo_error = (err) => {
             this.setState({error: err.message})
         }
         
     render(){
-        console.log(this.props.location)
         return(
             <View style={styles.container}>
                 <Image source={require('../../img/adding-location.gif')} style={styles.loadingGif}></Image>
                 <View style={styles.textContainer}>
-                    <Text style={styles.title}>Opening new incident</Text>
-                    <Text style={styles.subTitle}>No one is being notified for injury</Text>
+                    <Text style={styles.title}>Opening new {this.props.incidentType.typeOfIncident}</Text>
+                    <Text style={styles.subTitle}>No one is being notified for {this.props.incidentType.typeOfIncident}</Text>
                 </View>
             </View>
 
@@ -77,13 +112,14 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     return {
-        location: state.addNewLocation
+        location: state.addNewLocation,
+        incidentType: state.AddIncidentIncrease
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return { 
-        getLocation: (position) => dispatch(getLocation(position)),
+        getLocation: (payload) => dispatch(getLocation(payload)),
     }
 }
 
@@ -91,4 +127,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps,
     )(NewHazardIsBeingAdded)
-
