@@ -2,7 +2,9 @@ import {GET_LOCATION} from '../actions/getLocation'
 const initialState = {
     isLoaded: false,
     userLocation: [],
-    error: null
+    error: null,
+    time: null, 
+    incident: null
 }
 
 function addNewLocation(state = initialState, action){
@@ -16,7 +18,8 @@ function addNewLocation(state = initialState, action){
                     longitude: action.payload.position.coords.longitude,
                     city: action.payload.area.city,
                     country: action.payload.area.country,
-                    time: action.payload.time
+                    time: action.payload.time, 
+                    incident: action.payload.incident
                 }],
                 }
         default:

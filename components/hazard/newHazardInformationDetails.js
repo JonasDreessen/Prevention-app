@@ -132,22 +132,24 @@ const styles = StyleSheet.create({
         paddingRight: 2,
         paddingLeft: 2,
         maxWidth: 90,
-        textAlign: 'center'
+        textAlign: 'center', 
+        
     },
     extraInfoContainer: {
         marginTop: 70,
     },
     weatherContainer: {
         width: '100%',
-        borderWidth: 0.5,
         height: 100,
+        borderBottomWidth: 0.3,
+        borderColor: 'grey',
     },
     weatherDetailContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingBottom: 20
     },
     locationContainer: {
         marginTop: 10,
-        borderWidth: 0.5,
         paddingTop: 10,
         paddingBottom: 10,
         flexDirection: 'row'

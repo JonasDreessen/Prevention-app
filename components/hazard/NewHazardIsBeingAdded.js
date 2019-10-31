@@ -21,7 +21,6 @@ class NewHazardIsBeingAdded extends Component {
                 timeOut: 20000,
                 maximumAge: 200000,
             }
-    
             Geolocation.getCurrentPosition(
                 (position) => this.geo_succes(position),
                 (error) => this.geo_error(error),
@@ -63,8 +62,8 @@ class NewHazardIsBeingAdded extends Component {
             var date = moment()
                 .utcOffset('+01:00')
                 .format('DD-MM-YYYY hh:mm:ss a');
-            var payload = {position: position, area: area, time: date}
-            console.log(payload)
+            var incident = this.props.incidentType.typeOfIncident
+            var payload = {position: position, area: area, time: date, incident: incident}
             this.props.getLocation(payload)
             this.props.navigation.navigate('newHazardInformationDetails')
         }

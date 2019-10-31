@@ -9,11 +9,11 @@ class incidentOverview extends Component {
     constructor(props){
         super(props)
     }
+    
     render(){
-    console.log(this.props.location.userLocation[0])
     const allLocations = this.props.location.userLocation.map(everyLocation =>
         <View style={{marginTop: 50, paddingLeft: 10, paddingRight: 10, paddingTop: 10, paddingBottom: 10}}>
-        <Text style={{fontSize: 20}}>Incident at {everyLocation.city}</Text>
+        <Text style={{fontSize: 20}}>{everyLocation.incident} at {everyLocation.city}</Text>
         <Text>{everyLocation.time}</Text>
             <MapView
                 region={{
@@ -28,7 +28,7 @@ class incidentOverview extends Component {
                 coordinate={{latitude:everyLocation.latitude, longitude: everyLocation.longitude}}
             />
                 </MapView>
-            <Text style={{backgroundColor: 'lightgrey', maxWidth: 70, textAlign: 'center'}}>Incident</Text>
+            <Text style={{backgroundColor: 'lightgrey', maxWidth: 70, textAlign: 'center'}}>{everyLocation.incident}</Text>
             </View>
     )
         return(
@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         marginTop: 10,
-        
     },
     title: {
         fontSize: 20,
