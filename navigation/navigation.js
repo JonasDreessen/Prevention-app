@@ -1,6 +1,5 @@
 import React from 'react'
 import {View, Text, StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
-import { DrawerActions } from 'react-navigation-drawer';
 import { connect } from 'react-redux'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
@@ -20,6 +19,11 @@ import HelpAndSupport from '../components/More/HelpAndSupport'
 import Settings from '../components/More/Settings'
 import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
 import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
+import SideMenu from './customNavigation/SideMenu'
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+// load the font befor calling it. 
+Icon.loadFont();
 
 const addingHazardStack = createStackNavigator({
   'add a new hazard': {screen: Addhazard},
@@ -63,7 +67,7 @@ const incidentStack = createStackNavigator({
     navigationOptions: {
       title: 'Pointbreak',
       headerLeft: () => 
-      <TouchableOpacity><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>}
+      <TouchableOpacity onPress ={() => this.navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>}
   }
 })
 const InsightsStack = createStackNavigator({
@@ -80,14 +84,21 @@ const TeamAlertsStack = createStackNavigator({
     screen: TeamAlerts,
     navigationOptions: {
       title: 'Pointbreak', 
-      headerLeft: () => 
-      <View><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></View>}
+      headerLeft: ({navigation}) => 
+      <View onPress={() => alert('i have been touched')}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></View>}
   }
 })
 
 const AppNavigator = createBottomTabNavigator(
     {
-      Incidents: {screen: incidentStack},
+      Incidents: {
+        screen: incidentStack,
+        navigationOptions: {
+          tabBarIcon: () => (
+            <Icon name='home' size={30} color='#900' />
+          )
+        }
+      },
       Insights: {screen: InsightsStack},
       Plus: {screen: addingHazardStack},
       'Team alerts': {screen: TeamAlertsStack},
@@ -107,8 +118,9 @@ const createNewTeamStack = createStackNavigator({
 
 const Drawernavigator = createDrawerNavigator({
     Pointbreak: {screen: AppNavigator},
-   '+ Create new team': {screen: createNewTeamStack}
+    '+ Create new team': {screen: createNewTeamStack}
 });
+
 const startingNavigation = createStackNavigator({
   startScreen: {
     screen: Drawernavigator,

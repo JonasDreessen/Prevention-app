@@ -44,11 +44,7 @@ class TeamAlerts extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 40,
     }, 
-    teamAlertsContainer: {
-        top: 40,
-    },
     alertContainer: {
         height: 60,
         marginLeft: 25,

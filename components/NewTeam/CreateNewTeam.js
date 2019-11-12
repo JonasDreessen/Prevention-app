@@ -7,24 +7,34 @@ import {teamIncreaser} from '../../redux/actions/teamIncreaser'
 class CreateNewTeam extends Component{
     constructor(props){
         super(props)
+        this.state ={
+            team: ''
+        }
     }
+
+   
     render(){
+        function teamChanger () {
+            this.setState({
+                
+            })
+        }
     return(
         <View style={styles.container}>
             <KeyboardAvoidingView>
-            <Text style={styles.createTeamTitle} onPress={()=>this.props.teamIncreaser()}>Create your team</Text>
+            <Text style={styles.createTeamTitle}>Create your team</Text>
             <Text style={styles.createTeamText}>Welcome Jonas Dreessen, what would you like to call your new team?</Text>
             <View style={styles.textInputContainer}>
                 <Image source={require('../../img/group.png')}></Image>
-                <TextInput placeholder='Team Name' style={styles.textInput}/>
+                <TextInput placeholder='Team Name' style={styles.textInput} onChangeText={(text) => this.setState({team: text})}/>
             </View>
-            <Button title='Create new team' type='solid' style={{marginTop: 10}} onPress={() => this.props.navigation.navigate('createTeamDetails')}></Button>
+            <Button title='Create new team' type='solid' style={{marginTop: 10}} onPress={() => this.props.teamIncreaser(this.state.team), this.props.navigation.navigate('createTeamDetails')}></Button>
             </KeyboardAvoidingView>
         </View>
     )
     }
 }
-
+// onPress={() => this.props.navigation.navigate('createTeamDetails')}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -55,11 +65,6 @@ const styles = StyleSheet.create({
         
     }
 })
-const mapStateToProps = (state) => {
-    return {
-        teamName: state.addNewTeam
-    }
-}
 
 const mapDispatchToProps = (dispatch) => {
     return { 
@@ -68,6 +73,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps,
     )(CreateNewTeam)

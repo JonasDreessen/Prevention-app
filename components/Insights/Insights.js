@@ -59,7 +59,6 @@ class Insigts extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 40,
         backgroundColor: '#f5f5f5'
     },
     arrow: {
