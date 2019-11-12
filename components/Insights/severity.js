@@ -16,27 +16,27 @@ class Severity extends Component{
         const data = [
             {
                 key: 1,
-                amount: 50,
+                amount: 1,
                 svg: { fill: '#600080' },
             },
             {
                 key: 2,
-                amount: 50,
+                amount: 2,
                 svg: { fill: '#9900cc' }
             },
             {
                 key: 3,
-                amount: 40,
+                amount: 4,
                 svg: { fill: '#c61aff' }
             },
             {
                 key: 4,
-                amount: 95,
+                amount: 9,
                 svg: { fill: '#d966ff' }
             },
             {
                 key: 5,
-                amount: 35,
+                amount: 3,
                 svg: { fill: '#ecb3ff' }
             }
         ]
@@ -68,16 +68,7 @@ class Severity extends Component{
             
                  <View style={styles.severety}>
                     <Text>Severety</Text>
-                    </View>
-                    <PieChart
-                style={{ height: 200 }}
-                valueAccessor={({ item }) => item.amount}
-                data={data}
-                spacing={0}
-                outerRadius={'95%'}
-            >
-               
-            </PieChart>
+                </View>
                     <View style={styles.severetyContainer}>
                         <View style={styles.severetyTextContainer}>
                             <Text style={styles.severetyText}>Extreme</Text>
@@ -86,9 +77,15 @@ class Severity extends Component{
                             <Text style={styles.severetyText}>Low</Text>
                             <Text style={styles.severetyText}>Trivial</Text>
                         </View>
-                        <View style={styles.severetyGraphContainer}> 
-                        
-                         </View>
+                        <PieChart
+                            style={{ height: 200, flex: 1 }}
+                            valueAccessor={({ item }) => item.amount}
+                            data={data}
+                            spacing={0}
+                            outerRadius={'95%'}
+                        >
+               
+            </PieChart>
                 </View>
             </View>
         )
@@ -102,13 +99,13 @@ const styles = StyleSheet.create({
     },
     severetyContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        // justifyContent: 'space-around',
         backgroundColor: 'white',
         paddingTop: 15,
         paddingBottom: 15,
     },
     severetyTextContainer: {
-        left: 50,
+        left: 0,
     },
     severetyText: {
         marginBottom: 10,
