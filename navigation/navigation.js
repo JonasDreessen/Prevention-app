@@ -20,7 +20,7 @@ import Settings from '../components/More/Settings'
 import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
 import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
 import SideMenu from './customNavigation/SideMenu'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // load the font befor calling it. 
 Icon.loadFont();
@@ -95,14 +95,42 @@ const AppNavigator = createBottomTabNavigator(
         screen: incidentStack,
         navigationOptions: {
           tabBarIcon: () => (
-            <Icon name='home' size={30} color='#900' />
+            <Icon name='chart-line-variant' size={30}/>
           )
         }
       },
-      Insights: {screen: InsightsStack},
-      Plus: {screen: addingHazardStack},
-      'Team alerts': {screen: TeamAlertsStack},
-      More: {screen: createMoreStack}
+      Insights: {
+        screen: InsightsStack,
+        navigationOptions: {
+          tabBarIcon: () => (
+            <Icon name='bullhorn-outline' size={30}/>
+          ),
+        }
+      },
+      Plus: {
+        screen: addingHazardStack,
+        navigationOptions: {
+          tabBarIcon: () => (
+            <Icon name='plus-circle' size={35} color='green'/>
+          )
+        }
+      },
+      'Team alerts': {
+        screen: TeamAlertsStack,
+        navigationOptions: {
+          tabBarIcon: () => (
+            <Icon name='bell-outline' size={30}/>
+          )
+        }
+      },
+      More: {
+        screen: createMoreStack,
+        navigationOptions: {
+          tabBarIcon: () => (
+            <Icon name='dots-horizontal' size={30}/>
+          )
+        }
+      }
     },
     {
     tabBarOptions: {
