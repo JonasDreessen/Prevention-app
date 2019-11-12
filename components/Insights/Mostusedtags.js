@@ -55,29 +55,29 @@ class Mostusedtags extends Component{
         }
         
         const data   = [
-            {
-                value: GeneralIncidents.HazardIncidents,
-                label: `Hazard (${GeneralIncidents.HazardIncidents})`
+            {   
+                value: GeneralIncidents.HazardIncidents > 0 ? GeneralIncidents.HazardIncidents : false,
+                label: GeneralIncidents.HazardIncidents > 0 ? `Hazard (${GeneralIncidents.HazardIncidents})` : false
             },
             {
-                value: GeneralIncidents.NearMissIncidents,
-                label: `Near Miss (${GeneralIncidents.NearMissIncidents})`
+                value: GeneralIncidents.NearMissIncidents > 0? GeneralIncidents.NearMissIncidents : false,
+                label: GeneralIncidents.NearMissIncidents > 0? `Near Miss (${GeneralIncidents.NearMissIncidents})`: false
             },
             {
-                value: GeneralIncidents.MaintenanceIncidents,
-                label: `Maintenance (${GeneralIncidents.MaintenanceIncidents})`
+                value: GeneralIncidents.MaintenanceIncidents > 0? GeneralIncidents.MaintenanceIncidents: false,
+                label: GeneralIncidents.MaintenanceIncidents > 0? `Maintenance (${GeneralIncidents.MaintenanceIncidents})`: false
             },
             {
-                value: GeneralIncidents.InjuryIncidents,
-                label: `Injury (${GeneralIncidents.InjuryIncidents})`
+                value: GeneralIncidents.InjuryIncidents > 0? GeneralIncidents.InjuryIncidents: false,
+                label: GeneralIncidents.InjuryIncidents > 0? `Injury (${GeneralIncidents.InjuryIncidents})`: false
             },
             {
-                value: GeneralIncidents.PropertyDamageIncidents,
-                label: `Property Damage (${GeneralIncidents.PropertyDamageIncidents})`
+                value: GeneralIncidents.PropertyDamageIncidents > 0 ? GeneralIncidents.PropertyDamageIncidents: false,
+                label: GeneralIncidents.PropertyDamageIncidents > 0? `Property Damage (${GeneralIncidents.PropertyDamageIncidents})`: false
             },
             {
-                value: GeneralIncidents.TheftIncidents,
-                label: `Theft (${GeneralIncidents.TheftIncidents})`
+                value: GeneralIncidents.TheftIncidents > 0? GeneralIncidents.TheftIncidents: false,
+                label: GeneralIncidents.TheftIncidents > 0?`Theft (${GeneralIncidents.TheftIncidents})`: false
             }
         ]
         
@@ -100,27 +100,14 @@ class Mostusedtags extends Component{
                     data={data}
                     horizontal={true}
                     yAccessor={({ item }) => item.value}
-                    svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
+                    svg={{ fill: 'grey' }}
                     contentInset={{ top: 5, bottom: 5 }}
                     spacing={0.2}
                     gridMin={0}
                     spacingInner={0.6} 
                 >
-                
                 </BarChart>
                 </View>
-
-
-
-
-                {/* <View style={{marginRight: 'auto', marginLeft: 'auto'}}>
-                    {showHazards()}
-                    {showNearMiss()}
-                    {showMaintenance()}
-                    {showInjury()}
-                    {showPropertyDamage()}
-                    {showTheft()}
-                </View>  */}
             </View>
         )
     }
@@ -134,6 +121,7 @@ const styles = StyleSheet.create({
         height: 'auto',
         paddingTop: 10,
         paddingBottom: 10,
+        paddingRight: 30
         
         
     },

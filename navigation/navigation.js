@@ -38,7 +38,15 @@ const addingHazardStack = createStackNavigator({
 })
 
 const createMoreStack = createStackNavigator({
-  More: {screen: More},
+  More: {
+    screen: More,
+    navigationOptions: ({navigation}) => ({
+      title: null,
+      headerLeft: ( 
+      <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
+      ),
+    })
+  },
   YourTeam: {
     screen: YourTeam,
     navigationOptions: {
@@ -59,33 +67,40 @@ const createMoreStack = createStackNavigator({
   },'Settings': {
     screen: Settings,
     navigationOptions: {title: 'Settings'}
-  }
+  },
+  
 })
 const incidentStack = createStackNavigator({
   'incident Overview': {
     screen: incidentOverview,
-    navigationOptions: {
+    navigationOptions: ({navigation}) => ({
       title: 'Pointbreak',
-      headerLeft: () => 
-      <TouchableOpacity onPress ={() => this.navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>}
+      headerLeft: ( 
+      <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
+      )
+    })
   }
 })
 const InsightsStack = createStackNavigator({
   'Insights': {
     screen: Insights,
-    navigationOptions: {
-      title: 'Pointbreak', 
-      headerLeft: () =>
-      <View><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></View>}
+    navigationOptions: ({navigation}) => ({
+      title: 'Pointbreak',
+      headerLeft: ( 
+      <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
+      )
+    })
   }
 })
 const TeamAlertsStack = createStackNavigator({
   'Team Alerts': {
     screen: TeamAlerts,
-    navigationOptions: {
-      title: 'Pointbreak', 
-      headerLeft: ({navigation}) => 
-      <View onPress={() => alert('i have been touched')}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></View>}
+    navigationOptions: ({navigation}) => ({
+      title: 'Pointbreak',
+      headerLeft: ( 
+      <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
+      )
+    })
   }
 })
 
@@ -94,50 +109,57 @@ const AppNavigator = createBottomTabNavigator(
       Incidents: {
         screen: incidentStack,
         navigationOptions: {
-          tabBarIcon: () => (
-            <Icon name='chart-line-variant' size={30}/>
+          tabBarIcon: ({tintColor}) => (
+            <Icon name='chart-line-variant' size={30} color={tintColor}/>
           )
         }
       },
       Insights: {
         screen: InsightsStack,
         navigationOptions: {
-          tabBarIcon: () => (
-            <Icon name='bullhorn-outline' size={30}/>
+          tabBarIcon: ({tintColor}) => (
+            <Icon name='bullhorn-outline' size={30} color={tintColor}/>
           ),
         }
       },
       Plus: {
         screen: addingHazardStack,
         navigationOptions: {
+          tabBarLabel: ' ',
           tabBarIcon: () => (
-            <Icon name='plus-circle' size={35} color='green'/>
-          )
+            <View style={{zIndex: 10000, position: 'absolute', top: -20}}>
+              <Icon name='plus-circle' size={60} color='#6ab865'/>
+            </View>
+          ),
         }
       },
       'Team alerts': {
         screen: TeamAlertsStack,
         navigationOptions: {
-          tabBarIcon: () => (
-            <Icon name='bell-outline' size={30}/>
+          tabBarIcon: ({tintColor}) => (
+            <Icon name='bell-outline' size={30} color={tintColor}/>
           )
         }
       },
       More: {
         screen: createMoreStack,
         navigationOptions: {
-          tabBarIcon: () => (
-            <Icon name='dots-horizontal' size={30}/>
+          tabBarIcon: ({tintColor}) => (
+            <Icon name='dots-horizontal' size={30} color={tintColor}/>
           )
         }
       }
     },
     {
     tabBarOptions: {
-      activeTintColor: 'green',
+      activeTintColor: '#6ab865',
       inactiveTintColor: 'gray',
+      style: {
+        height: 60,
+        paddingTop: 5
+      }
     },
-  }
+  },
 );
 const createNewTeamStack = createStackNavigator({
   createTeam: {screen: CreateNewTeam},

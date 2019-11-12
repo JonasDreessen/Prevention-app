@@ -11,9 +11,10 @@ class incidentOverview extends Component {
     }
     
     render(){
+    console.log(this.props.navigation)
     const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
-        <View style={{marginTop: 50, paddingLeft: 10, paddingRight: 10, paddingTop: 10, paddingBottom: 10}}>
-        <TouchableOpacity onPress={this.props.navigation.push()}>
+        <View style={{marginBottom0: 20, paddingLeft: 10, paddingRight: 10, paddingTop: 10, paddingBottom: 10}}>
+        <TouchableOpacity>
         <Text style={{fontSize: 20}}>{everyLocation.incident} at {everyLocation.city}</Text>
         <Text>{everyLocation.time}</Text>
             <MapView
@@ -35,7 +36,7 @@ class incidentOverview extends Component {
     )
         return(
     this.props.location.userLocation.length > 0 ? 
-            <ScrollView style={{flex: 1, marginTop: 40}}>
+            <ScrollView style={{flex: 1}}>
                 <View>
                     {/* <Topnavbar navigation={this.props.navigation}/> */}
                     <View style={styles.container}>

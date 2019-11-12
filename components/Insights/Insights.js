@@ -4,6 +4,7 @@ import TopNavbar from '../TopNavbar';
 import { connect } from 'react-redux';
 import {addIncrement, addDecrement} from '../../redux/actions/counterIncrease'
 import Mostusedtags from './Mostusedtags'
+import Severity from './severity'
 
 class Insigts extends Component {
     constructor(props){
@@ -35,21 +36,7 @@ class Insigts extends Component {
                         <View style={{width: '100%', backgroundColor: 'white'}}>
                                 <Mostusedtags />
                         </View>
-                    <View style={styles.severety}>
-                        <Text>Severety</Text>
-                    </View>
-                    <View style={styles.severetyContainer}>
-                        <View style={styles.severetyTextContainer}>
-                            <Text style={styles.severetyText}>Extreme</Text>
-                            <Text style={styles.severetyText}>High</Text>
-                            <Text style={styles.severetyText}>Medium</Text>
-                            <Text style={styles.severetyText}>Low</Text>
-                            <Text style={styles.severetyText}>Trivial</Text>
-                        </View>
-                        <View style={styles.severetyGraphContainer}>
-                            <Image source={require('../../img/pie-chart.png')}></Image>
-                        </View>
-                    </View>
+                        <Severity />
                 </View>
             </View>
         )
@@ -73,7 +60,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     InsightsContainer: {
-        top: 50,
+        top: 20,
         marginLeft: 10,
         marginRight: 10,
     },

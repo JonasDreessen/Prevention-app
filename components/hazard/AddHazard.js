@@ -20,7 +20,7 @@ class Addhazard extends Component {
             <Button title='What problem have you encountered?' 
                     raised={true} 
                     buttonStyle={{
-                        backgroundColor: 'green',
+                        backgroundColor: '#6ab865',
                         paddingBottom: 10,
                         paddingLeft: 30,
                         paddingRight: 30,
