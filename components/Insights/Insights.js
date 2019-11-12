@@ -13,7 +13,6 @@ class Insigts extends Component {
         const { GeneralIncidents } = this.props
         return(
             <View style={styles.container}>
-                <TopNavbar navigation={this.props.navigation}/>
                 <View style={styles.InsightsContainer}>
                     <View style={styles.AmountOfIncidents}>
                         <Text>Incidents ({GeneralIncidents.amountOfIncidents})</Text>

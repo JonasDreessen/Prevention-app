@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
 import Topnavbar from '../TopNavbar'
 import MapView, {Marker} from 'react-native-maps'
 import { connect } from 'react-redux'
@@ -11,8 +11,9 @@ class incidentOverview extends Component {
     }
     
     render(){
-    const allLocations = this.props.location.userLocation.map(everyLocation =>
+    const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
         <View style={{marginTop: 50, paddingLeft: 10, paddingRight: 10, paddingTop: 10, paddingBottom: 10}}>
+        <TouchableOpacity onPress={this.props.navigation.push()}>
         <Text style={{fontSize: 20}}>{everyLocation.incident} at {everyLocation.city}</Text>
         <Text>{everyLocation.time}</Text>
             <MapView
@@ -28,14 +29,15 @@ class incidentOverview extends Component {
                 coordinate={{latitude:everyLocation.latitude, longitude: everyLocation.longitude}}
             />
                 </MapView>
-            <Text style={{backgroundColor: 'lightgrey', maxWidth: 70, textAlign: 'center'}}>{everyLocation.incident}</Text>
+            <Text style={{backgroundColor: 'lightgrey', maxWidth: 100, textAlign: 'center'}}>{everyLocation.incident}</Text>
+            </TouchableOpacity>
             </View>
     )
         return(
     this.props.location.userLocation.length > 0 ? 
             <ScrollView style={{flex: 1, marginTop: 40}}>
                 <View>
-                    <Topnavbar navigation={this.props.navigation} />
+                    {/* <Topnavbar navigation={this.props.navigation}/> */}
                     <View style={styles.container}>
                         {this.props.location.isLoaded && (
                             <View>

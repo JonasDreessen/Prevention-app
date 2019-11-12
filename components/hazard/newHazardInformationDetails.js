@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         paddingLeft: 2,
         maxWidth: 90,
         textAlign: 'center', 
-        
+        borderRadius: 20
     },
     extraInfoContainer: {
         marginTop: 70,

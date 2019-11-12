@@ -1,3 +1,7 @@
+import React from 'react'
+import {View, Text, StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
+import { DrawerActions } from 'react-navigation-drawer';
+import { connect } from 'react-redux'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -53,13 +57,40 @@ const createMoreStack = createStackNavigator({
     navigationOptions: {title: 'Settings'}
   }
 })
+const incidentStack = createStackNavigator({
+  'incident Overview': {
+    screen: incidentOverview,
+    navigationOptions: {
+      title: 'Pointbreak',
+      headerLeft: () => 
+      <TouchableOpacity><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>}
+  }
+})
+const InsightsStack = createStackNavigator({
+  'Insights': {
+    screen: Insights,
+    navigationOptions: {
+      title: 'Pointbreak', 
+      headerLeft: () =>
+      <View><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></View>}
+  }
+})
+const TeamAlertsStack = createStackNavigator({
+  'Team Alerts': {
+    screen: TeamAlerts,
+    navigationOptions: {
+      title: 'Pointbreak', 
+      headerLeft: () => 
+      <View><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></View>}
+  }
+})
 
 const AppNavigator = createBottomTabNavigator(
     {
-      Incidents: {screen: incidentOverview},
-      Insights: {screen: Insights},
+      Incidents: {screen: incidentStack},
+      Insights: {screen: InsightsStack},
       Plus: {screen: addingHazardStack},
-      'Team alerts': {screen: TeamAlerts},
+      'Team alerts': {screen: TeamAlertsStack},
       More: {screen: createMoreStack}
     },
     {
@@ -87,5 +118,14 @@ const startingNavigation = createStackNavigator({
 })
 const AppContainer = createAppContainer(startingNavigation);
 
+const mapStateToProps = (state) => {
+  return {
+      amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents,
+      modalVisible: state.changeVisibleState.modalVisible,
+  }
+}
 
-export default AppContainer;
+export default connect(
+  mapStateToProps,
+  null,
+  )(AppContainer)

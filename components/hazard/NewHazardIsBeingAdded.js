@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Modal,View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux'
-import Geocoder from 'react-native-geocoding'
 import Geolocation from '@react-native-community/geolocation'
 import {getLocation} from '../../redux/actions/getLocation'
 import moment from 'moment'
@@ -43,21 +42,8 @@ class NewHazardIsBeingAdded extends Component {
                     }
                     this.combineData(position,area)
                 })
-
-            // this.props.getLocation(position),
-            // 
-            // this.setState({loaded: false})
-
-            // Geocoder.init("AIzaSyCaGVvhMaBIZ_zeIzKTVonHAspEfLsbRrk");
-            // Geocoder.from(position.coords.latitude, position.coords.longitude)
-            // .then(json => {
-            //     combineData(json, position)
-            //     this.setState({
-            //         city: json.results[0].address_components[4].long_name,
-            //         area: json.results[0].address_components[5].long_name     
-            //     })
-            // })
         }
+
         combineData = (position, area) => {
             var date = moment()
                 .utcOffset('+01:00')

@@ -10,7 +10,6 @@ class TeamAlerts extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <TopNavbar navigation={this.props.navigation}/>
                 <View style={styles.teamAlertsContainer}>
                     <View style={styles.alertContainer}>
                         <Text style={styles.alertText}>Property Damage</Text>

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image,KeyboardAvoidingView, TextInput} from 'react-native';
 import { Button } from 'react-native-elements';
+import {connect} from 'react-redux'
+import {teamIncreaser} from '../../redux/actions/teamIncreaser'
 
 class CreateNewTeam extends Component{
     constructor(props){
@@ -10,7 +12,7 @@ class CreateNewTeam extends Component{
     return(
         <View style={styles.container}>
             <KeyboardAvoidingView>
-            <Text style={styles.createTeamTitle}>Create your team</Text>
+            <Text style={styles.createTeamTitle} onPress={()=>this.props.teamIncreaser()}>Create your team</Text>
             <Text style={styles.createTeamText}>Welcome Jonas Dreessen, what would you like to call your new team?</Text>
             <View style={styles.textInputContainer}>
                 <Image source={require('../../img/group.png')}></Image>
@@ -53,5 +55,19 @@ const styles = StyleSheet.create({
         
     }
 })
+const mapStateToProps = (state) => {
+    return {
+        teamName: state.addNewTeam
+    }
+}
 
-export default CreateNewTeam;
+const mapDispatchToProps = (dispatch) => {
+    return { 
+        teamIncreaser: (payload) => dispatch(teamIncreaser(payload)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    )(CreateNewTeam)
