@@ -86,8 +86,9 @@ class Severity extends Component{
                             style={{ height: 200, flex: 1 }}
                             valueAccessor={({ item }) => item.amount}
                             data={data}
-                            spacing={0}
-                            outerRadius={'95%'}
+                            spacing={5}
+                            innerRadius={'70%'}
+                            outerRadius={'90%'}
                         >
                
             </PieChart>

@@ -51,9 +51,9 @@ class InsightDetailAdjustment extends Component {
                                 </View>
                             </View>
                             <RNPickerSelect
+                                    style={pickerStyle}
                                     onValueChange={(value) => this.setState({selectedValue: value})}
                                     placeholder={{label: 'please select your severity', value: null}}
-                                    style={{fontSize: 24}}
                                     items={[
                                         { label: 'Extreme', value: extreme },
                                         { label: 'High', value: high },
@@ -63,7 +63,10 @@ class InsightDetailAdjustment extends Component {
                                         ]}
                                     />
                         </View>
-                        <Button title='confirm' onPress={() => {this.props.SevertyIncreaser(this.state.selectedValue), this.props.navigation.goBack()}}></Button>
+                        <TouchableOpacity onPress={() => {this.props.SevertyIncreaser(this.state.selectedValue), this.props.navigation.goBack()}}
+                            style={styles.button}>
+                            <Text style={styles.buttonText}>Confirm</Text>
+                        </TouchableOpacity>
                     </View>
 
                 )
@@ -120,8 +123,63 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         flexDirection: 'row'
     },
+    button: {
+        backgroundColor: 'blue',
+        fontSize: 20,
+        marginTop: 20,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 20
+    },
+    buttonText: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: '700'
+    },
 
 })
+
+const pickerStyle = {
+	inputIOS: {
+		color: 'black',
+		paddingTop: 6,
+		paddingHorizontal: 10,
+        paddingBottom: 6,
+        fontSize: 24,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        borderWidth: 0.8,
+        borderRadius: 10,
+        borderColor: 'lightgrey',
+	},
+	inputAndroid: {
+        color: 'black',
+        paddingTop: 13,
+		paddingHorizontal: 10,
+        paddingBottom: 12,
+        fontSize: 24,
+        marginLeft: 'auto',
+        marginRight: 'auto'
+	},
+	placeholderColor: 'black',
+	underline: { borderTopWidth: 0 },
+	icon: {
+		position: 'absolute',
+		backgroundColor: 'transparent',
+		borderTopWidth: 5,
+		borderTopColor: '#00000099',
+		borderRightWidth: 5,
+		borderRightColor: 'transparent',
+		borderLeftWidth: 5,
+		borderLeftColor: 'transparent',
+		width: 0,
+		height: 0,
+		top: 20,
+		right: 15,
+	},
+};
 
 const mapStateToProps = (state) => {
     return {
