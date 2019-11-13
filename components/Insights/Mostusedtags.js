@@ -11,49 +11,6 @@ class Mostusedtags extends Component{
     
     render(){
         const { GeneralIncidents } = this.props
-        const showHazards = () => {
-            if(GeneralIncidents.HazardIncidents > 0){
-                return (
-                    <Text style={styles.mostUsedTagsText}>Hazard ({GeneralIncidents.HazardIncidents})</Text>
-                )
-            }
-        }
-        const showNearMiss = () => {
-            if(GeneralIncidents.NearMissIncidents > 0){
-                return (
-                    <Text style={styles.mostUsedTagsText}>Near Miss ({GeneralIncidents.NearMissIncidents})</Text>
-                )
-            }
-        }
-        const showMaintenance = () => {
-            if(GeneralIncidents.MaintenanceIncidents > 0){
-                return (
-                    <Text style={styles.mostUsedTagsText}>Maintenance ({GeneralIncidents.MaintenanceIncidents})</Text>
-                )
-            }
-        }
-        const showInjury = () => {
-            if(GeneralIncidents.InjuryIncidents > 0){
-                return (
-                    <Text style={styles.mostUsedTagsText}>Injury ({GeneralIncidents.InjuryIncidents})</Text>
-                )
-            }
-        }
-        const showPropertyDamage = () => {
-            if(GeneralIncidents.PropertyDamageIncidents > 0){
-                return (
-                    <Text style={styles.mostUsedTagsText}>Property Damage ({GeneralIncidents.PropertyDamageIncidents})</Text>
-                )
-            }
-        }
-        const showTheft = () => {
-            if(GeneralIncidents.TheftIncidents > 0){
-                return (
-                    <Text style={styles.mostUsedTagsText}>Theft ({GeneralIncidents.TheftIncidents})</Text>
-                )
-            }
-        }
-        
         const data   = [
             {   
                 value: GeneralIncidents.HazardIncidents > 0 ? GeneralIncidents.HazardIncidents : false,

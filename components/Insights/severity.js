@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
 import { connect } from 'react-redux';
-import {addIncrement, addDecrement} from '../../redux/actions/counterIncrease'
 import {PieChart} from 'react-native-svg-charts'
-import * as scale from 'd3-scale'
+import { SevertyIncreaser } from '../../redux/actions/SevertyIncreaser';
 
 
 class Severity extends Component{
@@ -12,57 +11,48 @@ class Severity extends Component{
     }
     
     render() {
-
+        console.log(this.props.severityType)
         const data = [
             {
                 key: 1,
-                amount: 1,
-                svg: { fill: '#600080' },
+                amount: this.props.severityType.extremeSeverity,
+                svg: { fill: 'darkred' },
             },
             {
                 key: 2,
-                amount: 2,
-                svg: { fill: '#9900cc' }
+                amount: this.props.severityType.highSeverity,
+                svg: { fill: 'red' }
             },
             {
                 key: 3,
-                amount: 4,
-                svg: { fill: '#c61aff' }
+                amount: this.props.severityType.mediumSeverity,
+                svg: { fill: 'orange' }
             },
             {
                 key: 4,
-                amount: 9,
-                svg: { fill: '#d966ff' }
+                amount: this.props.severityType.lowSeverity,
+                svg: { fill: 'yellow' }
             },
             {
                 key: 5,
-                amount: 3,
-                svg: { fill: '#ecb3ff' }
+                amount: this.props.severityType.trivialSeverity,
+                svg: { fill: 'blue' }
             }
         ]
 
-        const Labels = ({ slices, height, width }) => {
-            return slices.map((slice, index) => {
-                const { labelCentroid, pieCentroid, data } = slice;
+        const Labels = ({ slices }) => {
+            return slices.map((slice) => {
                 return (
-                    <Text
-                        key={index}
-                        x={pieCentroid[ 0 ]}
-                        y={pieCentroid[ 1 ]}
-                        fill={'white'}
-                        textAnchor={'middle'}
-                        alignmentBaseline={'middle'}
-                        fontSize={24}
-                        stroke={'black'}
-                        strokeWidth={0.2}
-                    >
-                        {data.amount}
-                    </Text>
+                    <Text>{data.amount}</Text>
                 )
             })
         }
-    
- 
+        const extreme = 'extreme'
+        const high = 'high'
+        const medium = 'medium'
+        const low = 'low'
+        const trivial = 'trivial'
+
         return(
             <View>
             
@@ -71,11 +61,26 @@ class Severity extends Component{
                 </View>
                     <View style={styles.severetyContainer}>
                         <View style={styles.severetyTextContainer}>
-                            <Text style={styles.severetyText}>Extreme</Text>
-                            <Text style={styles.severetyText}>High</Text>
-                            <Text style={styles.severetyText}>Medium</Text>
-                            <Text style={styles.severetyText}>Low</Text>
-                            <Text style={styles.severetyText}>Trivial</Text>
+                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(extreme)}>Extreme</Text>
+                                <View style={styles.colorPointDarkRed}></View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(high)}>High</Text>
+                                <View style={styles.colorPointRed}></View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(medium)}>Medium</Text>
+                                <View style={styles.colorPointOrange}></View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(low)}>Low</Text>
+                                <View style={styles.colorPointYellow}></View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(trivial)}>Trivial</Text>
+                                <View style={styles.colorPointBlue}></View>
+                            </View>
                         </View>
                         <PieChart
                             style={{ height: 200, flex: 1 }}
@@ -97,9 +102,48 @@ const styles = StyleSheet.create({
         marginTop: 30,
         marginBottom: 10,
     },
+    colorPointDarkRed: {
+        width: 15,
+        borderWidth: 1,
+        height: 15,
+        marginLeft: 10,
+        borderRadius: 50,
+        backgroundColor: 'darkred' 
+    },
+    colorPointRed: {
+        width: 15,
+        borderWidth: 1,
+        height: 15,
+        marginLeft: 10,
+        borderRadius: 50,
+        backgroundColor: 'red' 
+    },
+    colorPointOrange: {
+        width: 15,
+        borderWidth: 1,
+        height: 15,
+        marginLeft: 10,
+        borderRadius: 50,
+        backgroundColor: 'orange' 
+    },
+    colorPointYellow: {
+        width: 15,
+        borderWidth: 1,
+        height: 15,
+        marginLeft: 10,
+        borderRadius: 50,
+        backgroundColor: 'yellow' 
+    },
+    colorPointBlue: {
+        width: 15,
+        borderWidth: 1,
+        height: 15,
+        marginLeft: 10,
+        borderRadius: 50,
+        backgroundColor: 'blue' 
+    },
     severetyContainer: {
         flexDirection: 'row',
-        // justifyContent: 'space-around',
         backgroundColor: 'white',
         paddingTop: 15,
         paddingBottom: 15,
@@ -112,4 +156,20 @@ const styles = StyleSheet.create({
         textAlign: 'right',
     }
 })
-export default Severity
+const mapStateToProps = (state) => {
+    return {
+        severityType: state.addSeverity,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        SevertyIncreaser: (payload) => dispatch(SevertyIncreaser(payload))
+    }
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    )(Severity)

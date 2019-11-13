@@ -4,14 +4,16 @@ const initialState = {
     userLocation: [],
     error: null,
     time: null, 
-    incident: null
+    incident: null,
+    Id: 0
 }
-
 function addNewLocation(state = initialState, action){
     switch(action.type){
         case GET_LOCATION:
+            const newId = state.Id + 1
             return {
                 ...state,
+                Id: newId,
                 isLoaded: true,
                 userLocation:[...state.userLocation, {
                     latitude: action.payload.position.coords.latitude,
@@ -19,7 +21,9 @@ function addNewLocation(state = initialState, action){
                     city: action.payload.area.city,
                     country: action.payload.area.country,
                     time: action.payload.time, 
-                    incident: action.payload.incident
+                    incident: action.payload.incident,
+                    story: 'storytime',
+                    userId: newId
                 }],
                 }
         default:

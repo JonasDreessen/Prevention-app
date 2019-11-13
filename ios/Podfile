@@ -36,7 +36,6 @@ target 'prevAppSpotlight' do
 
 
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'prevAppSpotlightTests' do
     inherit! :search_paths

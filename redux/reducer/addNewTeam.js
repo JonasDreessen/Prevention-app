@@ -7,8 +7,6 @@ const initialState = {
 }
 
 function addNewTeam(state = initialState, action){
-    console.log('firing up the new addteam reducer')
-    console.log(action.payload, state.Id, state.allteams)
     switch(action.type){
         case ADD_NEW_TEAM:
             return {

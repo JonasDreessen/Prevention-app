@@ -11,12 +11,12 @@ class incidentOverview extends Component {
     }
     
     render(){
-    console.log(this.props.navigation)
+    console.log(this.props.location)
     const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
-        <View style={{marginBottom0: 20, paddingLeft: 10, paddingRight: 10, paddingTop: 10, paddingBottom: 10}}>
-        <TouchableOpacity>
+        <View style={{marginBottom: 20, paddingLeft: 10, paddingRight: 10, paddingTop: 10, paddingBottom: 10}}>
+        <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId})}>
         <Text style={{fontSize: 20}}>{everyLocation.incident} at {everyLocation.city}</Text>
-        <Text>{everyLocation.time}</Text>
+        <Text onPress={() => console.log(everyLocation.userId)}>{everyLocation.time}</Text>
             <MapView
                 region={{
                     latitude: everyLocation.latitude,
@@ -25,7 +25,7 @@ class incidentOverview extends Component {
                     longitudeDelta: 0.0121,
                     showsUserLocation: true
                 }} style={{height: 200, width: '100%', marginBottom: 20}}
-                key={Math.random() * 1000}>
+                key={everyLocation.userId}>
             <MapView.Marker 
                 coordinate={{latitude:everyLocation.latitude, longitude: everyLocation.longitude}}
             />
@@ -38,7 +38,6 @@ class incidentOverview extends Component {
     this.props.location.userLocation.length > 0 ? 
             <ScrollView style={{flex: 1}}>
                 <View>
-                    {/* <Topnavbar navigation={this.props.navigation}/> */}
                     <View style={styles.container}>
                         {this.props.location.isLoaded && (
                             <View>

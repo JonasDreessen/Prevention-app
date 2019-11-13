@@ -21,6 +21,7 @@ import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
 import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
 import SideMenu from './customNavigation/SideMenu'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import InsightDetailAdjustment from '../components/Insights/InsightDetailAdjustment'
 
 // load the font befor calling it. 
 Icon.loadFont();
@@ -79,6 +80,9 @@ const incidentStack = createStackNavigator({
       <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
       )
     })
+  },
+  'insight detail adjustment': {
+      screen: InsightDetailAdjustment,
   }
 })
 const InsightsStack = createStackNavigator({
@@ -90,7 +94,7 @@ const InsightsStack = createStackNavigator({
       <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
       )
     })
-  }
+  },
 })
 const TeamAlertsStack = createStackNavigator({
   'Team Alerts': {

@@ -38,15 +38,6 @@ class NewHazardInformationDetails extends Component {
                 icon: data.list[0].weather[0].icon
             })
         })
-        // Geocoder.init("AIzaSyCaGVvhMaBIZ_zeIzKTVonHAspEfLsbRrk");
-        // Geocoder.from(latitude, longitude)
-        //     .then(json => {
-        //         this.setState({
-        //             city: json.results[0].address_components[4].long_name,
-        //             area: json.results[0].address_components[5].long_name     
-        //         })
-
-        //     })
     }
     componentWillUnmount(){
         this.setState({
@@ -70,7 +61,6 @@ class NewHazardInformationDetails extends Component {
             <View style={styles.container}>
                 <Text style={styles.incidentTitle}>{this.props.incidentType.typeOfIncident} at {city}</Text>
                 <Text style={styles.typeOfIncidentTag}>{this.props.incidentType.typeOfIncident}</Text>
-
                 <View style={styles.extraInfoContainer}>
                     <View style={styles.weatherContainer}>
                         <View style={styles.weatherDetailContainer}>
