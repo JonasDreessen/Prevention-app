@@ -16,7 +16,10 @@ class Insigts extends Component {
             <View style={styles.container}>
                 <View style={styles.InsightsContainer}>
                     <View style={styles.AmountOfIncidents}>
+                    <View style={{flexDirection: 'row'}}>
+                        <View style={styles.coloredCircle}></View>
                         <Text>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
+                    </View>
                     </View>
                     <View style={styles.IncidentsGeneralContainer}>
                         <TouchableOpacity style={styles.OpenIncidents, styles.IncidentsDetailContainer} onPress={() => this.props.navigation.navigate('Incidents')}>
@@ -31,7 +34,10 @@ class Insigts extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.mostUsedTags}>
+                            <View style={{flexDirection: 'row'}}>
+                            <View style={styles.coloredCircle}></View>
                             <Text>Most Used Tags</Text>
+                            </View>
                     </View>
                         <View style={{width: '100%', backgroundColor: 'white'}}>
                                 <Mostusedtags />
@@ -113,6 +119,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginRight: 20,
         paddingLeft: 5,   
+    },
+    coloredCircle: {
+        width: 10,
+        borderWidth: 1,
+        height: 10,
+        marginLeft: 10,
+        borderRadius: 50,
+        backgroundColor: 'darkblue', 
+        marginRight: 4,
+        alignSelf: 'center'
     }
 });
 

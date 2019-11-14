@@ -15,8 +15,8 @@ class incidentOverview extends Component {
     const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
         <View style={styles.incidentContainer}>
         <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId})}>
-        <Text style={{fontSize: 18, fontFamily: 'arial'}}>{everyLocation.incident} at {everyLocation.city}</Text>
-        <Text>{everyLocation.time}</Text>
+        <Text style={{fontSize: 18, fontFamily: 'arial', marginLeft: 10}}>{everyLocation.incident} at {everyLocation.city}</Text>
+        <Text style={{fontSize: 11, color: 'grey', marginLeft: 10}}>{everyLocation.time} <Image source={require('../../img/maps-and-flags.png')} style={{backgroundColor: 'white', width: 15, height: 15}}></Image> at {everyLocation.city}</Text>
             <MapView
                 region={{
                     latitude: everyLocation.latitude,
@@ -24,13 +24,22 @@ class incidentOverview extends Component {
                     latitudeDelta: 0.015,
                     longitudeDelta: 0.0121,
                     showsUserLocation: true
-                }} style={{height: 200, width: '100%', marginBottom: 20}}
+                }} style={{height: 180, width: '100%', marginBottom: 7}}
                 key={everyLocation.userId}>
             <MapView.Marker 
                 coordinate={{latitude:everyLocation.latitude, longitude: everyLocation.longitude}}
             />
                 </MapView>
-            <Text style={{backgroundColor: 'lightgrey', maxWidth: 100, textAlign: 'center'}}>{everyLocation.incident}</Text>
+            <View style={{alignSelf: 'center', marginRight: 'auto'}}>
+                <Text style={{
+                    backgroundColor: 'lightgrey',
+                    textAlign: 'center',
+                    paddingHorizontal: 5,
+                    fontSize: 12,
+                    fontWeight: '600', 
+                    letterSpacing: 0.7,
+                    marginLeft: 10}}> {everyLocation.incident} </Text>
+            </View>
             </TouchableOpacity>
             </View>
     )
@@ -61,8 +70,8 @@ const styles = StyleSheet.create({
     },
     incidentContainer:{
         marginBottom: 8, 
-        paddingLeft: 10, 
-        paddingRight: 10, 
+        paddingLeft: 0, 
+        paddingRight: 0, 
         paddingTop: 10, 
         paddingBottom: 10, 
         borderBottomWidth: 0.3,

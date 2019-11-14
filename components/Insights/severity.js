@@ -57,7 +57,10 @@ class Severity extends Component{
             <View>
             
                  <View style={styles.severety}>
-                    <Text>Severety</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <View style={styles.coloredCircle}></View>
+                        <Text>Severety</Text>
+                    </View>
                 </View>
                     <View style={styles.severetyContainer}>
                         <View style={styles.severetyTextContainer}>
@@ -154,6 +157,16 @@ const styles = StyleSheet.create({
     severetyText: {
         marginBottom: 10,
         textAlign: 'right',
+    },
+    coloredCircle: {
+        width: 10,
+        borderWidth: 1,
+        height: 10,
+        marginLeft: 10,
+        borderRadius: 50,
+        backgroundColor: 'darkblue', 
+        marginRight: 4,
+        alignSelf: 'center'
     }
 })
 const mapStateToProps = (state) => {
