@@ -19,7 +19,6 @@ import HelpAndSupport from '../components/More/Help-and-support/HelpAndSupport'
 import Settings from '../components/More/Settings'
 import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
 import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
-import SideMenu from './customNavigation/SideMenu'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import InsightDetailAdjustment from '../components/Insights/InsightDetailAdjustment'
 
