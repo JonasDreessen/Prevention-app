@@ -38,7 +38,7 @@ class Addhazard extends Component {
                 visible={this.props.modalVisible}
                 >
                 
-                    <View style={styles.containerPanel}>
+                <View style={styles.containerPanel}>
                     <TouchableOpacity style={styles.goBackText}>
                         <Text style={{color: '#46c24e', fontWeight: '300',}} onPress={() => this.props.changeModalVisibility()}>cancel</Text>
                     </TouchableOpacity>

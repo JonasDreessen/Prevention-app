@@ -13,10 +13,10 @@ class incidentOverview extends Component {
     render(){
     console.log(this.props.location)
     const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
-        <View style={{marginBottom: 20, paddingLeft: 10, paddingRight: 10, paddingTop: 10, paddingBottom: 10}}>
+        <View style={styles.incidentContainer}>
         <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId})}>
-        <Text style={{fontSize: 20}}>{everyLocation.incident} at {everyLocation.city}</Text>
-        <Text onPress={() => console.log(everyLocation.userId)}>{everyLocation.time}</Text>
+        <Text style={{fontSize: 18, fontFamily: 'arial'}}>{everyLocation.incident} at {everyLocation.city}</Text>
+        <Text>{everyLocation.time}</Text>
             <MapView
                 region={{
                     latitude: everyLocation.latitude,
@@ -36,7 +36,7 @@ class incidentOverview extends Component {
     )
         return(
     this.props.location.userLocation.length > 0 ? 
-            <ScrollView style={{flex: 1}}>
+            <ScrollView style={{flex: 1, backgroundColor: '#f5f5f5'}}>
                 <View>
                     <View style={styles.container}>
                         {this.props.location.isLoaded && (
@@ -59,6 +59,17 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: 10,
     },
+    incidentContainer:{
+        marginBottom: 8, 
+        paddingLeft: 10, 
+        paddingRight: 10, 
+        paddingTop: 10, 
+        paddingBottom: 10, 
+        borderBottomWidth: 0.3,
+        borderTopWidth: 0.3,
+        borderColor: 'grey', 
+        backgroundColor: 'white'
+    },
     title: {
         fontSize: 20,
     },

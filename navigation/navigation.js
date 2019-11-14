@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
@@ -15,7 +15,7 @@ import More from '../components/More/More'
 import YourTeam from '../components/More/YourTeam'
 import IncidentSettings from '../components/More/IncidentSettings'
 import SwitchTeam from '../components/More/SwitchTeam'
-import HelpAndSupport from '../components/More/HelpAndSupport'
+import HelpAndSupport from '../components/More/Help-and-support/HelpAndSupport'
 import Settings from '../components/More/Settings'
 import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
 import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
@@ -44,7 +44,9 @@ const createMoreStack = createStackNavigator({
     navigationOptions: ({navigation}) => ({
       title: null,
       headerLeft: ( 
-      <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
+      <TouchableOpacity onPress ={() => navigation.openDrawer()}>
+        <Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image>
+      </TouchableOpacity>
       ),
     })
   },
@@ -77,7 +79,9 @@ const incidentStack = createStackNavigator({
     navigationOptions: ({navigation}) => ({
       title: 'Pointbreak',
       headerLeft: ( 
-      <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
+      <TouchableOpacity onPress ={() => navigation.openDrawer()}>
+        <Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image>
+      </TouchableOpacity>
       )
     })
   },
@@ -91,7 +95,9 @@ const InsightsStack = createStackNavigator({
     navigationOptions: ({navigation}) => ({
       title: 'Pointbreak',
       headerLeft: ( 
-      <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
+      <TouchableOpacity onPress ={() => navigation.openDrawer()}>
+        <Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image>
+      </TouchableOpacity>
       )
     })
   },
@@ -102,7 +108,9 @@ const TeamAlertsStack = createStackNavigator({
     navigationOptions: ({navigation}) => ({
       title: 'Pointbreak',
       headerLeft: ( 
-      <TouchableOpacity onPress ={() => navigation.openDrawer()}><Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image></TouchableOpacity>
+      <TouchableOpacity onPress ={() => navigation.openDrawer()}>
+        <Image style={{marginLeft: 10}} source={require('../img/menu.png')}></Image>
+      </TouchableOpacity>
       )
     })
   }

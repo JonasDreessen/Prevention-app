@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Modal} from 'react-native';
 
 class HelpAndSupport extends Component{
     constructor(props){
@@ -8,7 +8,16 @@ class HelpAndSupport extends Component{
     render(){
         return(
     <View style={styles.container}>
-        <Text>Help And Support</Text>
+        <Modal
+            animationType='slide'
+            transparent={true}
+        >
+            <View style={{marginTop: 100, paddingHorizontal: 20}}>
+                <Text style={{fontWeight:'600', fontSize: 25, textAlign: 'center'}}> No conversations</Text>
+                <Text style={{textAlign: 'center', marginTop: 20, fontSize: 16}}>you have no conversations with the pointbreak developers. </Text>
+                <Text style={{color: 'lightgrey', fontSize: 50, letterSpacing: 1, textAlign: 'center'}}>...</Text>
+            </View>
+        </Modal>
     </View>)
             
     }
@@ -26,7 +35,6 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         marginTop: 10,
-        
     },
     title: {
         fontSize: 20,
