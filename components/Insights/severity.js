@@ -52,10 +52,8 @@ class Severity extends Component{
         const medium = 'medium'
         const low = 'low'
         const trivial = 'trivial'
-
         return(
             <View>
-            
                  <View style={styles.severety}>
                     <View style={{flexDirection: 'row'}}>
                         <View style={styles.coloredCircle}></View>
@@ -152,7 +150,9 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
     },
     severetyTextContainer: {
-        left: 0,
+        left: 15,
+        justifyContent: 'space-around',
+        marginVertical: 10
     },
     severetyText: {
         marginBottom: 10,

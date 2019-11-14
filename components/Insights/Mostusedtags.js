@@ -57,7 +57,7 @@ class Mostusedtags extends Component{
                     data={data}
                     horizontal={true}
                     yAccessor={({ item }) => item.value}
-                    svg={{ fill: 'grey' }}
+                    svg={{ fill: 'lightgrey' }}
                     contentInset={{ top: 5, bottom: 5 }}
                     spacing={0.2}
                     gridMin={0}
@@ -78,9 +78,7 @@ const styles = StyleSheet.create({
         height: 'auto',
         paddingTop: 10,
         paddingBottom: 10,
-        paddingRight: 30
-        
-        
+        paddingRight: 30  
     },
     mostUsedTags: {
         marginTop: 30,
@@ -106,8 +104,6 @@ const mapDispatchToProps = (dispatch) => {
     addDecrement: () => dispatch(addDecrement()),    
     }
 }
-
-
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
