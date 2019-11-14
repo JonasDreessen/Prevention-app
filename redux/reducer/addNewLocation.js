@@ -1,4 +1,5 @@
 import {GET_LOCATION} from '../actions/getLocation'
+import {GET_WEATHER} from '../actions/getWeatherInformation'
 const initialState = {
     isLoaded: false,
     userLocation: [],
@@ -22,7 +23,6 @@ function addNewLocation(state = initialState, action){
                     country: action.payload.area.country,
                     time: action.payload.time, 
                     incident: action.payload.incident,
-                    story: 'storytime',
                     userId: newId
                 }],
                 }

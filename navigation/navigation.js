@@ -128,14 +128,14 @@ const AppNavigator = createBottomTabNavigator(
       },
       Plus: {
         screen: addingHazardStack,
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
           tabBarLabel: ' ',
           tabBarIcon: () => (
             <View style={{zIndex: 10000, position: 'absolute', top: -20}}>
-              <Icon name='plus-circle' size={60} color='#6ab865'/>
+              <Icon name='plus-circle' size={60} color='#6ab865'onPress={() => navigation.navigate('add a new hazard')}/>
             </View>
           ),
-        }
+        })
       },
       'Team alerts': {
         screen: TeamAlertsStack,

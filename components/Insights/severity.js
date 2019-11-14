@@ -62,23 +62,23 @@ class Severity extends Component{
                     <View style={styles.severetyContainer}>
                         <View style={styles.severetyTextContainer}>
                             <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(extreme)}>Extreme</Text>
+                                <Text style={styles.severetyText}>Extreme</Text>
                                 <View style={styles.colorPointDarkRed}></View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(high)}>High</Text>
+                                <Text style={styles.severetyText}>High</Text>
                                 <View style={styles.colorPointRed}></View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(medium)}>Medium</Text>
+                                <Text style={styles.severetyText}>Medium</Text>
                                 <View style={styles.colorPointOrange}></View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(low)}>Low</Text>
+                                <Text style={styles.severetyText}>Low</Text>
                                 <View style={styles.colorPointYellow}></View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText} onPress={() => this.props.SevertyIncreaser(trivial)}>Trivial</Text>
+                                <Text style={styles.severetyText}>Trivial</Text>
                                 <View style={styles.colorPointBlue}></View>
                             </View>
                         </View>
@@ -90,9 +90,8 @@ class Severity extends Component{
                             innerRadius={'70%'}
                             outerRadius={'90%'}
                         >
-               
-            </PieChart>
-                </View>
+                        </PieChart>
+                    </View>
             </View>
         )
     }
