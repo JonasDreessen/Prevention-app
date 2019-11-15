@@ -7,10 +7,10 @@ class HeaderTitleInsightDetailAdjustment extends Component{
         super(props)
     }
     render(){
-        console.log(this.props.location, 'testing header')
+        console.log(this.props.typeOfIncident, 'testing header')
     return(
         <View>
-            <Text style={{fontSize: 20, fontWeight: '600', letterSpacing: 0.5}}>{this.props.amountOfIncidents.typeOfIncident}</Text>
+            <Text style={{fontSize: 20, fontWeight: '600', letterSpacing: 0.5}}>{this.props.typeOfIncident.incident}</Text>
         </View>
         )
     }
@@ -20,6 +20,7 @@ const mapStateToProps = (state) => {
     return {
         location: state.addNewLocation,
         amountOfIncidents: state.AddIncidentIncrease,
+        typeOfIncident: state.changeTypeOfIncidentForInsightDetailHeader
 
     }
   }

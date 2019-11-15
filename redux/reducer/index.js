@@ -5,6 +5,7 @@ import changeVisibleState from './changeModalVisibleState'
 import addNewLocation from './addNewLocation'
 import addNewTeam from './addNewTeam'
 import addSeverity from './addSeverity'
+import changeTypeOfIncidentForInsightDetailHeader from './changeTypeOfIncidentForInsightDetailHeader'
 
 export default combineReducers({
     addSeverity,
@@ -12,5 +13,6 @@ export default combineReducers({
     AddIncidentIncrease,
     changeVisibleState,
     addNewLocation,
-    addNewTeam
+    addNewTeam,
+    changeTypeOfIncidentForInsightDetailHeader
 })

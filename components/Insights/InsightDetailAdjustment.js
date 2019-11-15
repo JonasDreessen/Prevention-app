@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import MapView from 'react-native-maps'
 import RNPickerSelect from 'react-native-picker-select'
 import { SevertyIncreaser } from '../../redux/actions/SevertyIncreaser';
+import { ChangeIncident } from '../../redux/actions/typeOfIncidentForInsightDetailHeader'
 
 class InsightDetailAdjustment extends Component {
     constructor(props){
@@ -13,7 +14,6 @@ class InsightDetailAdjustment extends Component {
         }
     }
     render(){
-        console.log(this.props.navigation.state.params.userId, 'debugging this bitch', this.props.incidentType)
         const extreme = 'extreme'
         const high = 'high'
         const medium = 'medium'
@@ -21,11 +21,12 @@ class InsightDetailAdjustment extends Component {
         const trivial = 'trivial'
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
             if(clickedLocation.userId === this.props.navigation.state.params.userId){
-                console.log('debugging this supreme bitch', clickedLocation.userId )
+                var payload = this.props.navigation.state.params.typeOfHazard
+                this.props.ChangeIncident(payload)
                 return(
                 <View style={styles.container}>
-                    <Text style={styles.incidentTitle}>{this.props.navigation.state.params.typeOfHazard} at {clickedLocation.city}</Text>
-                    <Text style={styles.typeOfIncidentTag}>{this.props.navigation.state.params.typeOfHazard}</Text>
+                    {/* <Text style={styles.incidentTitle}> at {clickedLocation.city}</Text>
+                    <Text style={styles.typeOfIncidentTag}>{this.props.navigation.state.params.typeOfHazard}</Text> */}
                     <Text>Incident happend on: </Text>
                     <Text>{clickedLocation.time}</Text>
                     
@@ -92,9 +93,9 @@ class InsightDetailAdjustment extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-        paddingLeft: 10,
-        paddingRight: 10,
-        marginTop: 10,
+        paddingHorizontal: 10,
+        marginTop: 0,
+        paddingTop: 10,
         height: '100%',
         backgroundColor: '#f5f5f5'
     },
@@ -219,7 +220,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        SevertyIncreaser: (payload) => dispatch(SevertyIncreaser(payload))
+        SevertyIncreaser: (payload) => dispatch(SevertyIncreaser(payload)),
+        ChangeIncident: (payload) => dispatch(ChangeIncident(payload))
     }
 }
 
