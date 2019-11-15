@@ -142,7 +142,7 @@ const AppNavigator = createBottomTabNavigator(
         screen: incidentStack,
         navigationOptions: {
           tabBarIcon: ({tintColor}) => (
-            <Icon name='chart-line-variant' size={30} color={tintColor}/>
+            <Icon name='bullhorn-outline' size={30} color={tintColor}/>
           )
         }
       },
@@ -150,7 +150,7 @@ const AppNavigator = createBottomTabNavigator(
         screen: InsightsStack,
         navigationOptions: {
           tabBarIcon: ({tintColor}) => (
-            <Icon name='bullhorn-outline' size={30} color={tintColor}/>
+            <Icon name='chart-line-variant' size={30} color={tintColor}/>
           ),
         }
       },
