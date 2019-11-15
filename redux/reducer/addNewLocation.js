@@ -6,7 +6,7 @@ const initialState = {
     error: null,
     time: null, 
     incident: null,
-    Id: 0
+    Id: 0,
 }
 function addNewLocation(state = initialState, action){
     switch(action.type){
@@ -23,7 +23,10 @@ function addNewLocation(state = initialState, action){
                     country: action.payload.area.country,
                     time: action.payload.time, 
                     incident: action.payload.incident,
-                    userId: newId
+                    userId: newId,
+                    weather: {
+                        weather: action.payload.weather
+                    }
                 }],
                 }
         default:

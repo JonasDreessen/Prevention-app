@@ -13,12 +13,12 @@ class InsightDetailAdjustment extends Component {
         }
     }
     render(){
+        console.log(this.props.location, 'supreme hello')
         const extreme = 'extreme'
         const high = 'high'
         const medium = 'medium'
         const low = 'low'
         const trivial = 'trivial'
-        console.log(this.state.selectedValue)
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
             if(clickedLocation.userId == this.props.navigation.state.params.userId){
                 return(
@@ -27,6 +27,16 @@ class InsightDetailAdjustment extends Component {
                     <Text style={styles.typeOfIncidentTag}>{this.props.incidentType.typeOfIncident}</Text>
                     <Text>Incident happend on: </Text>
                     <Text>{clickedLocation.time}</Text>
+                    
+                    <View style={styles.weatherInfoContainer}>
+                        <View style={{flexDirection: 'row'}}>
+                            <Image source={{uri: `http://openweathermap.org/img/wn/${clickedLocation.weather.weather.icon}@2x.png`}} style={{width: 100, height: 100}}></Image>
+                            <View style={{paddingLeft: 10, alignSelf: 'center'}}>
+                                <Text style={{fontSize: 17, fontWeight: '500'}}>{clickedLocation.weather.weather.temperature}<Text style={{fontWeight: '300'}}> °C</Text> <Text style={{fontWeight: '400', fontSize: 14}}>  {clickedLocation.weather.weather.description}</Text></Text>
+                                <Text style={{marginTop: 5, fontSize: 11, color: 'grey'}}>humidity: {clickedLocation.weather.weather.humidity}%    wind: {clickedLocation.weather.weather.windSpeed}km/h</Text>
+                            </View>
+                        </View>
+                    </View>
                         <View style={styles.extraInfoContainer}>
                             <View style={styles.locationContainer}> 
                                 <MapView
@@ -36,7 +46,7 @@ class InsightDetailAdjustment extends Component {
                                         latitudeDelta: 0.015,
                                         longitudeDelta: 0.0121,
                                         showsUserLocation: true
-                                    }} style={{height: 100, width: 150}}>
+                                    }} style={{height: 100, width: 100}}>
                                     <MapView.Marker 
                                         coordinate={
                                             {latitude:clickedLocation.latitude,
@@ -45,9 +55,9 @@ class InsightDetailAdjustment extends Component {
                                         />
                                     </MapView>
 
-                                <View style={{marginLeft: 5}}>
-                                    <Text style={{marginTop: 15, fontSize: 17, fontWeight: '400'}}>{clickedLocation.city} </Text>
-                                    <Text style={{marginTop: 5, fontSize: 17, fontWeight: '400'}}>{clickedLocation.country}</Text>
+                                <View style={{marginLeft: 15, alignSelf: 'center'}}>
+                                    <Text style={{fontSize: 15, fontWeight: '600'}}>{clickedLocation.city} </Text>
+                                    <Text style={{fontSize: 15, fontWeight: '600'}}>{clickedLocation.country}</Text>
                                 </View>
                             </View>
                             <RNPickerSelect
@@ -83,7 +93,18 @@ const styles = StyleSheet.create({
     container: {
         paddingLeft: 10,
         paddingRight: 10,
-        marginTop: 10
+        marginTop: 10,
+        height: '100%',
+        backgroundColor: '#f5f5f5'
+    },
+    weatherInfoContainer: {
+        borderWidth: 0.5, 
+        borderColor: 'lightgrey',
+        marginTop: 20,
+        paddingHorizontal: 5,
+        paddingVertical: 5,
+        borderRadius: 6,
+        backgroundColor: 'white'
     },
     incidentTitle: {
         fontSize: 25,
@@ -105,7 +126,7 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     extraInfoContainer: {
-        marginTop: 70,
+        marginVertical: 10,
     },
     weatherContainer: {
         width: '100%',
@@ -118,15 +139,20 @@ const styles = StyleSheet.create({
         paddingBottom: 20
     },
     locationContainer: {
-        marginTop: 10,
         paddingTop: 10,
         paddingBottom: 10,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        borderWidth: 0.5, 
+        borderColor: 'lightgrey',
+        borderRadius: 6,
+        paddingHorizontal: 5,
+        paddingVertical: 5,
+        backgroundColor: 'white'
     },
     button: {
-        backgroundColor: 'blue',
+        backgroundColor: '#6ab865',
         fontSize: 20,
-        marginTop: 20,
+        marginTop: 0,
         marginRight: 'auto',
         marginLeft: 'auto',
         paddingVertical: 10,
@@ -147,12 +173,14 @@ const pickerStyle = {
 		paddingTop: 6,
 		paddingHorizontal: 10,
         paddingBottom: 6,
-        fontSize: 24,
+        fontSize: 20,
         marginLeft: 'auto',
         marginRight: 'auto',
         borderWidth: 0.8,
         borderRadius: 10,
         borderColor: 'lightgrey',
+        marginTop: 10,
+        backgroundColor: 'white'
 	},
 	inputAndroid: {
         color: 'black',
@@ -161,7 +189,8 @@ const pickerStyle = {
         paddingBottom: 12,
         fontSize: 24,
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        marginTop: 10
 	},
 	placeholderColor: 'black',
 	underline: { borderTopWidth: 0 },

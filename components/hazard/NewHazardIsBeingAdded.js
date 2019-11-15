@@ -36,20 +36,29 @@ class NewHazardIsBeingAdded extends Component {
             fetch(url)
             .then(response => response.json())
             .then(data => {
-                    var area = {
-                        country: data.city.country,
-                        city: data.city.name
+                    var areaInformation = {
+                        area: {
+                            country: data.city.country,
+                            city: data.city.name
+                        },
+                        weather: {
+                            humidity: data.list[0].main.humidity,
+                            temperature: data.list[0].main.temp,
+                            description: data.list[0].weather[0].description,
+                            icon: data.list[0].weather[0].icon,
+                            windSpeed: data.list[0].wind.speed
+                        }
                     }
-                    this.combineData(position,area)
+                    this.combineData(position,areaInformation)
                 })
         }
 
-        combineData = (position, area) => {
+        combineData = (position, areaInformation) => {
             var date = moment()
                 .utcOffset('+01:00')
                 .format('DD-MM-YYYY hh:mm:ss a');
             var incident = this.props.incidentType.typeOfIncident
-            var payload = {position: position, area: area, time: date, incident: incident}
+            var payload = {position: position, area: areaInformation.area, weather:areaInformation.weather, time: date, incident: incident}
             this.props.getLocation(payload)
             this.props.navigation.navigate('newHazardInformationDetails')
         }
