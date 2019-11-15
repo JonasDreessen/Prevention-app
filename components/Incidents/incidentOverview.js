@@ -4,6 +4,7 @@ import Topnavbar from '../TopNavbar'
 import MapView, {Marker} from 'react-native-maps'
 import { connect } from 'react-redux'
 import NoIncidentsReported from './noIncidentsReported'
+import {t} from 'react-native-tailwindcss'
 
 class incidentOverview extends Component {
     constructor(props){
