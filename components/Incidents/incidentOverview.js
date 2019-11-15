@@ -14,7 +14,7 @@ class incidentOverview extends Component {
     console.log(this.props.location, 'hahawrgh')
     const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
         <View style={styles.incidentContainer}>
-        <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId})}>
+        <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId, typeOfHazard: everyLocation.incident})}>
         <Text style={{fontSize: 18, fontFamily: 'arial', marginLeft: 10}}>{everyLocation.incident} at {everyLocation.city}</Text>
         <Text style={{fontSize: 11, color: 'grey', marginLeft: 10}}>{everyLocation.time} <Image source={require('../../img/maps-and-flags.png')} style={{backgroundColor: 'white', width: 15, height: 15}}></Image> at {everyLocation.city}</Text>
             <MapView

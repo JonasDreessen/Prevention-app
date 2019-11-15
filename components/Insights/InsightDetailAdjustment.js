@@ -13,18 +13,19 @@ class InsightDetailAdjustment extends Component {
         }
     }
     render(){
-        console.log(this.props.location, 'supreme hello')
+        console.log(this.props.navigation.state.params.userId, 'debugging this bitch', this.props.incidentType)
         const extreme = 'extreme'
         const high = 'high'
         const medium = 'medium'
         const low = 'low'
         const trivial = 'trivial'
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
-            if(clickedLocation.userId == this.props.navigation.state.params.userId){
+            if(clickedLocation.userId === this.props.navigation.state.params.userId){
+                console.log('debugging this supreme bitch', clickedLocation.userId )
                 return(
                 <View style={styles.container}>
-                    <Text style={styles.incidentTitle}>{this.props.incidentType.typeOfIncident} at {clickedLocation.city}</Text>
-                    <Text style={styles.typeOfIncidentTag}>{this.props.incidentType.typeOfIncident}</Text>
+                    <Text style={styles.incidentTitle}>{this.props.navigation.state.params.typeOfHazard} at {clickedLocation.city}</Text>
+                    <Text style={styles.typeOfIncidentTag}>{this.props.navigation.state.params.typeOfHazard}</Text>
                     <Text>Incident happend on: </Text>
                     <Text>{clickedLocation.time}</Text>
                     

@@ -1,5 +1,6 @@
 import React from 'react'
-import {View, Image, TouchableOpacity} from 'react-native';
+import PropTypes from 'prop-types'
+import {View, Image, TouchableOpacity, Text} from 'react-native';
 import { connect } from 'react-redux'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
@@ -21,10 +22,10 @@ import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
 import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import InsightDetailAdjustment from '../components/Insights/InsightDetailAdjustment'
+import HeaderTitleInsightDetailAdjustment from './HeaderTitleInsightDetailAdjustment'
 
 // load the font befor calling it. 
 Icon.loadFont();
-
 const addingHazardStack = createStackNavigator({
   'add a new hazard': {screen: Addhazard},
   addingNewHazard: {
@@ -86,8 +87,28 @@ const incidentStack = createStackNavigator({
   },
   'insight detail adjustment': {
       screen: InsightDetailAdjustment,
+      navigationOptions: () => ({
+          headerTitle: (
+            <HeaderTitleInsightDetailAdjustment />
+          )
+      })
   }
 })
+// class Details extends React.Component{
+//   constructor(props){
+//     super(props)
+//   }
+//   render(){
+//     console.log(this.props.amountOfIncidents, 'testing')
+//     return(
+//       <Text>{this.props.amountOfIncidents}</Text>
+//     )
+//   }
+// }
+incidentStack.PropTypes = {
+  amountOfIncidents: PropTypes.object,
+}
+
 const InsightsStack = createStackNavigator({
   'Insights': {
     screen: Insights,
