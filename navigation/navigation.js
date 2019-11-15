@@ -94,17 +94,6 @@ const incidentStack = createStackNavigator({
       })
   }
 })
-// class Details extends React.Component{
-//   constructor(props){
-//     super(props)
-//   }
-//   render(){
-//     console.log(this.props.amountOfIncidents, 'testing')
-//     return(
-//       <Text>{this.props.amountOfIncidents}</Text>
-//     )
-//   }
-// }
 incidentStack.PropTypes = {
   amountOfIncidents: PropTypes.object,
 }

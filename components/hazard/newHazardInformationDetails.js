@@ -5,6 +5,7 @@ import Geocoder from 'react-native-geocoding'
 import MapView from 'react-native-maps'
 import { Button } from 'react-native-elements';
 import {getLocation} from '../../redux/actions/getLocation'
+import {t} from 'react-native-tailwindcss'
 
 class NewHazardInformationDetails extends Component {
     constructor(props){

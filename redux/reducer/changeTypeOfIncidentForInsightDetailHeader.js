@@ -6,7 +6,6 @@ const initialState = {
 function changeTypeOfIncident(state = initialState, action){
     switch(action.type) {
         case CHANGE_INCIDENT:
-            console.log(action.payload, 'inside reducer') 
             return {incident: action.payload}
         default:
             return state

@@ -12,7 +12,6 @@ class incidentOverview extends Component {
     }
     
     render(){
-    console.log(this.props.location, 'hahawrgh')
     const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
         <View style={styles.incidentContainer}>
         <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId, typeOfHazard: everyLocation.incident})}>
