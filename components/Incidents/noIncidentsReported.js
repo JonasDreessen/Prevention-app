@@ -1,18 +1,19 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
-import Topnavbar from '../TopNavbar'
-import MapView, {Marker} from 'react-native-maps'
-import { connect } from 'react-redux'
+import {View, Text, Image} from 'react-native';
+import {t} from 'react-native-tailwindcss'
+
+
 
 class NoIncidentsReported extends Component {
     render(){
         return(
-            <View style={{flex:1, marginTop: 40}}>
-                <View style={{alignItems: 'center', marginTop: 'auto', marginBottom: 'auto', paddingLeft: 20, paddingRight: 20}}>
-                    <Image source={require('../../img/search.png')} style={{width: 250, height: 250}}></Image>
-                    <Text style={{marginTop:20,fontSize: 18, paddingLeft: 20, paddingRight: 20, textAlign: 'center' }}>No incidents to report right now. If you want to add a new incident please tab the plus icon below.</Text>
-                </View>           
-            </View>
+            <View style={[t.flex1, t.justifyCenter, t.itemsCenter]}>
+                <View style={[t.bgGray200, t.p6, t.roundedFull]}>
+                    <Image style={[t.selfAuto, t.w40, t.h40, t.objectContain]} source={require('../../img/like.png')}></Image>
+                </View>
+                <Text style={[t.textXl, t.fontBold, t.pT6, t.pB2, t.textCenter]}>No open incidents</Text>
+                <Text style={[t.textCenter, t.textLg]}>Open a new incident by tapping the +{"\n"}button below</Text>
+            </View>        
         )
     }
 }

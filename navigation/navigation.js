@@ -22,7 +22,8 @@ import NewHazardIsBeingAdded from '../components/hazard/NewHazardIsBeingAdded';
 import NewHazardInformationDetails from '../components/hazard/newHazardInformationDetails';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import InsightDetailAdjustment from '../components/Insights/InsightDetailAdjustment'
-import HeaderTitleInsightDetailAdjustment from './HeaderTitleInsightDetailAdjustment'
+import HeaderTitleInsightDetailAdjustment from './Headers/HeaderTitleInsightDetailAdjustment'
+import NewHazardInformationDetailsHeader from './Headers/newHazardInformationDetailsHeader'
 
 // load the font befor calling it. 
 Icon.loadFont();
@@ -34,7 +35,11 @@ const addingHazardStack = createStackNavigator({
   },
   newHazardInformationDetails: {
     screen: NewHazardInformationDetails,
-    navigationOptions: {header: null}
+    navigationOptions: ({navigation}) => ({
+      header:(
+     <NewHazardInformationDetailsHeader navigation={navigation}/>
+    )
+    })
   }
 })
 

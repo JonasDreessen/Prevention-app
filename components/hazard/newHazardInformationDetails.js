@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Modal,View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux'
-import Geocoder from 'react-native-geocoding'
 import MapView from 'react-native-maps'
 import { Button } from 'react-native-elements';
 import {getLocation} from '../../redux/actions/getLocation'
@@ -59,26 +58,28 @@ class NewHazardInformationDetails extends Component {
         let city = this.props.location.userLocation[arraylength].city
         let country = this.props.location.userLocation[arraylength].country
         return(
-            <View style={styles.container}>
-                <Text style={styles.incidentTitle}>{this.props.incidentType.typeOfIncident} at {city}</Text>
-                <Text style={styles.typeOfIncidentTag}>{this.props.incidentType.typeOfIncident}</Text>
-                <View style={styles.extraInfoContainer}>
-                    <View style={styles.weatherContainer}>
-                        <View style={styles.weatherDetailContainer}>
-                            <Image source={{uri: `http://openweathermap.org/img/wn/${this.state.icon}@2x.png`}} style={{width: 100, height: 100}}></Image>
-                            <View style={{marginTop: 15}}>
-                                <View style={{flexDirection: 'row'}}>
-                                    <Text style={{fontSize: 24}}>{this.state.temperature} °C</Text>
-                                    <Text style={{fontSize: 17, marginLeft: 8}}>{this.state.description}</Text>
+            <View style={[t.pX4, t.bgGray200]}>
+            <View style={[t.borderT, t.mY8, t.mX6, t.borderGray500]}>
+                <Text style={{top: -10, textAlign: 'center', backgroundColor: '#edf2f7', alignSelf: 'center', paddingHorizontal: 8, color: '#a0aec0', fontWeight: '600'}}>Today</Text>
+            </View>
+                    <View style={[t.bgWhite, t.border, t.roundedLg, t.borderGray500]}>
+                        <View style={[t.flexRow, t.pB4]}>
+                            <Image source={{uri: `http://openweathermap.org/img/wn/${this.state.icon}@2x.png`}} style={[t.w1_4]}></Image>
+                            <View style={[t.mT6]}>
+                                <View style={[t.flexRow]}>
+                                    <Text style={[t.textXl, t.fontMedium]}>{this.state.temperature} <Text style={[t.fontLight]}>°C</Text></Text>
+                                    <Text style={[t.textBase, t.mL4, t.fontMedium]}>{this.state.description}</Text>
                                 </View>
-                                <View style={{flexDirection: 'row', marginTop: 10}}>
-                                    <Text style={{marginRight: 10}}>Humidity: {this.state.humidity}% </Text>
-                                    <Text>Wind: {this.state.wind} km/h </Text>
+                                <View style={[t.flexRow, t.mT1]}>
+                                    <Text style={[t.mR2, t.textXs, t.fontLight, t.textGray700]}>Humidity: {this.state.humidity}% </Text>
+                                    <Text style={[t.textXs, t.fontLight, t.textGray700]}>Wind: {this.state.wind} km/h </Text>
                                 </View>
                             </View>
                         </View>
+                        <Text style={[t.mL6, t.pB2, t.fontLight, t.textGray800]}>Incident weather conditions</Text>
                     </View>
-                    <View style={styles.locationContainer}> 
+                    <View style={[t.mT4,t.bgWhite, t.border, t.roundedLg, t.borderGray500,t.p4, t.alignCenter]}>
+                    <View style={[t.flexRow]}> 
                         <MapView
                             region={{
                                 latitude: latitude,
@@ -86,67 +87,22 @@ class NewHazardInformationDetails extends Component {
                                 latitudeDelta: 0.015,
                                 longitudeDelta: 0.0121,
                                 showsUserLocation: true
-                            }} style={{height: 100, width: 150}} />
-                            <View style={{marginLeft: 5}}>
-                                <Text style={{marginTop: 15, fontSize: 17, fontWeight: '400'}}>{city} </Text>
-                                <Text style={{marginTop: 5, fontSize: 17, fontWeight: '400'}}>{country}</Text>
+                            }} style={[t.w1_5]} />
+                            <View style={[t.mL4]}>
+                                <Text style={[t.textBase, t.fontSemibold, t.trackingWide]}>{city} </Text>
+                                <Text style={[t.textBase, t.fontSemibold, t.trackingWide]}>{country}</Text>
                             </View>
+                        </View>
+                        <Text style={[t.textSm, t.fontMedium, t.trackingWide, t.mT4]}>Jonas Dreessen <Text style={[t.fontLight]}>set incident location</Text></Text>
                     </View>
-                </View>
                 <Button 
                     title={`add new ${this.props.incidentType.typeOfIncident}`} 
-                    type='solid' style={{marginTop: 10}} onPress={() => this.props.navigation.navigate('Incidents')}></Button>
+                    type='solid' style={[t.mT4]} onPress={() => this.props.navigation.navigate('Incidents')}></Button>
             </View>
 
         )
     }
 }
-const styles = StyleSheet.create({
-    container: {
-        paddingLeft: 10,
-        paddingRight: 10,
-        marginTop: 80,
-    },
-    incidentTitle: {
-        fontSize: 25,
-        fontWeight: '500',
-        marginBottom: 10,
-    },
-    typeOfIncidentTag: {
-        fontWeight: '500',
-        fontSize: 14,
-        letterSpacing: 1,
-        backgroundColor: 'lightgrey',
-        marginBottom: 20,
-        paddingTop: 2,
-        paddingBottom: 2,
-        paddingRight: 2,
-        paddingLeft: 2,
-        maxWidth: 90,
-        textAlign: 'center', 
-        borderRadius: 20
-    },
-    extraInfoContainer: {
-        marginTop: 70,
-    },
-    weatherContainer: {
-        width: '100%',
-        height: 100,
-        borderBottomWidth: 0.3,
-        borderColor: 'grey',
-    },
-    weatherDetailContainer: {
-        flexDirection: 'row',
-        paddingBottom: 20
-    },
-    locationContainer: {
-        marginTop: 10,
-        paddingTop: 10,
-        paddingBottom: 10,
-        flexDirection: 'row'
-    },
-
-})
 const mapStateToProps = (state) => {
     return {
         location: state.addNewLocation,
