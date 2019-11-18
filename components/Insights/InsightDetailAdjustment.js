@@ -5,6 +5,7 @@ import MapView from 'react-native-maps'
 import RNPickerSelect from 'react-native-picker-select'
 import { SevertyIncreaser } from '../../redux/actions/SevertyIncreaser';
 import { ChangeIncident } from '../../redux/actions/typeOfIncidentForInsightDetailHeader'
+import {t} from 'react-native-tailwindcss'
 
 class InsightDetailAdjustment extends Component {
     constructor(props){
@@ -24,23 +25,25 @@ class InsightDetailAdjustment extends Component {
                 var payload = this.props.navigation.state.params.typeOfHazard
                 this.props.ChangeIncident(payload)
                 return(
-                <View style={styles.container}>
-                    {/* <Text style={styles.incidentTitle}> at {clickedLocation.city}</Text>
-                    <Text style={styles.typeOfIncidentTag}>{this.props.navigation.state.params.typeOfHazard}</Text> */}
-                    <Text>Incident happend on: </Text>
-                    <Text>{clickedLocation.time}</Text>
-                    
-                    <View style={styles.weatherInfoContainer}>
-                        <View style={{flexDirection: 'row'}}>
-                            <Image source={{uri: `http://openweathermap.org/img/wn/${clickedLocation.weather.weather.icon}@2x.png`}} style={{width: 100, height: 100}}></Image>
-                            <View style={{paddingLeft: 10, alignSelf: 'center'}}>
-                                <Text style={{fontSize: 17, fontWeight: '500'}}>{clickedLocation.weather.weather.temperature}<Text style={{fontWeight: '300'}}> °C</Text> <Text style={{fontWeight: '400', fontSize: 14}}>  {clickedLocation.weather.weather.description}</Text></Text>
-                                <Text style={{marginTop: 5, fontSize: 11, color: 'grey'}}>humidity: {clickedLocation.weather.weather.humidity}%    wind: {clickedLocation.weather.weather.windSpeed}km/h</Text>
+                <View>
+                    <View style={[t.borderT, t.mY8, t.mX6, t.borderGray500]}>
+                        <Text style={{top: -10, textAlign: 'center', backgroundColor: '#edf2f7', alignSelf: 'center', paddingHorizontal: 8, color: '#a0aec0', fontWeight: '600'}}>{clickedLocation.time}</Text>
+                    </View>
+                    <View style={[t.border, t.rounded, t.borderGray400, t.bgWhite]}>
+                        <View style={[t.flexRow]}>
+                            <Image source={{uri: `http://openweathermap.org/img/wn/${clickedLocation.weather.weather.icon}@2x.png`}} style={[t.w1_4, t.h16]}></Image>
+                            <View style={[t.pL4, t.selfCenter]}>
+                                <Text style={[t.textXl, t.fontMedium]}>{clickedLocation.weather.weather.temperature}<Text style={[t.fontLight]}> °C</Text> <Text style={[t.textBase, t.mL4, t.fontMedium]}>  {clickedLocation.weather.weather.description}</Text></Text>
+                                <View style={[t.flexRow, t.mT1]}>
+                                    <Text style={[t.mR2, t.textXs, t.fontLight, t.textGray700]}>humidity: {clickedLocation.weather.weather.humidity}%    wind: {clickedLocation.weather.weather.windSpeed}km/h</Text>
+                                </View>
                             </View>
                         </View>
+                        <Text style={[t.mL6, t.pB2, t.fontLight, t.textGray800]}>Incident weather conditions</Text>
                     </View>
-                        <View style={styles.extraInfoContainer}>
-                            <View style={styles.locationContainer}> 
+                        <View>
+                        <View style={[t.mT4,t.bgWhite, t.border, t.rounded, t.borderGray400, t.p4]}>
+                            <View style={[t.alignCenter, t.flexRow]}> 
                                 <MapView
                                     region={{
                                         latitude: clickedLocation.latitude,
@@ -48,7 +51,7 @@ class InsightDetailAdjustment extends Component {
                                         latitudeDelta: 0.015,
                                         longitudeDelta: 0.0121,
                                         showsUserLocation: true
-                                    }} style={{height: 100, width: 100}}>
+                                    }} style={[t.w1_5, t.h20]}>
                                     <MapView.Marker 
                                         coordinate={
                                             {latitude:clickedLocation.latitude,
@@ -57,15 +60,17 @@ class InsightDetailAdjustment extends Component {
                                         />
                                     </MapView>
 
-                                <View style={{marginLeft: 15, alignSelf: 'center'}}>
-                                    <Text style={{fontSize: 15, fontWeight: '600'}}>{clickedLocation.city} </Text>
-                                    <Text style={{fontSize: 15, fontWeight: '600'}}>{clickedLocation.country}</Text>
+                                <View style={[t.mL4, t.selfCenter]}>
+                                    <Text style={[t.textBase, t.fontSemibold, t.trackingWide]}>{clickedLocation.city} </Text>
+                                    <Text style={[t.textBase, t.fontSemibold, t.trackingWide]}>{clickedLocation.country}</Text>
                                 </View>
                             </View>
+                            <Text style={[t.textSm, t.fontMedium, t.trackingWide, t.mT4]}>Jonas Dreessen <Text style={[t.fontLight]}>set incident location</Text></Text>
+                        </View>
                             <RNPickerSelect
                                     style={pickerStyle}
                                     onValueChange={(value) => this.setState({selectedValue: value})}
-                                    placeholder={{label: 'please select your severity', value: null}}
+                                    placeholder={{label: 'select severity', value: null}}
                                     items={[
                                         { label: 'Extreme', value: extreme },
                                         { label: 'High', value: high },
@@ -76,8 +81,8 @@ class InsightDetailAdjustment extends Component {
                                     />
                         </View>
                         <TouchableOpacity onPress={() => {this.props.SevertyIncreaser(this.state.selectedValue), this.props.navigation.goBack()}}
-                            style={styles.button}>
-                            <Text style={styles.buttonText}>Confirm</Text>
+                            style={[t.selfCenter, t.mRAuto, t.rounded, t.bgGreen500, t.p1, t.mT2]}>
+                            <Text style={[t.textBase, t.fontSemibold, t.trackingWider, t.textWhite]}>Confirm</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -85,104 +90,26 @@ class InsightDetailAdjustment extends Component {
             }
         })
         return(
-           <View>
+           <View style={[t.flex1, t.pX4, t.bgGray100]}>
                {selectedLocation}
            </View>
         )
     }
 }
-const styles = StyleSheet.create({
-    container: {
-        paddingHorizontal: 10,
-        marginTop: 0,
-        paddingTop: 10,
-        height: '100%',
-        backgroundColor: '#f5f5f5'
-    },
-    weatherInfoContainer: {
-        borderWidth: 0.5, 
-        borderColor: 'lightgrey',
-        marginTop: 20,
-        paddingHorizontal: 5,
-        paddingVertical: 5,
-        borderRadius: 6,
-        backgroundColor: 'white'
-    },
-    incidentTitle: {
-        fontSize: 25,
-        fontWeight: '500',
-        marginBottom: 10,
-    },
-    typeOfIncidentTag: {
-        fontWeight: '500',
-        fontSize: 14,
-        letterSpacing: 1,
-        backgroundColor: 'lightgrey',
-        marginBottom: 20,
-        paddingTop: 2,
-        paddingBottom: 2,
-        paddingRight: 2,
-        paddingLeft: 2,
-        maxWidth: 90,
-        textAlign: 'center', 
-        borderRadius: 20
-    },
-    extraInfoContainer: {
-        marginVertical: 10,
-    },
-    weatherContainer: {
-        width: '100%',
-        height: 100,
-        borderBottomWidth: 0.3,
-        borderColor: 'grey',
-    },
-    weatherDetailContainer: {
-        flexDirection: 'row',
-        paddingBottom: 20
-    },
-    locationContainer: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        flexDirection: 'row',
-        borderWidth: 0.5, 
-        borderColor: 'lightgrey',
-        borderRadius: 6,
-        paddingHorizontal: 5,
-        paddingVertical: 5,
-        backgroundColor: 'white'
-    },
-    button: {
-        backgroundColor: '#6ab865',
-        fontSize: 20,
-        marginTop: 0,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 20
-    },
-    buttonText: {
-        fontSize: 20,
-        color: 'white',
-        fontWeight: '700'
-    },
-
-})
 
 const pickerStyle = {
 	inputIOS: {
 		color: 'black',
 		paddingTop: 6,
 		paddingHorizontal: 10,
-        paddingBottom: 6,
-        fontSize: 20,
-        marginLeft: 'auto',
+        paddingBottom: 0,
+        fontSize: 16,
         marginRight: 'auto',
         borderWidth: 0.8,
-        borderRadius: 10,
+        borderRadius: 6,
         borderColor: 'lightgrey',
-        marginTop: 10,
-        backgroundColor: 'white'
+        marginTop: 6,
+        backgroundColor: 'white',
 	},
 	inputAndroid: {
         color: 'black',

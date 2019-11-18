@@ -92,9 +92,9 @@ const incidentStack = createStackNavigator({
   },
   'insight detail adjustment': {
       screen: InsightDetailAdjustment,
-      navigationOptions: () => ({
-          headerTitle: (
-            <HeaderTitleInsightDetailAdjustment />
+      navigationOptions: ({navigation}) => ({
+          header: (
+            <HeaderTitleInsightDetailAdjustment navigation={navigation}/>
           )
       })
   }

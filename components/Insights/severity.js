@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
 import { connect } from 'react-redux';
 import {PieChart} from 'react-native-svg-charts'
 import { SevertyIncreaser } from '../../redux/actions/SevertyIncreaser';
+import {t} from 'react-native-tailwindcss'
 
 
 class Severity extends Component{
@@ -11,7 +12,6 @@ class Severity extends Component{
     }
     
     render() {
-        console.log(this.props.severityType)
         const data = [
             {
                 key: 1,
@@ -40,6 +40,14 @@ class Severity extends Component{
             }
         ]
 
+        const emptyData = [
+            {
+                key: 1,
+                amount: 1,
+                svg: {fill: 'lightgrey'}
+            }
+        ]
+
         const Labels = ({ slices }) => {
             return slices.map((slice) => {
                 return (
@@ -47,51 +55,71 @@ class Severity extends Component{
                 )
             })
         }
-        const extreme = 'extreme'
-        const high = 'high'
-        const medium = 'medium'
-        const low = 'low'
-        const trivial = 'trivial'
-        return(
-            <View>
-                 <View style={styles.severety}>
-                    <View style={{flexDirection: 'row'}}>
-                        <View style={styles.coloredCircle}></View>
-                        <Text>Severety</Text>
-                    </View>
-                </View>
-                    <View style={styles.severetyContainer}>
-                        <View style={styles.severetyTextContainer}>
-                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText}>Extreme</Text>
-                                <View style={styles.colorPointDarkRed}></View>
-                            </View>
-                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText}>High</Text>
-                                <View style={styles.colorPointRed}></View>
-                            </View>
-                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText}>Medium</Text>
-                                <View style={styles.colorPointOrange}></View>
-                            </View>
-                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText}>Low</Text>
-                                <View style={styles.colorPointYellow}></View>
-                            </View>
-                            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                <Text style={styles.severetyText}>Trivial</Text>
-                                <View style={styles.colorPointBlue}></View>
-                            </View>
-                        </View>
-                        <PieChart
-                            style={{ height: 200, flex: 1 }}
+
+        const pieChart = () =>{
+        if(this.props.severityType.extremeSeverity > 0 || 
+            this.props.severityType.highSeverity> 0 || 
+            this.props.severityType.mediumSeverity > 0 || 
+            this.props.severityType.lowSeverity > 0 || 
+            this.props.severityType.trivialSeverity > 0){
+            return(
+                <PieChart
+                            style={[t.flex1, t.pY5]}
                             valueAccessor={({ item }) => item.amount}
                             data={data}
                             spacing={5}
                             innerRadius={'70%'}
                             outerRadius={'90%'}
                         >
-                        </PieChart>
+                </PieChart>
+            )
+        } else{
+            return(
+                <PieChart
+                            style={[t.flex1, t.pY5]}
+                            valueAccessor={({ item }) => item.amount}
+                            data={emptyData}
+                            spacing={5}
+                            innerRadius={'70%'}
+                            outerRadius={'90%'}
+                        >
+                </PieChart>
+            )
+        }
+        }
+
+        return(
+            <View>
+                 <View style={[t.mT4, t.mB2]}>
+                    <View style={[t.flexRow]}>
+                        <View style={styles.coloredCircle}></View>
+                        <Text style={[t.textSm, t.fontNormal]}>Severety</Text>
+                    </View>
+                </View>
+                    <View style={[t.flexRow, t.bgWhite, t.pX10]}>
+                        <View style={[t.justifyBetween, t.h32, t.pY5]}>
+                            <View style={[t.flexRow, t.justifyEnd, t.itemsCenter]}>
+                                <Text style={[t.textXs, t.textGray600, t.fontNormal]}>Extreme</Text>
+                                <View style={styles.colorPointDarkRed}></View>
+                            </View>
+                            <View style={[t.flexRow, t.justifyEnd, t.itemsCenter]}>
+                                <Text style={[t.textXs, t.textGray600, t.fontNormal]}>High</Text>
+                                <View style={styles.colorPointRed}></View>
+                            </View>
+                            <View style={[t.flexRow, t.justifyEnd, t.itemsCenter]}>
+                                <Text style={[t.textXs, t.textGray600, t.fontNormal]}>Medium</Text>
+                                <View style={styles.colorPointOrange}></View>
+                            </View>
+                            <View style={[t.flexRow, t.justifyEnd, t.itemsCenter]}>
+                                <Text style={[t.textXs, t.textGray600, t.fontNormal]}>Low</Text>
+                                <View style={styles.colorPointYellow}></View>
+                            </View>
+                            <View style={[t.flexRow, t.justifyEnd, t.itemsCenter]}>
+                                <Text style={[t.textXs, t.textGray600, t.fontNormal]}>Trivial</Text>
+                                <View style={styles.colorPointBlue}></View>
+                            </View>
+                        </View>
+                        {pieChart()}
                     </View>
             </View>
         )
@@ -99,46 +127,37 @@ class Severity extends Component{
 }
 
 const styles = StyleSheet.create({
-    severety: {
-        marginTop: 30,
-        marginBottom: 10,
-    },
     colorPointDarkRed: {
-        width: 15,
-        borderWidth: 1,
-        height: 15,
+        width: 10,
+        height: 10,
         marginLeft: 10,
         borderRadius: 50,
         backgroundColor: 'darkred' 
     },
     colorPointRed: {
-        width: 15,
-        borderWidth: 1,
-        height: 15,
+        width: 10,
+        height: 10,
         marginLeft: 10,
         borderRadius: 50,
         backgroundColor: 'red' 
     },
     colorPointOrange: {
-        width: 15,
-        borderWidth: 1,
-        height: 15,
+        width: 10,
+        height: 10,
         marginLeft: 10,
         borderRadius: 50,
         backgroundColor: 'orange' 
     },
     colorPointYellow: {
-        width: 15,
-        borderWidth: 1,
-        height: 15,
+        width: 10,
+        height: 10,
         marginLeft: 10,
         borderRadius: 50,
         backgroundColor: 'yellow' 
     },
     colorPointBlue: {
-        width: 15,
-        borderWidth: 1,
-        height: 15,
+        width: 10,
+        height: 10,
         marginLeft: 10,
         borderRadius: 50,
         backgroundColor: 'blue' 
@@ -146,11 +165,11 @@ const styles = StyleSheet.create({
     severetyContainer: {
         flexDirection: 'row',
         backgroundColor: 'white',
-        paddingTop: 15,
-        paddingBottom: 15,
+        paddingTop: 10,
+        paddingBottom: 10,
     },
     severetyTextContainer: {
-        left: 15,
+        left: 10,
         justifyContent: 'space-around',
         marginVertical: 10
     },

@@ -13,39 +13,32 @@ class incidentOverview extends Component {
     
     render(){
     const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
-        <View style={styles.incidentContainer}>
-        <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId, typeOfHazard: everyLocation.incident})}>
-        <Text style={{fontSize: 18, fontFamily: 'arial', marginLeft: 10}}>{everyLocation.incident} at {everyLocation.city}</Text>
-        <Text style={{fontSize: 11, color: 'grey', marginLeft: 10}}>{everyLocation.time} <Image source={require('../../img/maps-and-flags.png')} style={{backgroundColor: 'white', width: 15, height: 15}}></Image> at {everyLocation.city}</Text>
-            <MapView
-                region={{
-                    latitude: everyLocation.latitude,
-                    longitude: everyLocation.longitude,
-                    latitudeDelta: 0.015,
-                    longitudeDelta: 0.0121,
-                    showsUserLocation: true
-                }} style={{height: 180, width: '100%', marginBottom: 7}}
-                key={everyLocation.userId}>
-            <MapView.Marker 
-                coordinate={{latitude:everyLocation.latitude, longitude: everyLocation.longitude}}
-            />
-                </MapView>
-            <View style={{alignSelf: 'center', marginRight: 'auto'}}>
-                <Text style={{
-                    backgroundColor: 'lightgrey',
-                    textAlign: 'center',
-                    paddingHorizontal: 5,
-                    fontSize: 12,
-                    fontWeight: '600', 
-                    letterSpacing: 0.7,
-                    marginLeft: 10}}> {everyLocation.incident} </Text>
-            </View>
-            </TouchableOpacity>
+        <View style={[t.mT2, t.borderT, t.borderB, t.borderGray400, t.bgWhite, t.pY4]}>
+            <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId, typeOfHazard: everyLocation.incident})}>
+            <Text style={[t.textLg, t.mL4]}>{everyLocation.incident} at {everyLocation.city}</Text>
+            <Text style={[t.textXs, t.mL4, t.textGray600, t.mY2]}>{everyLocation.time} <Image source={require('../../img/maps-and-flags.png')} style={[t.bgWhite, t.w3, t.h3]}></Image> at {everyLocation.city}</Text>
+                <MapView
+                    region={{
+                        latitude: everyLocation.latitude,
+                        longitude: everyLocation.longitude,
+                        latitudeDelta: 0.005,
+                        longitudeDelta: 0.0090,
+                        showsUserLocation: true
+                    }} style={[t.h32, t.mX4, t.rounded, t.mB4]}
+                    key={everyLocation.userId}>
+                <MapView.Marker 
+                    coordinate={{latitude:everyLocation.latitude, longitude: everyLocation.longitude}}
+                />
+                    </MapView>
+                <View style={[t.selfCenter, t.mRAuto, t.mL4, t.bgGray300, t.rounded]}>
+                    <Text style={[t.fontBold]}> {everyLocation.incident} </Text>
+                </View>
+                </TouchableOpacity>
             </View>
     )
         return(
     this.props.location.userLocation.length > 0 ? 
-            <ScrollView style={{flex: 1, backgroundColor: '#f5f5f5'}}>
+            <ScrollView style={[t.flex1, t.bgGray100]}>
                 <View>
                     <View style={styles.container}>
                         {this.props.location.isLoaded && (

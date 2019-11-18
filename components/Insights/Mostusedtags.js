@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import { connect } from 'react-redux';
 import {addIncrement, addDecrement} from '../../redux/actions/counterIncrease'
+import {t, color} from 'react-native-tailwindcss'
 import {BarChart, Grid, YAxis} from 'react-native-svg-charts'
 import * as scale from 'd3-scale'
 class Mostusedtags extends Component{
@@ -47,23 +48,24 @@ class Mostusedtags extends Component{
             )
         } else{
             return(
-                <View style={{flexDirection: 'row', height: 200, paddingVertical: 10, borderRadius: 6}}>
+                
+                <View style={{flexDirection: 'row', height: 120, paddingVertical: 10, borderRadius: 6}}>
                     <YAxis
                         data={data}
                         numberOfTicks={data.length}
                         yAccessor={({ index }) => index}
                         scale={scale.scaleBand}
                         contentInset={{ top: 0, bottom: 0 }}
-                        spacing={0.2}
+                        spacing={0.3}
                         formatLabel={(_, index) => data[index].label}
-                        style={{alignItems: 'flex-start', maxWidth: 150}}
+                        style={[t.mL16]}
                     />
                     <BarChart
-                        style={{flex: 1,}}
+                        style={[t.flex1, t.mR6]}
                         data={data}
                         horizontal={true}
                         yAccessor={({ item }) => item.value}
-                        svg={{ fill: 'lightgrey' }}
+                        svg={{ fill: color.gray400 }}
                         contentInset={{ top: 5, bottom: 5 }}
                         spacing={0.2}
                         gridMin={0}

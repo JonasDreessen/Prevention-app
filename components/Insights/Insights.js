@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {addIncrement, addDecrement} from '../../redux/actions/counterIncrease'
 import Mostusedtags from './Mostusedtags'
 import Severity from './severity'
+import {t} from 'react-native-tailwindcss'
 
 class Insigts extends Component {
     constructor(props){
@@ -13,33 +14,31 @@ class Insigts extends Component {
     render(){
         const { GeneralIncidents } = this.props
         return(
-            <View style={styles.container}>
-                <View style={styles.InsightsContainer}>
-                    <View style={styles.AmountOfIncidents}>
-                    <View style={{flexDirection: 'row'}}>
+            <View style={[t.flex1, t.bgGray100, t.pX2]}>
+                <View style={[t.mT4]}>
+                    <View style={[t.flexRow, t.mB2]}>
                         <View style={styles.coloredCircle}></View>
-                        <Text>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
+                        <Text style={[t.textSm, t.fontNormal]}>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
                     </View>
-                    </View>
-                    <View style={styles.IncidentsGeneralContainer}>
-                        <TouchableOpacity style={styles.OpenIncidents, styles.IncidentsDetailContainer} onPress={() => this.props.navigation.navigate('Incidents')}>
-                            <Text style={styles.numberOfIncidents}>{GeneralIncidents.amountOfIncidents}</Text>
-                            <Text>Open{"\n"}Incidents</Text>
+                    <View style={[t.flexRow, t.justifyBetween]}>
+                        <TouchableOpacity style={[t.w5_12, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.mL3, t.rounded]} onPress={() => this.props.navigation.navigate('Incidents')}>
+                            <Text style={[t.fontBold, t.text4xl, t.mR4, t.pL2]}>{GeneralIncidents.amountOfIncidents}</Text>
+                            <Text style={[t.fontLight, t.textGray700]}>Open{"\n"}Incidents</Text>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.resolvedIncidents, styles.IncidentsDetailContainer} onPress={() => this.props.navigation.navigate('Incidents')}>
-                            <Text style={styles.numberOfIncidents}>0</Text>
-                            <Text>Resolved{"\n"}Incidents</Text>
+                        <TouchableOpacity style={[t.w5_12, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.mR3, t.rounded]} onPress={() => this.props.navigation.navigate('Incidents')}>
+                            <Text style={[t.fontBold, t.text4xl, t.mR4, t.pL2]}>0</Text>
+                            <Text style={[t.fontLight, t.textGray700]}>Resolved{"\n"}Incidents</Text>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.mostUsedTags}>
-                            <View style={{flexDirection: 'row'}}>
+                    <View style={[t.mY4]}>
+                            <View style={[t.flexRow]}>
                             <View style={styles.coloredCircle}></View>
-                            <Text>Most Used Tags</Text>
+                            <Text style={[t.textSm, t.fontNormal]}>Most Used Tags</Text>
                             </View>
                     </View>
-                        <View style={{width: '100%', backgroundColor: 'white'}}>
+                        <View style={[t.bgWhite, t.rounded]}>
                                 <Mostusedtags />
                         </View>
                         <Severity />
@@ -50,36 +49,11 @@ class Insigts extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5'
-    },
     arrow: {
         height: 14,
         width: 14,
         position: "absolute",
         right: 10,
-    },
-    IncidentsGeneralContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 10,
-    },
-    InsightsContainer: {
-        top: 20,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    IncidentsDetailContainer: {
-        height: 80,
-        width: '45%',
-        backgroundColor: 'white',
-        paddingTop: 10,
-        paddingBottom: 10, 
-        paddingLeft: 5,
-        paddingRight: 5,
-        flexDirection: 'row',
-        alignItems: 'center'
     },
     mostUsedTagsContainer: {
         backgroundColor: 'white',
@@ -87,10 +61,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 10,
     },
-    mostUsedTags: {
-        marginTop: 30,
-        marginBottom: 10,
-    },
+
     mostUsedTagsText: {
         fontSize: 12,
         textAlign: 'center',
@@ -122,7 +93,6 @@ const styles = StyleSheet.create({
     },
     coloredCircle: {
         width: 10,
-        borderWidth: 1,
         height: 10,
         marginLeft: 10,
         borderRadius: 50,

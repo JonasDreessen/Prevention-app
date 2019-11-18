@@ -58,8 +58,8 @@ class NewHazardInformationDetails extends Component {
         let city = this.props.location.userLocation[arraylength].city
         let country = this.props.location.userLocation[arraylength].country
         return(
-            <View style={[t.pX4, t.bgGray200]}>
-            <View style={[t.borderT, t.mY8, t.mX6, t.borderGray500]}>
+            <View style={[t.pX4, t.bgGray100]}>
+            <View style={[t.borderT, t.mY8, t.mX6, t.borderGray400]}>
                 <Text style={{top: -10, textAlign: 'center', backgroundColor: '#edf2f7', alignSelf: 'center', paddingHorizontal: 8, color: '#a0aec0', fontWeight: '600'}}>Today</Text>
             </View>
                     <View style={[t.bgWhite, t.border, t.roundedLg, t.borderGray500]}>
@@ -78,7 +78,7 @@ class NewHazardInformationDetails extends Component {
                         </View>
                         <Text style={[t.mL6, t.pB2, t.fontLight, t.textGray800]}>Incident weather conditions</Text>
                     </View>
-                    <View style={[t.mT4,t.bgWhite, t.border, t.roundedLg, t.borderGray500,t.p4, t.alignCenter]}>
+                    <View style={[t.mT4,t.bgWhite, t.border, t.rounded, t.borderGray400,t.p4, t.alignCenter]}>
                     <View style={[t.flexRow]}> 
                         <MapView
                             region={{
