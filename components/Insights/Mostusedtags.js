@@ -40,7 +40,7 @@ class Mostusedtags extends Component{
         ]
          
         const incidentInsights = () => {
-            if(GeneralIncidents.HazardIncidents == 0 && GeneralIncidents.NearMissIncidents == 0 && GeneralIncidents.MaintenanceIncidents == 0 && GeneralIncidents.InjuryIncidents ==0 && GeneralIncidents.TheftIncidents == 0){
+            if(GeneralIncidents.HazardIncidents < 1 && GeneralIncidents.NearMissIncidents < 1 && GeneralIncidents.MaintenanceIncidents < 1 && GeneralIncidents.InjuryIncidents < 1 && GeneralIncidents.TheftIncidents < 1){
             return(
                 <View style={{borderRadius: 6}}>
                     <Text style={{fontSize: 13, textAlign: 'center', color: 'grey'}}>No incidents reported yet</Text>
@@ -77,34 +77,12 @@ class Mostusedtags extends Component{
         }}
         return(
 
-            <View style={styles.mostUsedTagsContainer}>
+            <View style={t.border, t.borderGray200, t.bgWhite, t.hAuto, t.pY2}>
                 {incidentInsights()}
             </View>
         )
     }
 }
-
-
-const styles = StyleSheet.create({
-
-    mostUsedTagsContainer: {
-        backgroundColor: 'white',
-        height: 'auto',
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingRight: 30  ,
-    },
-    mostUsedTags: {
-        marginTop: 30,
-        marginBottom: 10,
-    },
-    mostUsedTagsText: {
-        fontSize: 12,
-        textAlign: 'right',
-        marginBottom: 5,
-    },
-})
-
 const mapStateToProps = (state) => {
     return {
         counter: state.AddCounter.counter,

@@ -96,7 +96,7 @@ class Severity extends Component{
                         <Text style={[t.textSm, t.fontNormal]}>Severety</Text>
                     </View>
                 </View>
-                    <View style={[t.flexRow, t.bgWhite, t.pX10]}>
+                    <View style={[t.flexRow, t.bgWhite, t.pX10, t.border, t.borderGray200, t.rounded]}>
                         <View style={[t.justifyBetween, t.h32, t.pY5]}>
                             <View style={[t.flexRow, t.justifyEnd, t.itemsCenter]}>
                                 <Text style={[t.textXs, t.textGray600, t.fontNormal]}>Extreme</Text>

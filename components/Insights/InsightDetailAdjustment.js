@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity, Button} from 'react-native';
+import {View, Text, TextInput, Image, TouchableOpacity, Modal} from 'react-native';
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps'
 import RNPickerSelect from 'react-native-picker-select'
@@ -11,10 +11,17 @@ class InsightDetailAdjustment extends Component {
     constructor(props){
         super(props)
         this.state = {
-            selectedValue: ''
+            selectedValue: '',
+            modalVisible: false
         }
     }
     render(){
+        function changeModal(){
+            alert('in here')
+            this.setState({modalVisible: !this.state.modalVisible})
+        }
+
+
         const extreme = 'extreme'
         const high = 'high'
         const medium = 'medium'
@@ -25,9 +32,9 @@ class InsightDetailAdjustment extends Component {
                 var payload = this.props.navigation.state.params.typeOfHazard
                 this.props.ChangeIncident(payload)
                 return(
-                <View>
+                <View style={[t.flex1, t.pX4, t.bgGray100]} >
                     <View style={[t.borderT, t.mY8, t.mX6, t.borderGray500]}>
-                        <Text style={{top: -10, textAlign: 'center', backgroundColor: '#edf2f7', alignSelf: 'center', paddingHorizontal: 8, color: '#a0aec0', fontWeight: '600'}}>{clickedLocation.time}</Text>
+                        <Text style={{top: -10, textAlign: 'center', backgroundColor: '#f7fafc', alignSelf: 'center', paddingHorizontal: 8, color: '#a0aec0', fontWeight: '600'}}>{clickedLocation.time}</Text>
                     </View>
                     <View style={[t.border, t.rounded, t.borderGray400, t.bgWhite]}>
                         <View style={[t.flexRow]}>
@@ -35,7 +42,7 @@ class InsightDetailAdjustment extends Component {
                             <View style={[t.pL4, t.selfCenter]}>
                                 <Text style={[t.textXl, t.fontMedium]}>{clickedLocation.weather.weather.temperature}<Text style={[t.fontLight]}> °C</Text> <Text style={[t.textBase, t.mL4, t.fontMedium]}>  {clickedLocation.weather.weather.description}</Text></Text>
                                 <View style={[t.flexRow, t.mT1]}>
-                                    <Text style={[t.mR2, t.textXs, t.fontLight, t.textGray700]}>humidity: {clickedLocation.weather.weather.humidity}%    wind: {clickedLocation.weather.weather.windSpeed}km/h</Text>
+                                    <Text style={[t.mR2, t.textXs, t.fontLight, t.textGray700]}>humidity: {clickedLocation.weather.weather.humidity} %    wind: {clickedLocation.weather.weather.windSpeed} km/h</Text>
                                 </View>
                             </View>
                         </View>
@@ -90,9 +97,27 @@ class InsightDetailAdjustment extends Component {
             }
         })
         return(
-           <View style={[t.flex1, t.pX4, t.bgGray100]}>
+            <View style={[t.flex1]}>
                {selectedLocation}
-           </View>
+               <View style={[t.flexRow, t.borderT, t.borderGray400, t.p2]}>
+                <TouchableOpacity onPress={() => changeModal()}>
+                        <Image style={[t.w6, t.objectContain, t.mR2]} source={require('../../img/plus.png')}></Image>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => alert('hi')}>
+                    <Image style={[t.mR2, t.rounded]} source={require('../../img/picture.png')}></Image>
+                </TouchableOpacity>
+                    <TextInput placeholder='Add information here...'/>
+                    <Image style={[t.w6, t.hAuto, t.objectContain, t.mR2, t.mLAuto, t.mR2]} source={require('../../img/right-arrow-green.png')}></Image>
+                </View>
+                <Modal
+                animationType='slide'
+                transparent={true}
+                visible={this.state.modalVisible}>
+                    <View>
+                        <Text>hello</Text>
+                    </View>
+                </Modal>
+            </View>
         )
     }
 }

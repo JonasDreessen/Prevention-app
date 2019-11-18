@@ -21,12 +21,12 @@ class Insigts extends Component {
                         <Text style={[t.textSm, t.fontNormal]}>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
                     </View>
                     <View style={[t.flexRow, t.justifyBetween]}>
-                        <TouchableOpacity style={[t.w5_12, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.mL3, t.rounded]} onPress={() => this.props.navigation.navigate('Incidents')}>
+                        <TouchableOpacity style={[t.w48, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.rounded, t.border, t.borderGray200]} onPress={() => this.props.navigation.navigate('Incidents')}>
                             <Text style={[t.fontBold, t.text4xl, t.mR4, t.pL2]}>{GeneralIncidents.amountOfIncidents}</Text>
                             <Text style={[t.fontLight, t.textGray700]}>Open{"\n"}Incidents</Text>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[t.w5_12, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.mR3, t.rounded]} onPress={() => this.props.navigation.navigate('Incidents')}>
+                        <TouchableOpacity style={[t.w48, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.rounded, t.border, t.borderGray200]} onPress={() => this.props.navigation.navigate('Incidents')}>
                             <Text style={[t.fontBold, t.text4xl, t.mR4, t.pL2]}>0</Text>
                             <Text style={[t.fontLight, t.textGray700]}>Resolved{"\n"}Incidents</Text>
                             <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
@@ -38,7 +38,7 @@ class Insigts extends Component {
                             <Text style={[t.textSm, t.fontNormal]}>Most Used Tags</Text>
                             </View>
                     </View>
-                        <View style={[t.bgWhite, t.rounded]}>
+                        <View style={[t.bgWhite, t.rounded, t.border, t.borderGray200]}>
                                 <Mostusedtags />
                         </View>
                         <Severity />

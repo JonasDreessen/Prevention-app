@@ -95,7 +95,7 @@ const incidentStack = createStackNavigator({
       navigationOptions: ({navigation}) => ({
           header: (
             <HeaderTitleInsightDetailAdjustment navigation={navigation}/>
-          )
+          ),
       })
   }
 })
@@ -132,20 +132,21 @@ const TeamAlertsStack = createStackNavigator({
 
 const AppNavigator = createBottomTabNavigator(
     {
-      Incidents: {
-        screen: incidentStack,
-        navigationOptions: {
-          tabBarIcon: ({tintColor}) => (
-            <Icon name='bullhorn-outline' size={30} color={tintColor}/>
-          )
-        }
-      },
       Insights: {
         screen: InsightsStack,
         navigationOptions: {
           tabBarIcon: ({tintColor}) => (
             <Icon name='chart-line-variant' size={30} color={tintColor}/>
           ),
+          
+        }
+      },
+      Incidents: {
+        screen: incidentStack,
+        navigationOptions: {
+          tabBarIcon: ({tintColor}) => (
+            <Icon name='bullhorn-outline' size={30} color={tintColor}/>
+          )
         }
       },
       Plus: {
