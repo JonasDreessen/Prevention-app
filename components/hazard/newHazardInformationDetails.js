@@ -58,11 +58,11 @@ class NewHazardInformationDetails extends Component {
         let city = this.props.location.userLocation[arraylength].city
         let country = this.props.location.userLocation[arraylength].country
         return(
-            <View style={[t.pX4, t.bgGray100]}>
+            <View style={[t.pX4, t.bgGray100, t.flex1]}>
             <View style={[t.borderT, t.mY8, t.mX6, t.borderGray400]}>
-                <Text style={{top: -10, textAlign: 'center', backgroundColor: '#edf2f7', alignSelf: 'center', paddingHorizontal: 8, color: '#a0aec0', fontWeight: '600'}}>Today</Text>
+                <Text style={{top: -10, textAlign: 'center', backgroundColor: '#f7fafc', alignSelf: 'center', paddingHorizontal: 8, color: '#a0aec0', fontWeight: '600'}}>Today</Text>
             </View>
-                    <View style={[t.bgWhite, t.border, t.roundedLg, t.borderGray500]}>
+                    <View style={[t.bgWhite, t.border, t.rounded, t.borderGray400]}>
                         <View style={[t.flexRow, t.pB4]}>
                             <Image source={{uri: `http://openweathermap.org/img/wn/${this.state.icon}@2x.png`}} style={[t.w1_4]}></Image>
                             <View style={[t.mT6]}>

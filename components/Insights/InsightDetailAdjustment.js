@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, Image, TouchableOpacity, Modal} from 'react-native';
+import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
+import Modal from 'react-native-modal'
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps'
 import RNPickerSelect from 'react-native-picker-select'
@@ -11,16 +12,13 @@ class InsightDetailAdjustment extends Component {
     constructor(props){
         super(props)
         this.state = {
-            selectedValue: '',
-            modalVisible: false
+            selectedValue: null,
+            modalVisible: false,
+            severityModalVisible: false
         }
     }
     render(){
-        function changeModal(){
-            alert('in here')
-            this.setState({modalVisible: !this.state.modalVisible})
-        }
-
+        
 
         const extreme = 'extreme'
         const high = 'high'
@@ -99,24 +97,92 @@ class InsightDetailAdjustment extends Component {
         return(
             <View style={[t.flex1]}>
                {selectedLocation}
-               <View style={[t.flexRow, t.borderT, t.borderGray400, t.p2]}>
-                <TouchableOpacity onPress={() => changeModal()}>
+               <View style={[t.flexRow, t.borderT, t.borderGray400, t.p2, t.z10]}>
+                <TouchableOpacity onPress={() => this.setState({modalVisible: !this.state.modalVisible})}>
                         <Image style={[t.w6, t.objectContain, t.mR2]} source={require('../../img/plus.png')}></Image>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => alert('hi')}>
+                <TouchableOpacity>
                     <Image style={[t.mR2, t.rounded]} source={require('../../img/picture.png')}></Image>
                 </TouchableOpacity>
                     <TextInput placeholder='Add information here...'/>
                     <Image style={[t.w6, t.hAuto, t.objectContain, t.mR2, t.mLAuto, t.mR2]} source={require('../../img/right-arrow-green.png')}></Image>
                 </View>
+                {/* Modal that appears when the plus icon is clicked, this allows editing information for this incident */}
                 <Modal
                 animationType='slide'
                 transparent={true}
-                visible={this.state.modalVisible}>
-                    <View>
-                        <Text>hello</Text>
+                onBackdropPress={() => this.setState({modalVisible: false})}
+                backdropOpacity={0}
+                coverScreen={false}
+                style={{margin: 0}}
+                isVisible={this.state.modalVisible}>
+                    <View style={{flex: 1, width: '100%', marginTop: 407.55}}>
+                        <View style={[t.bgWhite, t.justifyAround,t.roundedT, t.pY2, t.pL4]}>
+                            <View style={[t.flexRow, t.itemsCenter]}>
+                                <Image style={[t.w5, t.objectContain, t.mR3]}  source={require('../../img/font.png')}></Image>
+                                <Text style={t.textBase, t.fontLight}> Edit title</Text>
+                            </View>
+                            <View style={[t.flexRow, t.itemsCenter]}>
+                                <Image style={[t.w5, t.objectContain, t.mR3]} source={require('../../img/price-tag.png')}></Image> 
+                                <Text style={t.textBase, t.fontLight}>Update tags</Text>
+                            </View>
+                            <View style={[t.flexRow, t.itemsCenter]}>
+                                <Image style={[t.w5, t.objectContain, t.mR3]} source={require('../../img/maps-and-flags.png')}></Image>
+                                <Text style={t.textBase, t.fontLight}> Update location</Text>
+                            </View>
+                            <TouchableOpacity style={[t.flexRow]} onPress={() => this.setState({severityModalVisible: true})}>
+                                <View style={[t.flexRow, t.itemsCenter]}>
+                                    <Image style={[t.w5, t.objectContain, t.mR3]} source={require('../../img/danger.png')}></Image>
+                                    <Text style={t.textBase, t.fontLight}>Update severity</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </Modal>
+                {/* Modal that appears when the severety icon is clicked, this allows editing the severity for this incident */}
+                <Modal
+                    onBackdropPress={() => this.setState({severityModalVisible: false, modalVisible: false})}
+                    backdropOpacity={0}
+                    coverScreen={true}
+                    style={{margin: 0}}
+                    isVisible={this.state.severityModalVisible}>
+                    <View style={[t.bgWhite, t.flex1, t.mT12]}>
+                    <TouchableOpacity onPress={() => this.setState({severityModalVisible: false, modalVisible: false})}>
+                    <View style={[t.flexRow, t.mB8, t.itemsCenter, t.borderB, t.borderGray400, t.pB4, t.p4]}>
+                        <Image style={[t.w4, t.objectContain, t.absolute, t.mL4]} source={require('../../img/close.png')}></Image>
+                        <Text style={[t.mLAuto, t.mRAuto, t.fontBold, t.textLg, t.trackingWider]}>SEVERTY</Text>
+                    </View>
+                        
+                    </TouchableOpacity>
+                        <View style={t.p4}>
+                            <TouchableOpacity onPress={ () => {this.setState({selectedValue: 'extreme'}), this.props.SevertyIncreaser('extreme'), this.setState({severityModalVisible: false, modalVisible: false})  }}>
+                                <View style={[t.rounded, t.borderGray400, t.pY2, t.bgGray200, t.mB4]}>
+                                    <Text style={[t.textCenter, t.textBase]}>Extreme</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={ () => {this.setState({selectedValue: 'high'}), this.props.SevertyIncreaser('high'), this.setState({severityModalVisible: false, modalVisible: false})  }}>
+                                <View style={[t.rounded, t.borderGray400, t.pY2, t.bgGray200, t.mB4]}>
+                                    <Text style={[t.textCenter, t.textBase]}>High</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={ () => {this.setState({selectedValue: 'medium'}), this.props.SevertyIncreaser('medium'), this.setState({severityModalVisible: false, modalVisible: false})  }}>
+                                <View style={[t.rounded, t.borderGray400, t.pY2, t.bgGray200, t.mB4]}>
+                                    <Text style={[t.textCenter, t.textBase]}>Medium</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={ () => {this.setState({selectedValue: 'low'}), this.props.SevertyIncreaser('low'), this.setState({severityModalVisible: false, modalVisible: false})  }}>
+                                <View style={[t.rounded, t.borderGray400, t.pY2, t.bgGray200, t.mB4]}>
+                                    <Text style={[t.textCenter, t.textBase]}>Low</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={ () => {this.setState({selectedValue: 'trivial'}), this.props.SevertyIncreaser('trivial'), this.setState({severityModalVisible: false, modalVisible: false})  }}>
+                                <View style={[t.rounded, t.borderGray400, t.pY2, t.bgGray200, t.mB4]}>
+                                    <Text style={[t.textCenter, t.textBase]}>Trivial</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+               </Modal>
             </View>
         )
     }
