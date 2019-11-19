@@ -11,7 +11,7 @@ class HeaderTitleInsightDetailAdjustment extends Component{
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
             if(clickedLocation.userId === this.props.navigation.state.params.userId){
                return  (
-                <View style={[t.borderB, t.borderGray400, t.wFull, t.bgWhite, t.pX2, t.mT2, t.pB4]}>
+                <View style={[t.borderB, t.borderGray400, t.wFull, t.bgWhite, t.pX2,t.pT2, t.pB4]}>
                     <View>
                     <View style={[t.flexRow, t.justifyBetween, t.alignCenter, t.mT10, t.mB2, t.itemsCenter]}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('incident Overview')}>

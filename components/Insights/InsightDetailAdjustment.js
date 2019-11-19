@@ -18,13 +18,6 @@ class InsightDetailAdjustment extends Component {
         }
     }
     render(){
-        
-
-        const extreme = 'extreme'
-        const high = 'high'
-        const medium = 'medium'
-        const low = 'low'
-        const trivial = 'trivial'
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
             if(clickedLocation.userId === this.props.navigation.state.params.userId){
                 var payload = this.props.navigation.state.params.typeOfHazard
@@ -72,23 +65,7 @@ class InsightDetailAdjustment extends Component {
                             </View>
                             <Text style={[t.textSm, t.fontMedium, t.trackingWide, t.mT4]}>Jonas Dreessen <Text style={[t.fontLight]}>set incident location</Text></Text>
                         </View>
-                            <RNPickerSelect
-                                    style={pickerStyle}
-                                    onValueChange={(value) => this.setState({selectedValue: value})}
-                                    placeholder={{label: 'select severity', value: null}}
-                                    items={[
-                                        { label: 'Extreme', value: extreme },
-                                        { label: 'High', value: high },
-                                        { label: 'Medium', value: medium },
-                                        { label: 'Low', value: low},
-                                        { label: 'Trivial', value: trivial}
-                                        ]}
-                                    />
                         </View>
-                        <TouchableOpacity onPress={() => {this.props.SevertyIncreaser(this.state.selectedValue), this.props.navigation.goBack()}}
-                            style={[t.selfCenter, t.mRAuto, t.rounded, t.bgGreen500, t.p1, t.mT2]}>
-                            <Text style={[t.textBase, t.fontSemibold, t.trackingWider, t.textWhite]}>Confirm</Text>
-                        </TouchableOpacity>
                     </View>
 
                 )
@@ -97,7 +74,7 @@ class InsightDetailAdjustment extends Component {
         return(
             <View style={[t.flex1]}>
                {selectedLocation}
-               <View style={[t.flexRow, t.borderT, t.borderGray400, t.p2, t.z10]}>
+               <View style={[t.flexRow, t.borderT, t.borderGray400, t.p2,t.mB6, t.z10]}>
                 <TouchableOpacity onPress={() => this.setState({modalVisible: !this.state.modalVisible})}>
                         <Image style={[t.w6, t.objectContain, t.mR2]} source={require('../../img/plus.png')}></Image>
                 </TouchableOpacity>
@@ -116,7 +93,7 @@ class InsightDetailAdjustment extends Component {
                 coverScreen={false}
                 style={{margin: 0}}
                 isVisible={this.state.modalVisible}>
-                    <View style={{flex: 1, width: '100%', marginTop: 407.55}}>
+                    <View style={{flex: 1, width: '100%', marginTop: 485}}>
                         <View style={[t.bgWhite, t.justifyAround,t.roundedT, t.pY2, t.pL4]}>
                             <View style={[t.flexRow, t.itemsCenter]}>
                                 <Image style={[t.w5, t.objectContain, t.mR3]}  source={require('../../img/font.png')}></Image>
@@ -150,7 +127,7 @@ class InsightDetailAdjustment extends Component {
                     <TouchableOpacity onPress={() => this.setState({severityModalVisible: false, modalVisible: false})}>
                     <View style={[t.flexRow, t.mB8, t.itemsCenter, t.borderB, t.borderGray400, t.pB4, t.p4]}>
                         <Image style={[t.w4, t.objectContain, t.absolute, t.mL4]} source={require('../../img/close.png')}></Image>
-                        <Text style={[t.mLAuto, t.mRAuto, t.fontBold, t.textLg, t.trackingWider]}>SEVERTY</Text>
+                        <Text style={[t.mLAuto, t.mRAuto, t.fontBold, t.textLg, t.trackingWider]}>Severity</Text>
                     </View>
                         
                     </TouchableOpacity>
@@ -188,47 +165,6 @@ class InsightDetailAdjustment extends Component {
     }
 }
 
-const pickerStyle = {
-	inputIOS: {
-		color: 'black',
-		paddingTop: 6,
-		paddingHorizontal: 10,
-        paddingBottom: 0,
-        fontSize: 16,
-        marginRight: 'auto',
-        borderWidth: 0.8,
-        borderRadius: 6,
-        borderColor: 'lightgrey',
-        marginTop: 6,
-        backgroundColor: 'white',
-	},
-	inputAndroid: {
-        color: 'black',
-        paddingTop: 13,
-		paddingHorizontal: 10,
-        paddingBottom: 12,
-        fontSize: 24,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginTop: 10
-	},
-	placeholderColor: 'black',
-	underline: { borderTopWidth: 0 },
-	icon: {
-		position: 'absolute',
-		backgroundColor: 'transparent',
-		borderTopWidth: 5,
-		borderTopColor: '#00000099',
-		borderRightWidth: 5,
-		borderRightColor: 'transparent',
-		borderLeftWidth: 5,
-		borderLeftColor: 'transparent',
-		width: 0,
-		height: 0,
-		top: 20,
-		right: 15,
-	},
-};
 
 const mapStateToProps = (state) => {
     return {

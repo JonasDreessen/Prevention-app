@@ -96,6 +96,9 @@ const incidentStack = createStackNavigator({
           header: (
             <HeaderTitleInsightDetailAdjustment navigation={navigation}/>
           ),
+          bottomTabs: {
+            visible: false
+          }
       })
   }
 })
@@ -130,6 +133,19 @@ const TeamAlertsStack = createStackNavigator({
   }
 })
 
+// this hides the bottom tabs inside the incidents detail adjustment stack
+incidentStack.navigationOptions = ({ navigation }) => {
+  // hides tabNavigation starting from 2 screen deep in news Stack
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible
+  };
+};
+
 const AppNavigator = createBottomTabNavigator(
     {
       Insights: {
@@ -143,11 +159,11 @@ const AppNavigator = createBottomTabNavigator(
       },
       Incidents: {
         screen: incidentStack,
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
           tabBarIcon: ({tintColor}) => (
             <Icon name='bullhorn-outline' size={30} color={tintColor}/>
-          )
-        }
+          ),
+        })
       },
       Plus: {
         screen: addingHazardStack,
@@ -165,7 +181,7 @@ const AppNavigator = createBottomTabNavigator(
         navigationOptions: {
           tabBarIcon: ({tintColor}) => (
             <Icon name='bell-outline' size={30} color={tintColor}/>
-          )
+          ),
         }
       },
       More: {
