@@ -12,6 +12,7 @@ function addNewLocation(state = initialState, action){
     switch(action.type){
         case GET_LOCATION:
             const newId = state.Id + 1
+            console.log(state)
             return {
                 ...state,
                 Id: newId,

@@ -14,7 +14,8 @@ class InsightDetailAdjustment extends Component {
         this.state = {
             selectedValue: null,
             modalVisible: false,
-            severityModalVisible: false
+            severityModalVisible: false,
+            extraInfo: ''
         }
     }
     render(){
@@ -81,8 +82,13 @@ class InsightDetailAdjustment extends Component {
                 <TouchableOpacity>
                     <Image style={[t.mR2, t.rounded]} source={require('../../img/picture.png')}></Image>
                 </TouchableOpacity>
-                    <TextInput placeholder='Add information here...'/>
-                    <Image style={[t.w6, t.hAuto, t.objectContain, t.mR2, t.mLAuto, t.mR2]} source={require('../../img/right-arrow-green.png')}></Image>
+                    <TextInput 
+                    onChangeText={(value) => this.setState({extraInfo: value})}
+                    value={this.state.extraInfo}
+                    placeholder='Add information here...'/>
+                    <TouchableOpacity style={[t.mR2, t.mLAuto]}>
+                        <Image style={[t.w6, t.objectContain]} source={require('../../img/right-arrow-green.png')}></Image>
+                    </TouchableOpacity>
                 </View>
                 {/* Modal that appears when the plus icon is clicked, this allows editing information for this incident */}
                 <Modal
