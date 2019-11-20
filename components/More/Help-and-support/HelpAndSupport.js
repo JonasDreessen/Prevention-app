@@ -1,21 +1,27 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Modal} from 'react-native';
-
+import {View, Text, StyleSheet} from 'react-native';
+import Modal from 'react-native-modal'
+import {t} from 'react-native-tailwindcss'
 class HelpAndSupport extends Component{
     constructor(props){
         super(props)
     }
     render(){
         return(
-    <View style={styles.container}>
+    <View style={[t.flex1]}>
         <Modal
-            animationType='slide'
-            transparent={true}
-        >
-            <View style={{marginTop: 100, paddingHorizontal: 20}}>
-                <Text style={{fontWeight:'600', fontSize: 25, textAlign: 'center'}}> No conversations</Text>
-                <Text style={{textAlign: 'center', marginTop: 20, fontSize: 16}}>you have no conversations with the pointbreak developers. </Text>
-                <Text style={{color: 'lightgrey', fontSize: 50, letterSpacing: 1, textAlign: 'center'}}>...</Text>
+                animationType='slide'
+                animationInTiming={550}
+                transparent={true}
+                backdropOpacity={0}
+                coverScreen={false}
+                style={[t.m0]}
+                isVisible={true}>
+
+            <View style={[t.flex1, t.mT10]}>
+                <Text style={[t.textCenter,  t.text2xl, t.fontSemibold]}> No conversations</Text>
+                <Text style={[t.textCenter, t.textBase, t.mT3]}>you have no conversations with the pointbreak developers. </Text>
+                <Text style={[t.textCenter, t.text4xl, t.textGray600]}>...</Text>
             </View>
         </Modal>
     </View>)
@@ -23,28 +29,6 @@ class HelpAndSupport extends Component{
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        height: '30%',
-        position: 'absolute',
-        top: 150,
-        width: '100%',
-        marginLeft: 10,
-    },
-    image: {
-        height: '100%',
-        width: '100%',
-        marginTop: 10,
-    },
-    title: {
-        fontSize: 20,
-    },
-    subTitle: {
-        color: 'lightgrey',
-        fontSize: 12,
-        marginTop: 5,
-    }
-})
 
 export default HelpAndSupport
 

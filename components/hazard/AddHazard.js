@@ -40,7 +40,7 @@ class Addhazard extends Component {
                 
                 <View style={styles.containerPanel}>
                     <TouchableOpacity style={styles.goBackText}>
-                        <Text style={{color: '#46c24e', fontWeight: '300',}} onPress={() => this.props.changeModalVisibility()}>cancel</Text>
+                        <Text style={{color: '#46c24e', fontWeight: '300',}} onPress={() => alert('hi')}>cancel</Text>
                     </TouchableOpacity>
                         <View style={styles.description}>
                             <Text style={styles.panelTitle}>Open new incident</Text>

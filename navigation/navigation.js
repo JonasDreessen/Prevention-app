@@ -9,7 +9,6 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import incidentOverview from "../components/Incidents/incidentOverview";
 import Insights from "../components/Insights/Insights";
 import TeamAlerts from "../components/TeamAlerts";
-import Addhazard from "../components/hazard/AddHazard";
 import CreateNewTeam from '../components/NewTeam/CreateNewTeam'
 import CreateNewTeamDetails from '../components/NewTeam/CreateNewTeamDetails';
 import More from '../components/More/More'
@@ -24,11 +23,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import InsightDetailAdjustment from '../components/Insights/InsightDetailAdjustment'
 import HeaderTitleInsightDetailAdjustment from './Headers/HeaderTitleInsightDetailAdjustment'
 import NewHazardInformationDetailsHeader from './Headers/newHazardInformationDetailsHeader'
+import ModalHazard from './customNavigation/ModalHazard'
 
 // load the font befor calling it. 
 Icon.loadFont();
 const addingHazardStack = createStackNavigator({
-  'add a new hazard': {screen: Addhazard},
+  'add a new hazard': {screen: ModalHazard},
   addingNewHazard: {
     screen: NewHazardIsBeingAdded,
     navigationOptions: {header: null}

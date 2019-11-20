@@ -1,5 +1,4 @@
 import {GET_LOCATION} from '../actions/getLocation'
-import {GET_WEATHER} from '../actions/getWeatherInformation'
 const initialState = {
     isLoaded: false,
     userLocation: [],

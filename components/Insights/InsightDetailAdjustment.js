@@ -3,7 +3,6 @@ import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native'
 import Modal from 'react-native-modal'
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps'
-import RNPickerSelect from 'react-native-picker-select'
 import { SevertyIncreaser } from '../../redux/actions/SevertyIncreaser';
 import { ChangeIncident } from '../../redux/actions/typeOfIncidentForInsightDetailHeader'
 import {t} from 'react-native-tailwindcss'

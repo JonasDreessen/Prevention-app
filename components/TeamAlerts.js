@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from 'react-native';
-import TopNavbar from './TopNavbar';
+import {t} from 'react-native-tailwindcss'
 
 
 class TeamAlerts extends Component {
@@ -9,31 +9,37 @@ class TeamAlerts extends Component {
     }
     render(){
         return(
-            <View style={styles.container}>
-                <View style={styles.teamAlertsContainer}>
-                    <View style={styles.alertContainer}>
-                        <Text style={styles.alertText}>Property Damage</Text>
-                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+            <View style={t.flex1}>
+                <View>
+                    <View style={[t.mT8, t.mX6, t.borderB, t.borderGray400, t.pB4, t.pY1, t.flexRow, t.itemsCenter]}>
+                        <Text style={[t.textLg, t.fontSemibold, t.trackingWide]}>Property Damage</Text>
+                        <View style={[t.mLAuto, t.mR10, t.bgRed800, t.roundedFull, t.p1]}><Text style={[t.fontBold, t.textWhite]}>JD</Text></View>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={[t.w5, t.h5, t.objectContain]}></Image>
                     </View>
-                    <View style={styles.alertContainer}>
-                        <Text style={styles.alertText}>Theft</Text>
-                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                    <View style={[t.mT8, t.mX6, t.borderB, t.borderGray400, t.pB4, t.pY1, t.flexRow, t.itemsCenter]}>
+                        <Text style={[t.textLg, t.fontSemibold, t.trackingWide]}>Theft</Text>
+                        <View style={[t.mLAuto, t.mR10, t.bgRed800, t.roundedFull, t.p1]}><Text style={[t.fontBold, t.textWhite]}>JD</Text></View>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={[t.w5, t.h5, t.objectContain]}></Image>
                     </View>
-                    <View style={styles.alertContainer}>
-                        <Text style={styles.alertText}>Injury</Text>
-                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                    <View style={[t.mT8, t.mX6, t.borderB, t.borderGray400, t.pB4, t.pY1, t.flexRow, t.itemsCenter]}>
+                        <Text style={[t.textLg, t.fontSemibold,t.trackingWide]}>Injury</Text>
+                        <View style={[t.mLAuto, t.mR10, t.bgRed800, t.roundedFull, t.p1]}><Text style={[t.fontBold, t.textWhite]}>JD</Text></View>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={[t.w5, t.h5, t.objectContain]}></Image>
                     </View>
-                    <View style={styles.alertContainer}>
-                        <Text style={styles.alertText}>Maintenance</Text>
-                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                    <View style={[t.mT8, t.mX6, t.borderB, t.borderGray400, t.pB4, t.pY1, t.flexRow, t.itemsCenter]}>
+                        <Text style={[t.textLg, t.fontSemibold,t.trackingWide]}>Maintenance</Text>
+                        <View style={[t.mLAuto, t.mR10, t.bgRed800, t.roundedFull, t.p1]}><Text style={[t.fontBold, t.textWhite]}>JD</Text></View>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={[t.w5, t.h5, t.objectContain]}></Image>
                     </View>
-                    <View style={styles.alertContainer}>
-                        <Text style={styles.alertText}>Near Miss</Text>
-                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                    <View style={[t.mT8, t.mX6, t.borderB, t.borderGray400, t.pB4, t.pY1, t.flexRow, t.itemsCenter]}>
+                        <Text style={[t.textLg, t.fontSemibold, t.trackingWide]}>Near Miss</Text>
+                        <View style={[t.mLAuto, t.mR10, t.bgRed800, t.roundedFull, t.p1]}><Text style={[t.fontBold, t.textWhite]}>JD</Text></View>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={[t.w5, t.h5, t.objectContain]}></Image>
                     </View>
-                    <View style={styles.alertContainer}>
-                        <Text style={styles.alertText}>Hazard</Text>
-                        <Image source={require('../img/arrow-point-to-right.png')} style={styles.arrowRight}></Image>
+                    <View style={[t.mT8, t.mX6, t.borderB, t.borderGray400, t.pB4, t.pY1, t.flexRow, t.itemsCenter]}>
+                        <Text style={[t.textLg, t.fontSemibold, t.trackingWide]}>Hazard</Text>
+                        <View style={[t.mLAuto, t.mR10, t.bgRed800, t.roundedFull, t.p1]}><Text style={[t.fontBold, t.textWhite]}>JD</Text></View>
+                        <Image source={require('../img/arrow-point-to-right.png')} style={[t.w5, t.h5, t.objectContain]}></Image>
                     </View>
                 </View>
             </View>
@@ -42,18 +48,6 @@ class TeamAlerts extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    }, 
-    alertContainer: {
-        height: 60,
-        marginLeft: 25,
-        marginRight: 25,
-        marginTop: 10,
-        borderBottomWidth: 0.3,
-        borderColor: 'lightgrey',
-        justifyContent: 'center',
-    },
     alertText: {
         fontFamily: 'arial',
         letterSpacing: 0.7,
