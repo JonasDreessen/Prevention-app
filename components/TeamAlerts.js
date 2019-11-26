@@ -7,6 +7,9 @@ class TeamAlerts extends Component {
     constructor(props){
         super(props)
     }
+    componentDidMount(){
+        fetch('http://spotlight-api.local/posts/addnewdata');
+    }
     render(){
         return(
             <View style={t.flex1}>

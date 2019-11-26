@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image,KeyboardAvoidingView, TextInput} from 'react-native';
+import {View, Text, StyleSheet, Image,KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native';
 import { Button } from 'react-native-elements';
 import {connect} from 'react-redux'
 import {teamIncreaser} from '../../redux/actions/teamIncreaser'
+
 
 class CreateNewTeam extends Component{
     constructor(props){
@@ -11,24 +12,22 @@ class CreateNewTeam extends Component{
             team: ''
         }
     }
-
    
     render(){
-        function teamChanger () {
-            this.setState({
-                
-            })
+        function createNewTeam(newTeamName){
+            fetch(`http://spotlight-api.local/addteam/${newTeamName}`);
         }
     return(
         <View style={styles.container}>
             <KeyboardAvoidingView>
             <Text style={styles.createTeamTitle}>Create your team</Text>
+            <Text>{this.state.team}</Text>
             <Text style={styles.createTeamText}>Welcome Jonas Dreessen, what would you like to call your new team?</Text>
             <View style={styles.textInputContainer}>
                 <Image source={require('../../img/group.png')}></Image>
                 <TextInput placeholder='Team Name' style={styles.textInput} onChangeText={(text) => this.setState({team: text})}/>
             </View>
-            <Button title='Create new team' type='solid' style={{marginTop: 10}} onPress={() => this.props.teamIncreaser(this.state.team), this.props.navigation.navigate('createTeamDetails')}></Button>
+                <Button title='Create new team' type='solid' style={{marginTop: 10}} onPress={() => createNewTeam(this.state.team)}></Button>
             </KeyboardAvoidingView>
         </View>
     )

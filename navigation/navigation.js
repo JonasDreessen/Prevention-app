@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {t} from 'react-native-tailwindcss'
 import { connect } from 'react-redux'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs'
 import incidentOverview from "../components/Incidents/incidentOverview";
 import Insights from "../components/Insights/Insights";
 import TeamAlerts from "../components/TeamAlerts";
@@ -24,6 +26,9 @@ import InsightDetailAdjustment from '../components/Insights/InsightDetailAdjustm
 import HeaderTitleInsightDetailAdjustment from './Headers/HeaderTitleInsightDetailAdjustment'
 import NewHazardInformationDetailsHeader from './Headers/newHazardInformationDetailsHeader'
 import ModalHazard from './customNavigation/ModalHazard'
+import LoginFirstScreen from './loginscreens/LoginFirstScreen'
+import LoginSecondScreen from './loginscreens/LoginSecondScreen'
+import LoginThirdScreen from './loginscreens/LoginThirdScreen'
 
 // load the font befor calling it. 
 Icon.loadFont();
@@ -171,6 +176,7 @@ const AppNavigator = createBottomTabNavigator(
           tabBarLabel: ' ',
           tabBarIcon: () => (
             <View style={{zIndex: 10000, position: 'absolute', top: -20}}>
+              {/* <Image style={[t.objectContain, t.w16, t.absolute, {top: -25, left: -1}]} source={require('../img/halfcircle.png')}></Image> */}
               <Icon name='plus-circle' size={60} color='#6ab865'onPress={() => navigation.navigate('add a new hazard')}/>
             </View>
           ),
@@ -221,7 +227,21 @@ const startingNavigation = createStackNavigator({
       header: null
     }}
 })
-const AppContainer = createAppContainer(startingNavigation);
+
+const loginNavigation = createMaterialTopTabNavigator({
+  firstLogin: LoginFirstScreen,
+  secondLogin: LoginSecondScreen,
+  thirdLogin: {
+    screen: LoginThirdScreen,
+    swipeEnabled: false
+  }, 
+  fourthLogin: startingNavigation
+},{
+    tabBarOptions: {
+      style: {display: "none"}
+    }
+  })
+const AppContainer = createAppContainer(loginNavigation);
 
 const mapStateToProps = (state) => {
   return {
