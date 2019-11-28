@@ -29,6 +29,8 @@ import ModalHazard from './customNavigation/ModalHazard'
 import LoginFirstScreen from './loginscreens/LoginFirstScreen'
 import LoginSecondScreen from './loginscreens/LoginSecondScreen'
 import LoginThirdScreen from './loginscreens/LoginThirdScreen'
+import LoginFourthScreen from './loginscreens/LoginFourthScreen'
+import RegistrationScreen from './registration/registration'
 
 // load the font befor calling it. 
 Icon.loadFont();
@@ -159,7 +161,6 @@ const AppNavigator = createBottomTabNavigator(
           tabBarIcon: ({tintColor}) => (
             <Icon name='chart-line-variant' size={30} color={tintColor}/>
           ),
-          
         }
       },
       Incidents: {
@@ -227,16 +228,31 @@ const startingNavigation = createStackNavigator({
       header: null
     }}
 })
+const loginSecondPhase = createStackNavigator({
+  insertNumber: {
+    screen: LoginFourthScreen,
+    navigationOptions:
+    {
+      header: null
+    }
+},goToApp: {
+  screen: startingNavigation,
+  navigationOptions:
+  {
+    header: null
+  }
+}
+},{
+  
+})
 
 const loginNavigation = createMaterialTopTabNavigator({
-  firstLogin: LoginFirstScreen,
+  firstLogin: RegistrationScreen,
   secondLogin: LoginSecondScreen,
-  thirdLogin: {
-    screen: LoginThirdScreen,
-    swipeEnabled: false
-  }, 
-  fourthLogin: startingNavigation
+  thirdLogin: LoginThirdScreen, 
+  fourthLogin: {screen: loginSecondPhase},
 },{
+    swipeEnabled: true,
     tabBarOptions: {
       style: {display: "none"}
     }
