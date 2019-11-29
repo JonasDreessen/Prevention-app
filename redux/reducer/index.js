@@ -6,6 +6,7 @@ import addNewLocation from './addNewLocation'
 import addNewTeam from './addNewTeam'
 import addSeverity from './addSeverity'
 import changeTypeOfIncidentForInsightDetailHeader from './changeTypeOfIncidentForInsightDetailHeader'
+import addAPIcall from './addAPIcall'
 
 export default combineReducers({
     addSeverity,
@@ -14,5 +15,6 @@ export default combineReducers({
     changeVisibleState,
     addNewLocation,
     addNewTeam,
-    changeTypeOfIncidentForInsightDetailHeader
+    changeTypeOfIncidentForInsightDetailHeader,
+    addAPIcall
 })

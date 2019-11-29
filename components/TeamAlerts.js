@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from 'react-native';
+import { loginAPIcall } from '../redux/actions/loginAPIcall'
 import {t} from 'react-native-tailwindcss'
+import { connect } from 'react-redux'
 
 
 class TeamAlerts extends Component {
@@ -49,7 +51,7 @@ class TeamAlerts extends Component {
                         <Image source={require('../img/arrow-point-to-right.png')} style={[t.w5, t.h5, t.objectContain]}></Image>
                     </View>
                     <View style={[t.mT8, t.mX6, t.borderB, t.borderGray400, t.pB4, t.pY1, t.flexRow, t.itemsCenter]}>
-                        <Text style={[t.textLg, t.fontSemibold,t.trackingWide]}>Maintenance</Text>
+                        <Text style={[t.textLg, t.fontSemibold,t.trackingWide]} onPress={() => this.props.loginAPIcall('register')}>Maintenance</Text>
                         <View style={[t.mLAuto, t.mR10, t.bgRed800, t.roundedFull, t.p1]}><Text style={[t.fontBold, t.textWhite]}>JD</Text></View>
                         <Image source={require('../img/arrow-point-to-right.png')} style={[t.w5, t.h5, t.objectContain]}></Image>
                     </View>
@@ -69,18 +71,19 @@ class TeamAlerts extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    alertText: {
-        fontFamily: 'arial',
-        letterSpacing: 0.7,
-        marginBottom: 10,
-    },
-    arrowRight: {
-        width: 16,
-        height: 16,
-        position: 'absolute',
-        right: 0,
+const mapStateToProps = (state) => {
+    return {
+        api: state.addAPIcall
     }
-})
+}
 
-export default TeamAlerts
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loginAPIcall: (payload) => dispatch(loginAPIcall(payload)),  
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    )(TeamAlerts)

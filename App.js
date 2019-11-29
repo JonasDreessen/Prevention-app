@@ -1,11 +1,17 @@
 import React, {Component} from "react";
 import {StyleSheet,View} from "react-native";
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import AppContainer from './navigation/navigation'
 import reducer from './redux/reducer/index'
+import createSagaMiddleware from 'redux-saga'
+import {watchAPIcall} from './sagas/saga'
 
-const store = createStore(reducer)
+
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, applyMiddleware(sagaMiddleware)) 
+sagaMiddleware.run(watchAPIcall)
 
 class App extends Component {
   render(){

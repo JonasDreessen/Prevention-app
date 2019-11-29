@@ -257,6 +257,7 @@ const loginNavigation = createMaterialTopTabNavigator({
       style: {display: "none"}
     }
   })
+  
 const AppContainer = createAppContainer(loginNavigation);
 
 const mapStateToProps = (state) => {
