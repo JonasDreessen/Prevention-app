@@ -3,8 +3,9 @@ import {View, Text, StyleSheet, Image, TouchableOpacity, TextInput} from '
 import {t} from 'react-native-tailwindcss'
 import {connect} from 'react-redux'
 import { loginAPIcall } from '../../redux/actions/loginAPIcall'
-import { createNativeWrapper } from 'react-native-gesture-handler';
-class RegisterScreen extends Component {
+import Animation from 'lottie-react-native'
+
+class LoginScreen extends Component {
     constructor(props){
         super(props)
         this.state ={
@@ -29,6 +30,7 @@ class RegisterScreen extends Component {
         alert('Your email/password is to short, please try again')
     }
 }
+
    render(){
         if(this.props.api.apiCalling){
             if(this.props.api.loginStatus.json.message){
@@ -37,6 +39,7 @@ class RegisterScreen extends Component {
                 this.props.navigation.navigate('secondLogin')
             }
         }
+        
         return(
             <View style={[t.flex1, t.justifyCenter, t.itemsCenter, {backgroundColor: '#12113C'}]}>
             <View style={[t.mB20, t.w3_4, t.itemsCenter]}>
@@ -70,4 +73,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-    )(RegisterScreen)
+    )(LoginScreen)

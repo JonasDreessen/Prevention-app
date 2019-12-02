@@ -2,12 +2,27 @@
 import { call, put, takeEvery, takeLatest, delay } from 'redux-saga/effects';
 import {REGISTER} from '../redux/actions/loginAPIcall'
 
-function* callAPIregister(){ 
-    yield delay(4000)
-    yield put({type: 'REGISTER_SAGA'})
+function* callAPIregister(payload){ 
+    const json = yield fetch('http://spotlight-api.local/api/register', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+         'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'apptest6',
+          email: payload.email,
+          password: payload.password
+        }),
+      })
+      .then(yield(response) => response.json())
+              .then(data => {
+                  return data
+              })
+    yield put({type: 'REGISTER_SAGA', payload: {json,payload}})
 }
 
-export function* watchAPIcall(action){
-    console.log('inside saga')
+export function* watchAPIcall(){
     yield takeEvery(REGISTER, callAPIregister)
+    
 }

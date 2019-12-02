@@ -34,7 +34,7 @@ class LoginFourthScreen extends Component {
         return(
             <View style={[t.flex1, t.itemsCenter]}>
                     <View style={[t.mT32, t.mX20, t.itemsCenter]}>
-                        <Text style={[t.fontBold, t.text2xl, t.textCenter]}>Use your number to Login or Register</Text>
+                        <Text style={[t.fontBold, t.textXl, t.textCenter]}>We need your number to complete registration</Text>
                     </View>
                     <View style={[t.itemsCenter, t.mT20, t.flexRow, t.mX4]}>
                         <View style={[t.flexRow, t.itemsCenter, t.borderB, t.borderGreen500]}>

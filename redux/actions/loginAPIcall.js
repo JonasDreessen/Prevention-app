@@ -4,17 +4,18 @@ export const REGISTER = 'REGISTER'
 
 // action creators
 export function loginAPIcall(payload){
-    console.log('inside the api action')
-    if(payload === 'login'){
+    if(payload.type === 'login'){
         return {
             type: LOGIN,
-            payload: payload
+            email: payload.email,
+            password: payload.password,
+
         }
-    }else if(payload === 'register'){
-        console.log('inside register_saga action')
+    }else if(payload.type === 'register'){
         return {
             type: REGISTER,
-            payload: payload
+            email: payload.email,
+            password: payload.password
         }
     }
 }
