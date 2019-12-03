@@ -25,12 +25,14 @@ class LoginScreen extends Component {
     }    
 
     checkCredentials = () => {
-       if(this.state.email.length > 6 && this.state.password.length > 6){
-        this.createNewUser()
-    } else {
-        alert('Your email/password is to short, please try again')
+        if(this.state.email && this.state.password){
+            if(this.state.email.length > 6 && this.state.password.length > 6){
+                this.createNewUser()
+            } else {
+                alert('Your email/password is to short, please try again')
+            }
+        }
     }
-}
 
    render(){
         if(this.props.api.apiCalling){
