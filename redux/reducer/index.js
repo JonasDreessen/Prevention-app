@@ -7,6 +7,7 @@ import addNewTeam from './addNewTeam'
 import addSeverity from './addSeverity'
 import changeTypeOfIncidentForInsightDetailHeader from './changeTypeOfIncidentForInsightDetailHeader'
 import addAPIcall from './addAPIcall'
+import addLoginVSregister from '../../navigation/reduxnavigation/reducers/addLoginVSregister'
 
 export default combineReducers({
     addSeverity,
@@ -16,5 +17,6 @@ export default combineReducers({
     addNewLocation,
     addNewTeam,
     changeTypeOfIncidentForInsightDetailHeader,
-    addAPIcall
+    addAPIcall,
+    addLoginVSregister
 })

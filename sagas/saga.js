@@ -10,7 +10,7 @@ function* callAPIregister(payload){
          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: 'apptest6',
+          name: 'Saga user created',
           email: payload.email,
           password: payload.password
         }),
@@ -22,7 +22,8 @@ function* callAPIregister(payload){
     yield put({type: 'REGISTER_SAGA', payload: {json,payload}})
 }
 
+
 export function* watchAPIcall(){
-    yield takeEvery(REGISTER, callAPIregister)
+    yield takeLatest(REGISTER, callAPIregister)
     
 }

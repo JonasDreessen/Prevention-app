@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {View, Image, TouchableOpacity, Text} from 'react-native';
 import {t} from 'react-native-tailwindcss'
 import { connect } from 'react-redux'
-import {createAppContainer} from 'react-navigation'
+import {createAppContainer, createSwitchNavigator} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -31,6 +31,8 @@ import LoginSecondScreen from './loginscreens/LoginSecondScreen'
 import LoginThirdScreen from './loginscreens/LoginThirdScreen'
 import LoginFourthScreen from './loginscreens/LoginFourthScreen'
 import RegistrationScreen from './registration/registration'
+import LoginScreen from './loginscreens/LoginScreen'
+import AuthLoadingScreen from './AuthLoadingScreen'
 
 // load the font befor calling it. 
 Icon.loadFont();
@@ -177,7 +179,6 @@ const AppNavigator = createBottomTabNavigator(
           tabBarLabel: ' ',
           tabBarIcon: () => (
             <View style={{zIndex: 10000, position: 'absolute', top: -20}}>
-              {/* <Image style={[t.objectContain, t.w16, t.absolute, {top: -25, left: -1}]} source={require('../img/halfcircle.png')}></Image> */}
               <Icon name='plus-circle' size={60} color='#6ab865'onPress={() => navigation.navigate('add a new hazard')}/>
             </View>
           ),
@@ -247,7 +248,7 @@ const loginSecondPhase = createStackNavigator({
 })
 
 const loginNavigation = createMaterialTopTabNavigator({
-  firstLogin: RegistrationScreen,
+  firstLogin: LoginScreen,
   secondLogin: LoginSecondScreen,
   thirdLogin: LoginThirdScreen, 
   fourthLogin: {screen: loginSecondPhase},
@@ -258,12 +259,21 @@ const loginNavigation = createMaterialTopTabNavigator({
     }
   })
 
-const AppContainer = createAppContainer(loginNavigation);
+const loginVSregistration = createSwitchNavigator({
+  AuthLoading: AuthLoadingScreen,
+  Register: RegistrationScreen,
+  Login: loginNavigation,
+},{
+  initialRouteName: 'AuthLoading'
+})
 
+
+const AppContainer = createAppContainer(loginVSregistration)
 const mapStateToProps = (state) => {
   return {
       amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents,
       modalVisible: state.changeVisibleState.modalVisible,
+      loginStatus: state.addLoginVSregister
   }
 }
 

@@ -3,7 +3,8 @@ import {View, Text, StyleSheet, Image, TouchableOpacity, TextInput} from '
 import {t} from 'react-native-tailwindcss'
 import {connect} from 'react-redux'
 import { loginAPIcall } from '../../redux/actions/loginAPIcall'
-import { createNativeWrapper } from 'react-native-gesture-handler';
+import { loginVSregister } from '../../navigation/reduxnavigation/actions/loginVSregister'
+
 class RegisterScreen extends Component {
     constructor(props){
         super(props)
@@ -12,14 +13,9 @@ class RegisterScreen extends Component {
             password: null
         }
     }
-    loginSuccesfull = () => {
-
-    }
 
     createNewUser = () => {
-        const {navigation} = this.props
         this.props.loginAPIcall({type: 'register', email: this.state.email, password: this.state.password})
-        // 
     }    
 
     checkCredentials = () => {
@@ -32,7 +28,7 @@ class RegisterScreen extends Component {
    render(){
         if(this.props.api.apiCalling){
             if(this.props.api.loginStatus.json.message){
-                return null
+                console.log('failerd')
             }else{
                 this.props.navigation.navigate('secondLogin')
             }
@@ -48,8 +44,8 @@ class RegisterScreen extends Component {
                 <TouchableOpacity style={[t.pY1, t.pX3, t.roundedLg, t.mT2]} onPress={this.checkCredentials}>
                     <Text style={[t.fontExtrabold, t.textWhite, t.trackingWide, t.textLg]}>Register</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={[t.textWhite, t.mT12]}>login</Text>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+                    <Text style={[t.textWhite, t.mT12]}>Already have an account yet? Please login here</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -57,13 +53,15 @@ class RegisterScreen extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        api: state.addAPIcall
+        api: state.addAPIcall,
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginAPIcall: (payload) => dispatch(loginAPIcall(payload)),  
+        loginAPIcall: (payload) => dispatch(loginAPIcall(payload)),
+        loginVSregister: (payload) => dispatch(loginVSregister(payload)),  
     }
 }
 
