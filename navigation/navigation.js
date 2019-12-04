@@ -148,7 +148,6 @@ const loginVSregistration = createSwitchNavigator({
   initialRouteName: 'AuthLoading'
 })
 
-
 const AppContainer = createAppContainer(loginVSregistration)
 const mapStateToProps = (state) => {
   return {

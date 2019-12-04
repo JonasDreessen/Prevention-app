@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Modal,View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {t} from 'react-native-tailwindcss'
+import LottieView from 'lottie-react-native'
 
 class LoginThirdScreen extends Component {
     constructor(props){
         super(props)
     }    
     render(){
-        console.log(this.props)
         return(
             <View style={[t.flex1, t.bgWhite, t.justifyCenter, t.itemsCenter, t.justifyAround]}>
                 <Image style={[t.objectContain, t.w4_5]} source={require('../../img/phone-pic3.png')}></Image>
@@ -17,7 +17,7 @@ class LoginThirdScreen extends Component {
                     <TouchableOpacity style={[t.bgGreen400, t.pX8, t.pY3, t.rounded, t.mT4]} onPress={()=>this.props.navigation.navigate('fourthLogin')}>
                         <Text style={[t.fontBold, t.textWhite]}>Get Started</Text>
                     </TouchableOpacity>
-                </View>
+                </View>    
             </View>
         )
     }
