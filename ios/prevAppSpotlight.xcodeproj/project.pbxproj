@@ -18,6 +18,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* prevAppSpotlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* prevAppSpotlightTests.m */; };
 		3130E09B44A2243055473CEF /* libPods-prevAppSpotlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A84BADBA17D5BE4AE332F05 /* libPods-prevAppSpotlight.a */; };
+		6355006D2396C6CF00861142 /* lottie-bridge-header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355006C2396C6CF00861142 /* lottie-bridge-header.swift */; };
 		BB1F5B93A8049A4D659211B9 /* libPods-prevAppSpotlight-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0BAB61731100FB9C163542 /* libPods-prevAppSpotlight-tvOSTests.a */; };
 		DC8A6844A162FAECFC59C94F /* libPods-prevAppSpotlightTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F27BB9B52DB137C8EB0F7CC /* libPods-prevAppSpotlightTests.a */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,8 @@
 		584EC836EF794313E0F33643 /* Pods-prevAppSpotlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prevAppSpotlight.debug.xcconfig"; path = "Target Support Files/Pods-prevAppSpotlight/Pods-prevAppSpotlight.debug.xcconfig"; sourceTree = "<group>"; };
 		5C36147CC00DC2FF1239501F /* Pods-prevAppSpotlightTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prevAppSpotlightTests.debug.xcconfig"; path = "Target Support Files/Pods-prevAppSpotlightTests/Pods-prevAppSpotlightTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E843A2086744B7992BCB91E /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		6355006B2396C6CF00861142 /* prevAppSpotlight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "prevAppSpotlight-Bridging-Header.h"; sourceTree = "<group>"; };
+		6355006C2396C6CF00861142 /* lottie-bridge-header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lottie-bridge-header.swift"; sourceTree = "<group>"; };
 		6A84BADBA17D5BE4AE332F05 /* libPods-prevAppSpotlight.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-prevAppSpotlight.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6361170A1236CAB84B11C4 /* Pods-prevAppSpotlight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prevAppSpotlight.release.xcconfig"; path = "Target Support Files/Pods-prevAppSpotlight/Pods-prevAppSpotlight.release.xcconfig"; sourceTree = "<group>"; };
 		8B6179B2678E47CC9092E5E8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 		13B07FAE1A68108700A75B9A /* prevAppSpotlight */ = {
 			isa = PBXGroup;
 			children = (
+				6355006C2396C6CF00861142 /* lottie-bridge-header.swift */,
+				6355006B2396C6CF00861142 /* prevAppSpotlight-Bridging-Header.h */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -335,6 +340,9 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1110;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -622,6 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				6355006D2396C6CF00861142 /* lottie-bridge-header.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,6 +684,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C36147CC00DC2FF1239501F /* Pods-prevAppSpotlightTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -698,6 +708,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B156DA073FAFA5D181C498AD /* Pods-prevAppSpotlightTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = prevAppSpotlightTests/Info.plist;
@@ -719,10 +730,12 @@
 			baseConfigurationReference = 584EC836EF794313E0F33643 /* Pods-prevAppSpotlight.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = prevAppSpotlight/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -731,6 +744,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = prevAppSpotlight;
+				SWIFT_OBJC_BRIDGING_HEADER = "prevAppSpotlight-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -740,9 +756,11 @@
 			baseConfigurationReference = 7B6361170A1236CAB84B11C4 /* Pods-prevAppSpotlight.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = prevAppSpotlight/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -751,6 +769,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = prevAppSpotlight;
+				SWIFT_OBJC_BRIDGING_HEADER = "prevAppSpotlight-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
