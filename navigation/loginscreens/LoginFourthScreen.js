@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {View, Text,TextInput,TouchableOpacity, Keyboard} from 'react-native';
 import CountryPicker from 'react-native-country-picker-modal'
 import {t} from 'react-native-tailwindcss'
+import LottieView from 'lottie-react-native'
 
 class LoginFourthScreen extends Component {
     constructor(props){
@@ -67,6 +68,7 @@ class LoginFourthScreen extends Component {
                         <Text style={[t.textCenter, t.textGray600]}>By tapping Next you agree to the Terms of Service and Privacy Policy</Text>
                         {nextButton()}
                     </View>
+                    <LottieView style={[t.w64, t.mLAuto, t.mRAuto]} source={require('../../assets/lottie/code-invite.json')} autoPlay loop={false}/>
             </View>
         )
     }

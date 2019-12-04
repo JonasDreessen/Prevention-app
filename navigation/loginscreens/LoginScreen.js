@@ -4,7 +4,7 @@ import {t} from 'react-native-tailwindcss'
 import {connect} from 'react-redux'
 import { loginAPIcall } from '../../redux/actions/loginAPIcall'
 import { loginVSregister } from '../../navigation/reduxnavigation/actions/loginVSregister'
-// import LottieView from 'lottie-react-native'
+import LottieView from 'lottie-react-native'
 
 class LoginScreen extends Component {
     constructor(props){
@@ -31,6 +31,8 @@ class LoginScreen extends Component {
             } else {
                 alert('Your email/password is to short, please try again')
             }
+        }else{
+            alert('please fill in your email and password')
         }
     }
 
@@ -57,7 +59,7 @@ class LoginScreen extends Component {
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
                     <Text style={[t.textWhite, t.mT12]}>Don't have an account yet? Please register here</Text>
                 </TouchableOpacity>
-                {/* <LottieView style={[t.w1_2, t.h48, t.z50]} source={require('../../assets/lottie/success-animation.json')} autoPlay loop/> */}
+                {/* <LottieView style={[t.w1_2, t.h48, t.z50]} source={require('../../assets/lottie/success-animation.json')} autoPlay/> */}
             </View>
         )
     }
