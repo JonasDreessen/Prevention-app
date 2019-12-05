@@ -21,18 +21,22 @@ class RegisterScreen extends Component {
     }    
 
     checkCredentials = () => {
-       if(this.state.email.length > 6 && this.state.password.length > 6){
-        this.createNewUser()
-    } else {
-        alert('Your email/password is to short, please try again')
+        if(this.state.email || this.state.password){
+            if(this.state.email.length > 6 && this.state.password.length > 6){
+                this.createNewUser()
+            } else {
+                alert('Your email/password is to short, please try again')
+            }
+        } else{
+            null
+        }
     }
-}
 
     nextScreenAnimation = () => {
         if(this.state.renderStopper === 0){
             this.setState({renderStopper: this.state.renderStopper + 1})
             this.setState({success: true})
-            setTimeout(()=> {this.props.navigation.navigate('secondLogin')},2000)
+            setTimeout(()=> {this.props.navigation.navigate('firstLogin')},2000)
         }
     }
 

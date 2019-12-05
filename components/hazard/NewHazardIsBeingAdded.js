@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import Geolocation from '@react-native-community/geolocation'
 import {getLocation} from '../../redux/actions/getLocation'
 import moment from 'moment'
+import LottieView from 'lottie-react-native'
+import {t} from 'react-native-tailwindcss'
 
 
 class NewHazardIsBeingAdded extends Component {
@@ -52,7 +54,6 @@ class NewHazardIsBeingAdded extends Component {
                     this.combineData(position,areaInformation)
                 })
         }
-
         combineData = (position, areaInformation) => {
             var date = moment()
                 .utcOffset('+01:00')
@@ -60,7 +61,7 @@ class NewHazardIsBeingAdded extends Component {
             var incident = this.props.incidentType.typeOfIncident
             var payload = {position: position, area: areaInformation.area, weather:areaInformation.weather, time: date, incident: incident}
             this.props.getLocation(payload)
-            this.props.navigation.navigate('newHazardInformationDetails')
+            setTimeout(()=>this.props.navigation.navigate('newHazardInformationDetails'), 1800) 
         }
         
         geo_error = (err) => {
@@ -69,12 +70,12 @@ class NewHazardIsBeingAdded extends Component {
         
     render(){
         return(
-            <View style={styles.container}>
-                <Image source={require('../../img/adding-location.gif')} style={styles.loadingGif}></Image>
-                <View style={styles.textContainer}>
+            <View style={[t.flex1, t.alignCenter, t.justifyCenter]}>
+                <LottieView style={[t.w56, t.mLAuto, t.mRAuto]} source={require('../../assets/lottie/695-bouncy-mapmaker.json')} autoPlay duration={1250} />
+                {/* <View style={[]}>
                     <Text style={styles.title}>Opening new {this.props.incidentType.typeOfIncident}</Text>
                     <Text style={styles.subTitle}>No one is being notified for {this.props.incidentType.typeOfIncident}</Text>
-                </View>
+                </View> */}
             </View>
 
         )
@@ -85,12 +86,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        marginTop: 200,
-    },
-    loadingGif: {
-        alignItems: 'center',
-    }, 
-    textContainer: {
         marginTop: 200,
     },
     title: {

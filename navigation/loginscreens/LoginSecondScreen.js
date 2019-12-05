@@ -15,9 +15,9 @@ class LoginSecondScreen extends Component {
                     <Text style={[t.text3xl, t.fontExtrabold, t.textWhite, t.textCenter]}>Real-time team collaboration</Text>
                     <Text style={[t.textCenter, t.textWhite, t.pT4, t.fontNormal]}>act immediately with real-time alerts. Communicate in the app.</Text>
                 </View>
-                <View style={[t.w20, t.h20, t.absolute, {bottom:20, right:20}]}>
+                <TouchableOpacity style={[t.w32, t.h32, t.absolute, {bottom:20, right:20}]} onPress={() => this.props.navigation.navigate('thirdLogin')}>
                     <LottieView source={require('../../assets/lottie/9236-right-arrow.json')} autoPlay duration={3500} />
-                </View>
+                </TouchableOpacity>
             </View>
         )
     }

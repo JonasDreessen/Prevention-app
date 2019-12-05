@@ -9,7 +9,7 @@ const AddHazardNavigation = createStackNavigator({
     'add a new hazard': {screen: ModalHazard},
     addingNewHazard: {
       screen: NewHazardIsBeingAdded,
-      navigationOptions: {header: null}
+      navigationOptions: {header: null, tabBarVisible: false}
     },
     newHazardInformationDetails: {
       screen: NewHazardInformationDetails,
@@ -20,5 +20,6 @@ const AddHazardNavigation = createStackNavigator({
       })
     }
   })
+  
 
   export default AddHazardNavigation

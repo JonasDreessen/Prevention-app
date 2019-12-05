@@ -4,19 +4,18 @@ import {t} from 'react-native-tailwindcss'
 import {connect} from 'react-redux'
 import { loginAPIcall } from '../../redux/actions/loginAPIcall'
 import { loginVSregister } from '../../navigation/reduxnavigation/actions/loginVSregister'
-import LottieView from 'lottie-react-native'
+import ImagePicker from 'react-native-image-picker'
 
 class LoginScreen extends Component {
     constructor(props){
         super(props)
         this.state ={
             email: null,
-            password: null
+            password: null,
+            avatarSource: null
         }
     }
-    loginSuccesfull = () => {
-
-    }
+    
 
     createNewUser = () => {
         const {navigation} = this.props
@@ -37,11 +36,12 @@ class LoginScreen extends Component {
     }
 
    render(){
+
         if(this.props.api.apiCalling){
             if(this.props.api.loginStatus.json.message){
                 return null
             }else{
-                this.props.navigation.navigate('secondLogin')
+                this.props.navigation.navigate('firstLogin')
             }
         }
         
@@ -53,7 +53,7 @@ class LoginScreen extends Component {
             </View>
                 <TextInput style={[t.border, t.w40, t.borderGray300, t.bgWhite, t.textCenter, t.pT2, t.justifyCenter, t.textLg, t.fontSemibold, t.trackingWider, t.mB1, t.rounded, t.pY0]} placeholder='email' onChangeText={(text)=>this.setState({email: text})}></TextInput>
                 <TextInput secureTextEntry={true} style={[t.border, t.w40, t.borderGray300, t.bgWhite, t.textCenter, t.pT2, t.justifyCenter, t.textLg, t.fontSemibold, t.trackingWider, t.rounded]} placeholder='password' onChangeText={(text)=>this.setState({password: text})}></TextInput>
-                <TouchableOpacity style={[t.pY1, t.pX3, t.roundedLg, t.mT2]} onPress={this.checkCredentials}>
+                <TouchableOpacity style={[t.pY1, t.pX3, t.roundedLg, t.mT2]} onPress={this.checkCredentials} onPress={() => this.props.navigation.navigate('firstLogin')}>
                     <Text style={[t.fontExtrabold, t.textWhite, t.trackingWide, t.textLg]}>Login</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>

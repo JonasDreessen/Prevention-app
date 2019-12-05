@@ -68,7 +68,7 @@ class LoginFourthScreen extends Component {
                         <Text style={[t.textCenter, t.textGray600]}>By tapping Next you agree to the Terms of Service and Privacy Policy</Text>
                         {nextButton()}
                     </View>
-                    <LottieView style={[t.w64, t.mLAuto, t.mRAuto]} source={require('../../assets/lottie/code-invite.json')} autoPlay loop={false}/>
+                    <LottieView style={[t.w64, t.mLAuto, t.mRAuto]} source={require('../../assets/lottie/code-invite.json')} autoPlay loop={false} duration={7000}/>
             </View>
         )
     }

@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal'
 import { connect } from 'react-redux';
-import MapView from 'react-native-maps'
+import MapView, {Marker} from 'react-native-maps'
 import { SevertyIncreaser } from '../../redux/actions/SevertyIncreaser';
 import { ChangeIncident } from '../../redux/actions/typeOfIncidentForInsightDetailHeader'
 import {t} from 'react-native-tailwindcss'
+import ImagePicker from 'react-native-image-picker'
+import LottieView from 'lottie-react-native'
 
 class InsightDetailAdjustment extends Component {
     constructor(props){
@@ -14,10 +16,52 @@ class InsightDetailAdjustment extends Component {
             selectedValue: null,
             modalVisible: false,
             severityModalVisible: false,
-            extraInfo: ''
+            extraInfo: '',
+            avatarSource: null
         }
     }
     render(){
+        // push notification tryout
+        var PushNotification = require("react-native-push-notification")
+            PushNotification.localNotification({
+                title: 'You have added a picture',
+                message: 'this will improve resolving the incident'
+            })
+        // end pushnotification tryout
+         // image picker
+    const pickImage = () => {
+        console.log('ulle dikke ma')
+         const options = {
+        title: 'Select Avatar',
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+      };
+    
+    
+    ImagePicker.showImagePicker(options, (response) => {
+        console.log('Response = ', response);
+       
+        if (response.didCancel) {
+          console.log('User cancelled image picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          const source = { uri: response.uri };
+          // You can also display the image using data:
+          // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+       
+          this.setState({
+            avatarSource: source,
+          });
+        }
+      });
+    }
+    console.log(this.state.avatarSource)
+    // end image picker
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
             if(clickedLocation.userId === this.props.navigation.state.params.userId){
                 var payload = this.props.navigation.state.params.typeOfHazard
@@ -40,33 +84,40 @@ class InsightDetailAdjustment extends Component {
                         <Text style={[t.mL6, t.pB2, t.fontLight, t.textGray800]}>Incident weather conditions</Text>
                     </View>
                         <View>
-                        <View style={[t.mT4,t.bgWhite, t.border, t.rounded, t.borderGray400, t.p4]}>
-                            <View style={[t.alignCenter, t.flexRow]}> 
-                                <MapView
-                                    region={{
-                                        latitude: clickedLocation.latitude,
-                                        longitude: clickedLocation.longitude,
-                                        latitudeDelta: 0.015,
-                                        longitudeDelta: 0.0121,
-                                        showsUserLocation: true
-                                    }} style={[t.w1_5, t.h20]}>
-                                    <MapView.Marker 
-                                        coordinate={
-                                            {latitude:clickedLocation.latitude,
-                                             longitude: clickedLocation.longitude}
-                                             }
-                                        />
-                                    </MapView>
+                            <View style={[t.mT4,t.bgWhite, t.border, t.rounded, t.borderGray400, t.p4]}>
+                                <View style={[t.alignCenter, t.flexRow]}> 
+                                    <MapView
+                                        region={{
+                                            latitude: clickedLocation.latitude,
+                                            longitude: clickedLocation.longitude,
+                                            latitudeDelta: 0.0020,
+                                            longitudeDelta: 0.0020,
+                                            showsUserLocation: true
+                                        }} style={[t.w2_5, t.h24]}>
+                                        <Marker 
+                                            coordinate={
+                                                {latitude:clickedLocation.latitude,
+                                                longitude: clickedLocation.longitude}
+                                                }
+                                            >
+                                                <View>
+                                                    <LottieView style={[t.w24, t.h32]} source={require('../../assets/lottie/small-map-location.json')} autoPlay loop duration={1200}/>
+                                                </View>
+                                            </Marker>
+                                        </MapView>
 
-                                <View style={[t.mL4, t.selfCenter]}>
-                                    <Text style={[t.textBase, t.fontSemibold, t.trackingWide]}>{clickedLocation.city} </Text>
-                                    <Text style={[t.textBase, t.fontSemibold, t.trackingWide]}>{clickedLocation.country}</Text>
+                                    <View style={[t.mL4, t.selfCenter]}>
+                                        <Text style={[t.textBase, t.fontSemibold, t.trackingWide]}>{clickedLocation.city} </Text>
+                                        <Text style={[t.textBase, t.fontSemibold, t.trackingWide]}>{clickedLocation.country}</Text>
+                                    </View>
                                 </View>
+                                <Text style={[t.textSm, t.fontMedium, t.trackingWide, t.mT4]}>Jonas Dreessen <Text style={[t.fontLight]}>set incident location</Text></Text>
                             </View>
-                            <Text style={[t.textSm, t.fontMedium, t.trackingWide, t.mT4]}>Jonas Dreessen <Text style={[t.fontLight]}>set incident location</Text></Text>
                         </View>
-                        </View>
-                    </View>
+                        
+                            {this.state.avatarSource ? <View style={[t.mT4,t.bgWhite, t.border, t.rounded, t.borderGray400, t.p4]}><Image style={[t.w48, t.h48]} source={{uri: `${this.state.avatarSource.uri}`}}></Image></View> : null}
+                        
+                </View>
 
                 )
             }
@@ -78,7 +129,7 @@ class InsightDetailAdjustment extends Component {
                 <TouchableOpacity onPress={() => this.setState({modalVisible: !this.state.modalVisible})}>
                         <Image style={[t.w6, t.objectContain, t.mR2]} source={require('../../img/plus.png')}></Image>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => pickImage()}>
                     <Image style={[t.mR2, t.rounded]} source={require('../../img/picture.png')}></Image>
                 </TouchableOpacity>
                     <TextInput 
@@ -89,6 +140,7 @@ class InsightDetailAdjustment extends Component {
                         <Image style={[t.w6, t.objectContain]} source={require('../../img/right-arrow-green.png')}></Image>
                     </TouchableOpacity>
                 </View>
+                
                 {/* Modal that appears when the plus icon is clicked, this allows editing information for this incident */}
                 <Modal
                 animationType='slide'

@@ -93,6 +93,7 @@ const AppNavigator = createBottomTabNavigator(
     },
   },
 );
+
 const createNewTeamStack = createStackNavigator({
   createTeam: {screen: CreateNewTeam},
   createTeamDetails: {screen:CreateNewTeamDetails}
@@ -129,7 +130,8 @@ const loginSecondPhase = createStackNavigator({
 })
 
 const loginNavigation = createMaterialTopTabNavigator({
-  firstLogin: LoginScreen,
+  loginScreen: LoginScreen,
+  firstLogin: LoginFirstScreen,
   secondLogin: LoginSecondScreen,
   thirdLogin: LoginThirdScreen, 
   fourthLogin: {screen: loginSecondPhase},
