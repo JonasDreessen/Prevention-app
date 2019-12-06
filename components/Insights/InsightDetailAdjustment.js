@@ -16,17 +16,17 @@ class InsightDetailAdjustment extends Component {
             selectedValue: null,
             modalVisible: false,
             severityModalVisible: false,
-            extraInfo: '',
+            extraInfo: null,
             avatarSource: null
         }
     }
     render(){
         // push notification tryout
-        var PushNotification = require("react-native-push-notification")
-            PushNotification.localNotification({
-                title: 'You have added a picture',
-                message: 'this will improve resolving the incident'
-            })
+        // var PushNotification = require("react-native-push-notification")
+        //     PushNotification.localNotification({
+        //         title: 'You have added a picture',
+        //         message: 'this will improve resolving the incident'
+        //     })
         // end pushnotification tryout
          // image picker
     const pickImage = () => {
@@ -51,15 +51,23 @@ class InsightDetailAdjustment extends Component {
           console.log('User tapped custom button: ', response.customButton);
         } else {
           const source = { uri: response.uri };
-          // You can also display the image using data:
-          // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-       
           this.setState({
             avatarSource: source,
           });
         }
       });
     }
+    const getExtraInfo = () => {
+        if(this.state.extraInfo){
+            if(this.state.extraInfo.length > 0){
+                return this.state.extraInfo
+            } else{
+                null
+            }
+        }
+    }
+
+
     console.log(this.state.avatarSource)
     // end image picker
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
@@ -115,7 +123,11 @@ class InsightDetailAdjustment extends Component {
                             </View>
                         </View>
                         
-                            {this.state.avatarSource ? <View style={[t.mT4,t.bgWhite, t.border, t.rounded, t.borderGray400, t.p4]}><Image style={[t.w48, t.h48]} source={{uri: `${this.state.avatarSource.uri}`}}></Image></View> : null}
+                            {this.state.avatarSource ? 
+                            <View style={[t.mT4,t.bgWhite, t.border, t.rounded, t.borderGray400, t.p4]}>
+                                <Image style={[t.w48, t.h48]} source={{uri: `${this.state.avatarSource.uri}`}}></Image>
+                                <Text>{}</Text>
+                            </View> : null}
                         
                 </View>
 
@@ -136,7 +148,7 @@ class InsightDetailAdjustment extends Component {
                     onChangeText={(value) => this.setState({extraInfo: value})}
                     value={this.state.extraInfo}
                     placeholder='Add information here...'/>
-                    <TouchableOpacity style={[t.mR2, t.mLAuto]}>
+                    <TouchableOpacity style={[t.mR2, t.mLAuto]} onPress={() => getExtraInfo()}>
                         <Image style={[t.w6, t.objectContain]} source={require('../../img/right-arrow-green.png')}></Image>
                     </TouchableOpacity>
                 </View>
