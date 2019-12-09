@@ -9,6 +9,7 @@ import {t} from 'react-native-tailwindcss'
 class NewHazardInformationDetails extends Component {
     constructor(props){
         super(props);
+        // -- Initial state -- // 
             this.state= {
                 area: '',
                 city: '',
@@ -21,15 +22,17 @@ class NewHazardInformationDetails extends Component {
             }
         }
     componentDidMount(){
+        // -- use the location that lives in the global state of the app to call the open weather api -- // 
         const arraylength = this.props.location.userLocation.length - 1
         let latitude = this.props.location.userLocation[arraylength].latitude;
         let longitude = this.props.location.userLocation[arraylength].longitude
         let url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric&appid=c710bbe46a2469ae01e656bc9461a268';
 
-        //fetching weather data
+        // -- fetching weather data -- // 
         fetch(url)
         .then(response => response.json())
         .then(data => {            
+            // -- data from the api call is put in the local state so it can be called and displayed on the screen -- // 
             this.setState({
                 temperature: data.list[0].main.temp,
                 description: data.list[0].weather[0].description,
@@ -40,6 +43,8 @@ class NewHazardInformationDetails extends Component {
         })
     }
     componentWillUnmount(){
+        // -- set the state back to the inital state so that it is ready for a next api call on another/same location, 
+        // this happens so that the user will not see the previous location that lived inside the state of the app -- // 
         this.setState({
             area: '',
             city: '',
@@ -52,6 +57,7 @@ class NewHazardInformationDetails extends Component {
         })
     }
     render(){
+        // -- arraylength takes the latest added location (the one just created) and will display that information. This guarantees that the correct data is displayed -- // 
         const arraylength = this.props.location.userLocation.length - 1
         let latitude = this.props.location.userLocation[arraylength].latitude;
         let longitude = this.props.location.userLocation[arraylength].longitude

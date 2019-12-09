@@ -12,6 +12,7 @@ import LottieView from 'lottie-react-native'
 class InsightDetailAdjustment extends Component {
     constructor(props){
         super(props)
+        // -- setting the initial state -- //
         this.state = {
             selectedValue: null,
             modalVisible: false,
@@ -22,9 +23,9 @@ class InsightDetailAdjustment extends Component {
     }
     render(){
         const pickImage = () => {
-            console.log('ulle dikke ma')
+            // -- options that define how the user sees the pop up for choosing a picture from their phone gallery to add exta detail to the incident  -- //
             const options = {
-            title: 'Select Avatar',
+            title: 'Select a picture to add to the incident.',
             storageOptions: {
             skipBackup: true,
             path: 'images',
@@ -42,6 +43,7 @@ class InsightDetailAdjustment extends Component {
           console.log('User tapped custom button: ', response.customButton);
         } else {
           const source = { uri: response.uri };
+          // -- setting the local state to the path toward the local stored picture. -- //
           this.setState({
             avatarSource: source,
           });
@@ -57,7 +59,10 @@ class InsightDetailAdjustment extends Component {
             }
         }
     }
-    // end image picker
+    // -- end image picker -- // 
+        // -- when the user chooses a specific incident to add details to it, there is a parameter passed with that press. the parameter is the id of the incident. 
+        // we will map over all the incidents, and search for a match between the incident id and the parameter. When one is found we use the information of that
+        // incident to be displayed for the user. -- // 
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
             if(clickedLocation.userId === this.props.navigation.state.params.userId){
                 var payload = this.props.navigation.state.params.typeOfHazard
@@ -91,6 +96,8 @@ class InsightDetailAdjustment extends Component {
                                             showsUserLocation: true
                                         }} style={[t.w2_5, t.h24]}>
                                         <Marker 
+                                        // -- by using Marker instead of Mapview.marker, we are able to pass a custom view to the marker so that it's not the default pin icon. In this
+                                        // case we used a lottie animation -- //
                                             coordinate={
                                                 {latitude:clickedLocation.latitude,
                                                 longitude: clickedLocation.longitude}
@@ -112,6 +119,7 @@ class InsightDetailAdjustment extends Component {
                         </View>
                         
                             {this.state.avatarSource ? 
+                            // -- if above is true, the chosen/taken image is used, else nothing happens -- // 
                             <View style={[t.mT4,t.bgWhite, t.border, t.rounded, t.borderGray400, t.p4]}>
                                 <Image style={[t.w48, t.h48]} source={{uri: `${this.state.avatarSource.uri}`}}></Image>
                                 <Text>{}</Text>
@@ -124,7 +132,9 @@ class InsightDetailAdjustment extends Component {
         })
         return(
             <View style={[t.flex1]}>
+            {/* the selectedLocation variable is the above code displayed in the view the user will see */}
                {selectedLocation}
+               {/* below is the bar you see with some options to press to add a severity, text information or to add an extra phone */}
                <View style={[t.flexRow, t.borderT, t.borderGray400, t.p2,t.mB6, t.z10]}>
                 <TouchableOpacity onPress={() => this.setState({modalVisible: !this.state.modalVisible})}>
                         <Image style={[t.w6, t.objectContain, t.mR2]} source={require('../../img/plus.png')}></Image>

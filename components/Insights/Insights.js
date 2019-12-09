@@ -14,7 +14,7 @@ class Insigts extends Component {
     }
     render(){
         const { GeneralIncidents } = this.props
-        console.log(this.props.GeneralIncidents, 'test incident')
+        // -- we determine if there are any incidents. If this is not the case we will return a lottie animation -- // 
         if(this.props.GeneralIncidents.amountOfIncidents === 0){
             return(
                 <View style={[t.flex1, t.bgGray100, t.pX2, t.itemsCenter]}>
@@ -23,6 +23,7 @@ class Insigts extends Component {
                 </View>
             )
         } else{
+            // -- if there are incidents the user will have insight in the details, data and visuals -- // 
             return(
                 <View style={[t.flex1, t.bgGray100, t.pX2]}>
                     <View style={[t.mT4]}>
@@ -58,49 +59,12 @@ class Insigts extends Component {
         }
     }
 }
-
 const styles = StyleSheet.create({
     arrow: {
         height: 14,
         width: 14,
         position: "absolute",
         right: 10,
-    },
-    mostUsedTagsContainer: {
-        backgroundColor: 'white',
-        height: 'auto',
-        paddingTop: 10,
-        paddingBottom: 10,
-    },
-
-    mostUsedTagsText: {
-        fontSize: 12,
-        textAlign: 'center',
-        marginBottom: 5,
-    },
-    severety: {
-        marginTop: 30,
-        marginBottom: 10,
-    },
-    severetyContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        backgroundColor: 'white',
-        paddingTop: 15,
-        paddingBottom: 15,
-    },
-    severetyTextContainer: {
-        left: 50,
-    },
-    severetyText: {
-        marginBottom: 10,
-        textAlign: 'right',
-    },
-    numberOfIncidents: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        marginRight: 20,
-        paddingLeft: 5,   
     },
     coloredCircle: {
         width: 10,

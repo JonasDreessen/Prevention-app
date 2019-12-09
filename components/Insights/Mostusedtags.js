@@ -12,6 +12,7 @@ class Mostusedtags extends Component{
     
     render(){
         const { GeneralIncidents } = this.props
+        // -- the data is used to display the correct graph. Value and label are set variable to the global state that is called -- //
         const data   = [
             {   
                 value: GeneralIncidents.HazardIncidents > 0 ? GeneralIncidents.HazardIncidents : false,
@@ -40,11 +41,10 @@ class Mostusedtags extends Component{
         ]
          
         const incidentInsights = () => {
+            // -- determine if there are incidents. If that is not true, we will not display anything.  -- //
             if(GeneralIncidents.HazardIncidents < 1 && GeneralIncidents.NearMissIncidents < 1 && GeneralIncidents.MaintenanceIncidents < 1 && GeneralIncidents.InjuryIncidents < 1 && GeneralIncidents.TheftIncidents < 1){
             return(
-                <View style={{borderRadius: 6}}>
-                    <Text style={{fontSize: 13, textAlign: 'center', color: 'grey'}}>No incidents reported yet</Text>
-                </View>
+                null 
             )
         } else{
             return(

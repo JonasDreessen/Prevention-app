@@ -63,9 +63,9 @@ class More extends Component {
                             </TouchableOpacity>
                             
                             
-                            <TouchableOpacity style={[t.flexRow, t.pY8, t.borderGray400, t.itemsCenter]}>
+                            <TouchableOpacity style={[t.flexRow, t.pY8, t.borderGray400, t.itemsCenter, t.mL1]}>
                                 <View style={[t.flexRow]}>
-                                    <Image source={require('../../img/exit-door.png')} style={styles.moreOptionsLogo, {width: 24, height: 24, marginRight: 20}}></Image>
+                                    <Image source={require('../../img/exit-door.png')} style={{width: 26, height: 26, marginRight: 20}}></Image>
                                     <View style={{flexDirection: 'column'}}>
                                     <Text style={[t.textLg, t.textRed600]}>Sign out</Text>
                                     </View>
@@ -79,32 +79,4 @@ class More extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    moreOptionsText: {
-        fontSize: 16,
-        
-    },
-    moreOptionsSubText: {
-        fontSize: 12,
-        color: 'grey'
-    },
-    logOut: {
-        borderBottomWidth: 0
-    },
-    logOutText: {
-        color: 'red', 
-        fontSize: 18,
-    },
-    moreOptionsLogo: {
-        marginRight: 20
-    },
-    arrowRight: {
-        width: 16,
-        height: 16,
-        position: 'absolute',
-        right: 0,
-    }
-})
-
 export default More

@@ -7,6 +7,7 @@ class HelpAndSupport extends Component{
         super(props)
     }
     render(){
+    // -- this is for simulation purposes. in a full build act it would receive messages from users and display answers with Q&A about the app -- //
         return(
     <View style={[t.flex1]}>
         <Modal

@@ -11,12 +11,14 @@ import {t} from 'react-native-tailwindcss'
 class NewHazardIsBeingAdded extends Component {
     constructor(props){
         super(props);
+        // -- setting the initial state -- //
             this.state = {
                 error: null,
                 loaded: false
             }
         }
         componentDidMount(){
+            // -- when the component is loaded, the location of the user will be fetched and used for geotargeting purposes -- //
             let geo_options = {
                 enableHighAccuracy: true,
                 timeOut: 20000,
@@ -29,10 +31,11 @@ class NewHazardIsBeingAdded extends Component {
                 this.setState({loaded:true})
                 );
         };
-        
+        // -- succes can only be achieved if the user chooses to share it's location with the app. -- //
         geo_succes = (position) => {
             const latitude = position.coords.latitude
             const longitude = position.coords.longitude
+            // -- openweather api is used because geolocation for google costs money. This is a free workaround. -- //
             let url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric&appid=c710bbe46a2469ae01e656bc9461a268'
 
             fetch(url)
@@ -60,7 +63,7 @@ class NewHazardIsBeingAdded extends Component {
                 .format('DD-MM-YYYY hh:mm:ss a');
 
             var incident = this.props.incidentType.typeOfIncident
-
+            // -- when succes, an object of payload will be created that calls the action with all this data inside. This makes the position and weather details live in the global state after the reduces is called -- // 
             var payload = {
                 position: position, 
                 area: areaInformation.area, 
@@ -68,11 +71,11 @@ class NewHazardIsBeingAdded extends Component {
                 time: date, 
                 incident: incident
             }
-
+            // -- calling the action -- //
             this.props.getLocation(payload)
             setTimeout(()=>this.props.navigation.navigate('newHazardInformationDetails'), 1800) 
         }
-        
+        // -- catching the error and storing it in the local state. Can be displayed to user if wanted (not coded yet) -- //
         geo_error = (err) => {
             this.setState({error: err.message})
         }

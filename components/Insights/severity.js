@@ -5,12 +5,11 @@ import {PieChart} from 'react-native-svg-charts'
 import { SevertyIncreaser } from '../../redux/actions/SevertyIncreaser';
 import {t} from 'react-native-tailwindcss'
 
-
+// -- this class displays the graph with the types of severity's --//
 class Severity extends Component{
     constructor(props){
         super(props)
     }
-    
     render() {
         const data = [
             {
@@ -57,6 +56,7 @@ class Severity extends Component{
         }
 
         const pieChart = () =>{
+            // -- when one of the severity types is larger than 0, the piechart will be displayed to the user. -- //
         if(this.props.severityType.extremeSeverity > 0 || 
             this.props.severityType.highSeverity> 0 || 
             this.props.severityType.mediumSeverity > 0 || 

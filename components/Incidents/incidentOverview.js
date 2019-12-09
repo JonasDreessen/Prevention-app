@@ -12,8 +12,10 @@ class incidentOverview extends Component {
     }
     
     render(){
+    // -- userLocation is an array with every opened incident in there. We map over it to display all of the incidents. Reverse function is called because we want the latest incident to be visible first -- //
     const allLocations = this.props.location.userLocation.reverse().map(everyLocation =>
         <View style={[t.mT2, t.borderT, t.borderB, t.borderGray400, t.bgWhite, t.pY4]}>
+            {/* the navigate gets an object as parameters so that it can be used in the 'inisght detail adjustment' component */}
             <TouchableOpacity onPress ={() => this.props.navigation.navigate('insight detail adjustment', {userId: everyLocation.userId, typeOfHazard: everyLocation.incident})}>
             <Text style={[t.textLg, t.mL4]}>{everyLocation.incident} at {everyLocation.city}</Text>
             <Text style={[t.textXs, t.mL4, t.textGray600, t.mY2]}>{everyLocation.time} <Image source={require('../../img/maps-and-flags.png')} style={[t.bgWhite, t.w3, t.h3]}></Image> at {everyLocation.city}</Text>
@@ -38,6 +40,7 @@ class incidentOverview extends Component {
     )
         return(
     this.props.location.userLocation.length > 0 ? 
+        // if above statement is true
             <ScrollView>
                 <View style={[t.flex1, t.bgGray100]}>
                     <View style={styles.container}>
@@ -50,6 +53,7 @@ class incidentOverview extends Component {
                 </View>
             </ScrollView>
             : 
+            // if above statement is false
             <NoIncidentsReported />
         )
     }
