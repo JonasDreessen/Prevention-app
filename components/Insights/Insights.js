@@ -6,6 +6,7 @@ import {addIncrement, addDecrement} from '../../redux/actions/counterIncrease'
 import Mostusedtags from './Mostusedtags'
 import Severity from './severity'
 import {t} from 'react-native-tailwindcss'
+import LottieView from 'lottie-react-native'
 
 class Insigts extends Component {
     constructor(props){
@@ -13,38 +14,48 @@ class Insigts extends Component {
     }
     render(){
         const { GeneralIncidents } = this.props
-        return(
-            <View style={[t.flex1, t.bgGray100, t.pX2]}>
-                <View style={[t.mT4]}>
-                    <View style={[t.flexRow, t.mB2]}>
-                        <View style={styles.coloredCircle}></View>
-                        <Text style={[t.textSm, t.fontNormal]}>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
-                    </View>
-                    <View style={[t.flexRow, t.justifyBetween]}>
-                        <TouchableOpacity style={[t.w48, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.rounded, t.border, t.borderGray200]} onPress={() => this.props.navigation.navigate('Incidents')}>
-                            <Text style={[t.fontBold, t.text4xl, t.mR4, t.pL2]}>{GeneralIncidents.amountOfIncidents}</Text>
-                            <Text style={[t.fontLight, t.textGray700]}>Open{"\n"}Incidents</Text>
-                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={[t.w48, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.rounded, t.border, t.borderGray200]} onPress={() => this.props.navigation.navigate('Incidents')}>
-                            <Text style={[t.fontBold, t.text4xl, t.mR4, t.pL2]}>0</Text>
-                            <Text style={[t.fontLight, t.textGray700]}>Resolved{"\n"}Incidents</Text>
-                            <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={[t.mY4]}>
-                            <View style={[t.flexRow]}>
-                            <View style={styles.coloredCircle}></View>
-                            <Text style={[t.textSm, t.fontNormal]}>Most Used Tags</Text>
-                            </View>
-                    </View>
-                        <View style={[t.bgWhite, t.rounded, t.border, t.borderGray200]}>
-                                <Mostusedtags />
-                        </View>
-                        <Severity />
+        console.log(this.props.GeneralIncidents, 'test incident')
+        if(this.props.GeneralIncidents.amountOfIncidents === 0){
+            return(
+                <View style={[t.flex1, t.bgGray100, t.pX2, t.itemsCenter]}>
+                    <Text style={[t.mT10, t.textLg, t.fontSemibold]}>No open incidents</Text>
+                    <LottieView source={require('../../assets/lottie/insights.json')} autoPlay/>
                 </View>
-            </View>
-        )
+            )
+        } else{
+            return(
+                <View style={[t.flex1, t.bgGray100, t.pX2]}>
+                    <View style={[t.mT4]}>
+                        <View style={[t.flexRow, t.mB2]}>
+                            <View style={styles.coloredCircle}></View>
+                            <Text style={[t.textSm, t.fontNormal]}>Incidents ({GeneralIncidents.amountOfIncidents})</Text>
+                        </View>
+                        <View style={[t.flexRow, t.justifyBetween]}>
+                            <TouchableOpacity style={[t.w48, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.rounded, t.border, t.borderGray200]} onPress={() => this.props.navigation.navigate('Incidents')}>
+                                <Text style={[t.fontBold, t.text4xl, t.mR4, t.pL2]}>{GeneralIncidents.amountOfIncidents}</Text>
+                                <Text style={[t.fontLight, t.textGray700]}>Open{"\n"}Incidents</Text>
+                                <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[t.w48, t.flexRow, t.h20, t.bgWhite, t.itemsCenter, t.rounded, t.border, t.borderGray200]} onPress={() => this.props.navigation.navigate('Incidents')}>
+                                <Text style={[t.fontBold, t.text4xl, t.mR4, t.pL2]}>0</Text>
+                                <Text style={[t.fontLight, t.textGray700]}>Resolved{"\n"}Incidents</Text>
+                                <Image source={require('../../img/arrow-point-to-right.png')} style={styles.arrow}></Image>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={[t.mY4]}>
+                                <View style={[t.flexRow]}>
+                                <View style={styles.coloredCircle}></View>
+                                <Text style={[t.textSm, t.fontNormal]}>Most Used Tags</Text>
+                                </View>
+                        </View>
+                            <View style={[t.bgWhite, t.rounded, t.border, t.borderGray200]}>
+                                    <Mostusedtags />
+                            </View>
+                            <Severity />
+                    </View>
+                </View>
+            )
+        }
     }
 }
 

@@ -21,25 +21,16 @@ class InsightDetailAdjustment extends Component {
         }
     }
     render(){
-        // push notification tryout
-        // var PushNotification = require("react-native-push-notification")
-        //     PushNotification.localNotification({
-        //         title: 'You have added a picture',
-        //         message: 'this will improve resolving the incident'
-        //     })
-        // end pushnotification tryout
-         // image picker
-    const pickImage = () => {
-        console.log('ulle dikke ma')
-         const options = {
-        title: 'Select Avatar',
-        storageOptions: {
-          skipBackup: true,
-          path: 'images',
-        },
-      };
-    
-    
+        const pickImage = () => {
+            console.log('ulle dikke ma')
+            const options = {
+            title: 'Select Avatar',
+            storageOptions: {
+            skipBackup: true,
+            path: 'images',
+            },
+        };
+        
     ImagePicker.showImagePicker(options, (response) => {
         console.log('Response = ', response);
        
@@ -66,9 +57,6 @@ class InsightDetailAdjustment extends Component {
             }
         }
     }
-
-
-    console.log(this.state.avatarSource)
     // end image picker
         const selectedLocation = this.props.location.userLocation.map(clickedLocation => {
             if(clickedLocation.userId === this.props.navigation.state.params.userId){

@@ -38,8 +38,8 @@ class incidentOverview extends Component {
     )
         return(
     this.props.location.userLocation.length > 0 ? 
-            <ScrollView style={[t.flex1, t.bgGray100]}>
-                <View>
+            <ScrollView>
+                <View style={[t.flex1, t.bgGray100]}>
                     <View style={styles.container}>
                         {this.props.location.isLoaded && (
                             <View>
@@ -88,16 +88,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
         location: state.addNewLocation
-        // amountOfIncidents: state.AddIncidentIncrease.amountOfIncidents,
-        // modalVisible: state.changeVisibleState.modalVisible,
     }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return { 
-//         getLocation: (position) => dispatch(getLocation(position)),
-//     }
-// }
 
 export default connect(
     mapStateToProps,

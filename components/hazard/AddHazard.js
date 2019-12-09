@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal,View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {Modal,View, Text, StyleSheet, Image, TouchableOpacity, ScrollView} from 'react-native';
 import { Button } from 'react-native-elements';
 import {addHazard, addInjury, addMaintenance, addNearMiss, addPropertyDamage, addTheft} from '../../redux/actions/incidentIncrease'
 import {getLocation} from '../../redux/actions/getLocation'
@@ -17,7 +17,7 @@ class Addhazard extends Component {
     render(){
         return(
             <View style={styles.container}>
-            <Button title='What problem have you encountered?' 
+            {/* <Button title='What problem have you encountered?' 
                     raised={true} 
                     buttonStyle={{
                         backgroundColor: '#6ab865',
@@ -31,43 +31,44 @@ class Addhazard extends Component {
                         }} 
                     onPress={() => this.props.changeModalVisibility()}>
 
-            </Button>
+            </Button> */}
                 <Modal 
                 animationType='slide'
                 transparent={true}
                 visible={this.props.modalVisible}
                 >
-                
-                <View style={styles.containerPanel}>
-                    <TouchableOpacity style={styles.goBackText}>
-                        <Text style={{color: '#46c24e', fontWeight: '300',}} onPress={() => alert('hi')}>cancel</Text>
-                    </TouchableOpacity>
-                        <View style={styles.description}>
-                            <Text style={styles.panelTitle}>Open new incident</Text>
-                            <Text style={styles.descriptionText}>You can customize incident types from Tag</Text>
-                            <Text style={styles.descriptionText}>Management</Text>
+                    <ScrollView>
+                        <View style={styles.containerPanel}>
+                            <TouchableOpacity style={styles.goBackText}>
+                                <Text style={{color: '#46c24e', fontWeight: '300',}} onPress={() => alert('hi')}>cancel</Text>
+                            </TouchableOpacity>
+                            <View style={styles.description}>
+                                <Text style={styles.panelTitle}>Open new incident</Text>
+                                <Text style={styles.descriptionText}>You can customize incident types from Tag</Text>
+                                <Text style={styles.descriptionText}>Management</Text>
+                            </View>
+                            <View style={styles.newIncidentHamburger}>
+                                <TouchableOpacity style={styles.newIncidentContainer}>
+                                    <Text style={styles.newIncidentText} onPress={() => {this.props.addHazard(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Hazard</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.newIncidentContainer} >
+                                    <Text style={styles.newIncidentText} onPress={() => {this.props.addNearMiss(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Near Miss</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.newIncidentContainer}>
+                                    <Text style={styles.newIncidentText} onPress={() => {this.props.addMaintenance(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Maintenance</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.newIncidentContainer}>
+                                    <Text style={styles.newIncidentText} onPress={() => {this.props.addInjury(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Injury</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.newIncidentContainer}>
+                                    <Text style={styles.newIncidentText} onPress={() => {this.props.addPropertyDamage(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Property Damage</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.newIncidentContainer}>
+                                    <Text style={styles.newIncidentText} onPress={() => {this.props.addTheft(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Theft</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                        <View style={styles.newIncidentHamburger}>
-                            <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addHazard(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Hazard</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.newIncidentContainer} >
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addNearMiss(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Near Miss</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addMaintenance(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Maintenance</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addInjury(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Injury</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addPropertyDamage(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Property Damage</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.newIncidentContainer}>
-                                <Text style={styles.newIncidentText} onPress={() => {this.props.addTheft(); this.props.navigation.navigate('addingNewHazard'); this.props.changeModalVisibility()}}>Theft</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
+                    </ScrollView>
                 </Modal>
             </View>
         )

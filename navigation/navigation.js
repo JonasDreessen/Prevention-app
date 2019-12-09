@@ -122,7 +122,8 @@ const loginSecondPhase = createStackNavigator({
   screen: startingNavigation,
   navigationOptions:
   {
-    header: null
+    header: null,
+    gesturesEnabled: false
   }
 }
 },{
@@ -136,7 +137,7 @@ const loginNavigation = createMaterialTopTabNavigator({
   thirdLogin: LoginThirdScreen, 
   fourthLogin: {screen: loginSecondPhase},
 },{
-    swipeEnabled: true,
+    swipeEnabled: false,
     tabBarOptions: {
       style: {display: "none"}
     }

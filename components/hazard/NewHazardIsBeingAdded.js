@@ -58,8 +58,17 @@ class NewHazardIsBeingAdded extends Component {
             var date = moment()
                 .utcOffset('+01:00')
                 .format('DD-MM-YYYY hh:mm:ss a');
+
             var incident = this.props.incidentType.typeOfIncident
-            var payload = {position: position, area: areaInformation.area, weather:areaInformation.weather, time: date, incident: incident}
+
+            var payload = {
+                position: position, 
+                area: areaInformation.area, 
+                weather:areaInformation.weather, 
+                time: date, 
+                incident: incident
+            }
+
             this.props.getLocation(payload)
             setTimeout(()=>this.props.navigation.navigate('newHazardInformationDetails'), 1800) 
         }
@@ -72,32 +81,11 @@ class NewHazardIsBeingAdded extends Component {
         return(
             <View style={[t.flex1, t.alignCenter, t.justifyCenter]}>
                 <LottieView style={[t.w56, t.mLAuto, t.mRAuto]} source={require('../../assets/lottie/695-bouncy-mapmaker.json')} autoPlay duration={1250} />
-                {/* <View style={[]}>
-                    <Text style={styles.title}>Opening new {this.props.incidentType.typeOfIncident}</Text>
-                    <Text style={styles.subTitle}>No one is being notified for {this.props.incidentType.typeOfIncident}</Text>
-                </View> */}
             </View>
 
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        marginTop: 200,
-    },
-    title: {
-        fontSize: 26,
-        fontWeight: '500',
-        fontFamily: 'arial',
-    },
-    subTitle: {
-        fontSize: 16,
-        color: 'darkgrey'
-    }
-})
 
 const mapStateToProps = (state) => {
     return {
