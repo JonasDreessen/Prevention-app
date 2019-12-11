@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
-import Topnavbar from '../TopNavbar'
 import MapView, {Marker} from 'react-native-maps'
 import { connect } from 'react-redux'
 import NoIncidentsReported from './noIncidentsReported'

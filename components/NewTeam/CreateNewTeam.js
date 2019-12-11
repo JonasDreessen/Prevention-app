@@ -14,9 +14,11 @@ class CreateNewTeam extends Component{
     }
    
     render(){
+        // -- fetching a post request to the DB to create a new team -- // 
         function createNewTeam(newTeamName){
             fetch(`http://spotlight-api.local/addteam/${newTeamName}`);
         }
+        
     return(
         <View style={styles.container}>
             <KeyboardAvoidingView>

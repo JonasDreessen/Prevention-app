@@ -9,7 +9,7 @@ class LoginFirstScreen extends Component {
     }    
     render(){
         return(
-            <View style={[t.flex1, t.bgGreen400, t.justifyCenter, t.itemsCenter]}>
+            <View style={[t.flex1, t.justifyCenter, t.itemsCenter, {backgroundColor: '#2ecb6f'}]}>
                 <Image style={[t.objectContain, t.w4_5]} source={require('../../img/phone-pic.png')}></Image>
                 <View style={[t.itemsCenter, t.justifyCenter, t.bottom0, t.mB64, t.pX12]}>
                     <Text style={[t.text3xl, t.fontExtrabold, t.textWhite, t.textCenter]}>Easy & simple reporting</Text>

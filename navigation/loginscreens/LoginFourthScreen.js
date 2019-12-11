@@ -26,7 +26,7 @@ class LoginFourthScreen extends Component {
                 )
             }else{
                 return(
-                    <TouchableOpacity style={[t.pY3, t.rounded, t.bgGreen400, t.mT4]} onPress={()=>this.props.navigation.navigate('goToApp')}>
+                    <TouchableOpacity style={[t.pY3, t.rounded,{backgroundColor: '#2ecb6f'}, t.mT4]} onPress={()=>this.props.navigation.navigate('goToApp')}>
                         <Text style={[t.textCenter, t.fontSemibold, t.textLg, t.textWhite]}>Next</Text>
                     </TouchableOpacity>
                 )
@@ -38,7 +38,7 @@ class LoginFourthScreen extends Component {
                         <Text style={[t.fontBold, t.textXl, t.textCenter]}>We need your number to complete registration</Text>
                     </View>
                     <View style={[t.itemsCenter, t.mT20, t.flexRow, t.mX4]}>
-                        <View style={[t.flexRow, t.itemsCenter, t.borderB, t.borderGreen500]}>
+                        <View style={[t.flexRow, t.itemsCenter, t.borderB, t.borderGreen500, t.pY0]}>
                             <CountryPicker
                                 onSelect={(value)=> this.setState({
                                     cca2: value.cca2,
@@ -59,7 +59,7 @@ class LoginFourthScreen extends Component {
                             <TextInput
                                 placeholder='enter your mobile number'
                                 keyboardType='numeric'
-                                style={[t.textLg, t.trackingWidest]}
+                                style={[t.textLg, t.trackingWidest, t.p0]}
                                 onChangeText={(text)=>this.setState({numberLength: text})}
                             ></TextInput>
                         </View>

@@ -42,13 +42,12 @@ class Mostusedtags extends Component{
          
         const incidentInsights = () => {
             // -- determine if there are incidents. If that is not true, we will not display anything.  -- //
-            if(GeneralIncidents.HazardIncidents < 1 && GeneralIncidents.NearMissIncidents < 1 && GeneralIncidents.MaintenanceIncidents < 1 && GeneralIncidents.InjuryIncidents < 1 && GeneralIncidents.TheftIncidents < 1){
+            if(GeneralIncidents.HazardIncidents < 1 && GeneralIncidents.NearMissIncidents < 1 && GeneralIncidents.MaintenanceIncidents < 1 && GeneralIncidents.InjuryIncidents < 1 && GeneralIncidents.TheftIncidents < 1 && GeneralIncidents.PropertyDamageIncidents < 1){
             return(
                 null 
             )
         } else{
             return(
-                
                 <View style={{flexDirection: 'row', height: 120, paddingVertical: 10, borderRadius: 6}}>
                     <YAxis
                         data={data}
@@ -58,7 +57,7 @@ class Mostusedtags extends Component{
                         contentInset={{ top: 0, bottom: 0 }}
                         spacing={0.3}
                         formatLabel={(_, index) => data[index].label}
-                        style={[t.mL16]}
+                        style={[t.mL16, t.textRight]}
                     />
                     <BarChart
                         style={[t.flex1, t.mR6]}

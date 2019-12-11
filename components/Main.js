@@ -1,7 +1,4 @@
 import React, {Component} from "react";
-
-import BottomNavbar from "./BottomNavbar";
-import TopNavbar from './TopNavbar';
 import GoogleMapsImages from './GoogleMapsImage';
 import {View, Text, StyleSheet} from 'react-native';
 
@@ -10,7 +7,6 @@ class Main extends Component {
     render() {
     return(
         <View style={styles.container}>
-            {/* <TopNavbar /> */}
             <GoogleMapsImages />
         </View>
     )

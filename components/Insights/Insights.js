@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import TopNavbar from '../TopNavbar';
 import { connect } from 'react-redux';
 import {addIncrement, addDecrement} from '../../redux/actions/counterIncrease'
 import Mostusedtags from './Mostusedtags'

@@ -7,7 +7,6 @@ import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs'
-import TeamAlerts from "../components/TeamAlerts";
 import CreateNewTeam from '../components/NewTeam/CreateNewTeam'
 import CreateNewTeamDetails from '../components/NewTeam/CreateNewTeamDetails';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -23,6 +22,7 @@ import AddMoreNavigation from './addMoreNavigation/addMoreNavigation'
 import AddIncidentNavigation from './AddIncidentNavigation/AddIncidentNavigation'
 import AddInsightNavigation from './AddInsightNavigation/AddInsightNavigation'
 import AddTeamAlertNavigation from './AddTeamAlertNavigation/AddTeamAlertNavigation'
+// green font in app should be = #2ecb6f
 // load the font befor calling it. 
 Icon.loadFont();
 // hazard adding flow
@@ -65,8 +65,8 @@ const AppNavigator = createBottomTabNavigator(
       Plus: {screen: addingHazardStack, navigationOptions: ({navigation}) => ({
           tabBarLabel: ' ',
           tabBarIcon: () => (
-            <View style={{zIndex: 10000, position: 'absolute', top: -20}}>
-              <Icon name='plus-circle' size={60} color='#6ab865'onPress={() => navigation.navigate('add a new hazard')}/>
+            <View style={{zIndex: 10000, position: 'absolute', top: -25}}>
+              <Image style={[t.w12, t.h14, t.objectContain, t.mB1]} source={require('../img/plus-64x64.png')} onPress={() => navigation.navigate('add a new hazard')}></Image>
             </View>
           ),
         })
@@ -84,7 +84,7 @@ const AppNavigator = createBottomTabNavigator(
     },
     {
     tabBarOptions: {
-      activeTintColor: '#6ab865',
+      activeTintColor: '#2ecb6f',
       inactiveTintColor: 'gray',
       style: {
         height: 60,
@@ -95,13 +95,13 @@ const AppNavigator = createBottomTabNavigator(
 );
 
 const createNewTeamStack = createStackNavigator({
-  createTeam: {screen: CreateNewTeam},
-  createTeamDetails: {screen:CreateNewTeamDetails}
+  createTeam: CreateNewTeam,
+  createTeamDetails: CreateNewTeamDetails
 })
 
 const Drawernavigator = createDrawerNavigator({
-    Pointbreak: {screen: AppNavigator},
-    '+ Create new team': {screen: createNewTeamStack}
+    Pointbreak: AppNavigator,
+    '+ Create new team': createNewTeamStack
 });
 
 const startingNavigation = createStackNavigator({

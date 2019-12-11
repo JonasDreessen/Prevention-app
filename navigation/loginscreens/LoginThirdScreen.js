@@ -14,7 +14,7 @@ class LoginThirdScreen extends Component {
                 <View style={[t.itemsCenter, t.justifyCenter, t.mB64, t.pX16]}>
                     <Text style={[t.text3xl, t.fontExtrabold, t.textCenter]}>Analyze and prevent</Text>
                     <Text style={[t.textCenter, t.pT4, t.fontNormal]}>Analyze and export all reported issues to spot trends an fix common problems</Text>
-                    <TouchableOpacity style={[t.bgGreen400, t.pX8, t.pY3, t.rounded, t.mT4]} onPress={()=>this.props.navigation.navigate('fourthLogin')}>
+                    <TouchableOpacity style={[{backgroundColor: '#2ecb6f'}, t.pX8, t.pY3, t.rounded, t.mT4]} onPress={()=>this.props.navigation.navigate('fourthLogin')}>
                         <Text style={[t.fontBold, t.textWhite]}>Get Started</Text>
                     </TouchableOpacity>
                 </View>    

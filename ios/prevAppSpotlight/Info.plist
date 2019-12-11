@@ -61,6 +61,8 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
+		<!-- <string>/Users/jonasdreessen/prevAppSpotlight/assets/fonts/Roboto-Thin.ttf</string> -->
+		<string>Roboto.ttf</string>
 		<string>Roboto-Light.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>

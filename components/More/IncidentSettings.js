@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {t} from 'react-native-tailwindcss'
+
+
 class IncidentSettings extends Component{
     constructor(props){
         super(props)

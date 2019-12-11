@@ -63,7 +63,6 @@
 		3DE2CCFA04D64C9385C1B471 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		47CF7F9F26664550A2763170 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		4983B91F3D604322B2C4EA0E /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		4C8EF6340C50418DAF7EA1E4 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		50A3452508D141DDAC5D615C /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		55EB253C4A7D413DB13A98BE /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		584EC836EF794313E0F33643 /* Pods-prevAppSpotlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prevAppSpotlight.debug.xcconfig"; path = "Target Support Files/Pods-prevAppSpotlight/Pods-prevAppSpotlight.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +70,8 @@
 		5E843A2086744B7992BCB91E /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		6355006B2396C6CF00861142 /* prevAppSpotlight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "prevAppSpotlight-Bridging-Header.h"; sourceTree = "<group>"; };
 		6355006C2396C6CF00861142 /* lottie-bridge-header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lottie-bridge-header.swift"; sourceTree = "<group>"; };
+		63DFAA0C239FA29200F9DC1F /* Roboto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Roboto.ttf; path = "../../Downloads/Roboto (1)/Roboto.ttf"; sourceTree = "<group>"; };
+		63DFAA0D239FA3BF00F9DC1F /* Roboto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Roboto.ttf; path = "../../Downloads/Roboto (1)/Roboto.ttf"; sourceTree = "<group>"; };
 		6A84BADBA17D5BE4AE332F05 /* libPods-prevAppSpotlight.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-prevAppSpotlight.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6361170A1236CAB84B11C4 /* Pods-prevAppSpotlight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prevAppSpotlight.release.xcconfig"; path = "Target Support Files/Pods-prevAppSpotlight/Pods-prevAppSpotlight.release.xcconfig"; sourceTree = "<group>"; };
 		8B6179B2678E47CC9092E5E8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -182,6 +183,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				63DFAA0D239FA3BF00F9DC1F /* Roboto.ttf */,
 				13B07FAE1A68108700A75B9A /* prevAppSpotlight */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* prevAppSpotlightTests */,
@@ -209,7 +211,7 @@
 		A890DE9A82DC4D989506497D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4C8EF6340C50418DAF7EA1E4 /* Roboto-Light.ttf */,
+				63DFAA0C239FA29200F9DC1F /* Roboto.ttf */,
 				47CF7F9F26664550A2763170 /* AntDesign.ttf */,
 				234A5C53A5BF44AFB46918B8 /* Entypo.ttf */,
 				3DE2CCFA04D64C9385C1B471 /* EvilIcons.ttf */,
@@ -424,7 +426,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		0CDD904BCD717975C56F6C00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

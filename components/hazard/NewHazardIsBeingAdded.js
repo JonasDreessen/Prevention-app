@@ -6,6 +6,7 @@ import {getLocation} from '../../redux/actions/getLocation'
 import moment from 'moment'
 import LottieView from 'lottie-react-native'
 import {t} from 'react-native-tailwindcss'
+import {PermissionsAndroid} from 'react-native'
 
 
 class NewHazardIsBeingAdded extends Component {
@@ -81,6 +82,30 @@ class NewHazardIsBeingAdded extends Component {
         }
         
     render(){
+        // -- ask user (on android for permission) -- //
+        async function requestCameraPermission() {
+            try {
+              const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.ACCES_FINE_LOCATION,
+                {
+                  title: 'Pointbreak Preventions wants to use your location',
+                  message:
+                    'we use this to add more details to your incidents.',
+                  buttonNeutral: 'Ask Me Later',
+                  buttonNegative: 'Cancel',
+                  buttonPositive: 'OK',
+                },
+              );
+              if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log('You can use the camera');
+              } else {
+                console.log('Camera permission denied');
+              }
+            } catch (err) {
+              console.warn(err);
+            }
+          }
+        // -- end ask user (on android) from permission -- //
         return(
             <View style={[t.flex1, t.alignCenter, t.justifyCenter]}>
                 <LottieView style={[t.w56, t.mLAuto, t.mRAuto]} source={require('../../assets/lottie/695-bouncy-mapmaker.json')} autoPlay duration={1250} />

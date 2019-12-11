@@ -9,7 +9,7 @@ class LoginSecondScreen extends Component {
     }    
     render(){
         return(
-            <View style={[t.flex1, t.bgPurple900, t.justifyCenter, t.itemsCenter]}>
+            <View style={[t.flex1, t.bgPurple900, t.justifyCenter, t.itemsCenter, t.pT4]}>
                 <Image style={[t.objectContain, t.w4_5]} source={require('../../img/phone-pic2.png')}></Image>
                 <View style={[t.itemsCenter, t.justifyCenter, t.bottom0, t.mB64, t.pX12]}>
                     <Text style={[t.text3xl, t.fontExtrabold, t.textWhite, t.textCenter]}>Real-time team collaboration</Text>
