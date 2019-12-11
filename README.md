@@ -27,4 +27,18 @@ async requests are made withing redux saga. npm i redux-saga
 
 ## screens
 ### login
-![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/Insights.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/Login.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/Login-1.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/Login-2.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/Login-3.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/Login-phonenumber.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/Login-phonenumber-succes.png)
+
+### insights
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/insights-empty.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/insights.png)
+
+### incidents 
+
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/incidents-empty.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/incidents.png)
