@@ -25,7 +25,6 @@ global state management with redux. npm i redux
 
 async requests are made withing redux saga. npm i redux-saga
 
-## first line of code to finish 
-
-- 1.5 months
-- no prior react-native knowledge 
+## screens
+### login
+![Alt text](img/screenshots/login.png)
