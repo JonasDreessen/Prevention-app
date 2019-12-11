@@ -28,7 +28,7 @@ async requests are made withing redux saga. npm i redux-saga
 ## screens
 
 ### login
-![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/login.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/login.png){:height="36px" width="36px"}
 ![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/login-1.png)
 ![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/login-2.png)
 ![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/login-3.png)
