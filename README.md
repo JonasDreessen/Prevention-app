@@ -26,6 +26,7 @@ global state management with redux. npm i redux
 async requests are made withing redux saga. npm i redux-saga
 
 ## screens
+
 ### login
 ![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/login.png)
 ![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/login-1.png)
