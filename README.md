@@ -37,7 +37,7 @@ async requests are made withing redux saga. npm i redux-saga
 
 ### insights
 ![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/insights-empty.png)
-![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/insights.png)
+![Alt text](https://github.com/JonasDreessen/prevAppSpotlight/blob/master/img/screenshots/Insights.png)
 
 ### incidents 
 
